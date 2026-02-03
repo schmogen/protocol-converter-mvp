@@ -1,0 +1,148 @@
+--- PAGE 1 ---
+
+Table 1: Recommended buffers and solutions
+For coupling of nucleic For RNA applications For coupling of proteins
+acids and other molecules
+Binding and washing Solution A: PBS buffer pH 7.4
+Dynabeads™ M-280 Streptavidin (B&W) Buffer (2X): DEPC-treated 0.1 M NaOH These buffers can also be
+10 mM Tris-HCl (pH 7.5) DEPC-treated 0.05 M NaCl used for your application
+1 mM EDTA if needed:
+Solution B:
+2 M NaCl PBS/BSA (PBS, pH 7.4
+DEPC-treated 0.1 M NaCl
+Catalog Nos. 11205D, 11206D, 60210 Store at 2 to 8˚C containing 0.01% [w/v]
+Publication No. MAN0014017 Rev. B.0
+BSA)
+PBST (PBS pH 7.4 contain-
+ing 0.01% [v/v] Tween™-20)
+Product contents Required materials
+The salt concentration and pH (typically 5–9) of the chosen binding/washing buffers can be varied
+• DynaMag™ Magnet (See depending on the type of molecule to be immobilized. Beads with immobilized molecules are
+stable in common buffers.
+Cat. No. Volume thermofisher.com/magnets for
+11205D 2 mL recommendations on magnets Both the size of the molecule to be immobilized and the biotinylation procedure
+appropriate for manual or will affect the binding capacity. The capacity for biotinylated molecules depends on
+11206D 10 mL
+automated protocols) steric availability and charge interaction between bead and molecule and between
+60210 100 mL
+• Mixing device with tilting and molecules. There are two or three biotin binding sites available for each streptavidin
+rotation (e.g. HulaMixer™ Sample molecule on the surface of the bead after immobilization.
+Dynabeads™ M-280 Streptavidin Mixer) • Optimize the quantity of beads used for each individual application by titration.
+contains 10 mg (~6–7 × 108) of magnetic
+beads/mL in phosphate buffered saline • Buffers and Solutions (see Table 1) • Use up to two-fold excess of the binding capacity of the biotinylated molecule to
+(PBS) pH 7.4, with 0.1% bovine serum • For biotinylation details, download saturate streptavidin.
+albumin (BSA) and 0.02% sodium azide the Molecular Probes Handbook • Binding efficiency can be determined by comparing molecule concentration
+as preservatives. from thermofisher.com/handbook before and after coupling.
+Product description General guidelines Protocol
+Dynabeads™ M-280 Streptavidin are • Keep the tube on the magnet for 2 Recommended washing buffers
+ideal for numerous applications, min to ensure that all the beads are
+• Nucleic acid applications: 1X B&W Buffer (see Table 1 for recipe). Dilute to 1X
+including purification of proteins collected on the tube wall.
+B&W Buffer with distilled water.
+and nucleic acids, protein interaction
+• For diluted samples, increase the
+studies, immunoprecipitation, immuno- • Antibody/protein applications: PBS, pH 7.4.
+incubation time or isolate in smaller
+assays, phage display, biopanning, drug batches using the same beads in each Wash Dynabeads™ magnetic beads
+screening and cell isolation.
+batch.
+Calculate the amount of beads required based on their binding capacity (see Table 2),
+Add the beads to a sample containing
+• Avoid air bubbles during pipetting. and transfer the beads to a new tube.
+biotinylated molecules, e.g. peptides,
+• Free biotin in the sample will reduce 1. Resuspend the beads in the vial (i.e. vortex for >30 sec, or tilt and rotate for 5 min).
+proteins, antibodies, sugars, lectins,
+the binding capacity of the beads.
+oligonucleotides, DNA/RNA. During 2. Transfer the desired volume of beads to a tube.
+A disposable separation column
+a short incubation, the biotinylated 3. Add an equal volume of Washing buffer, or at least 1 mL, and mix (vortex for
+or a spin column will remove
+molecule will bind to the beads. Separate 5 sec, or keep on a roller for at least 5 min).
+unincorporated biotin.
+the molecule-bead capture, washing,
+4. Place the tube on a magnet for 1 min and discard the supernatant.
+and detection can be optimized for • For some applications it can be
+manual or automated use. With indirect an advantage to add a detergent 5. Remove the tube from the magnet and resuspend the washed beads in the same
+capture, mix the biotinylated molecule such as 0.01–0.1% Tween™ 20 to the volume of washing buffer as the initial volume of beads taken from the vial (step 2).
+with the sample to capture the molecule- washing/binding buffers to reduce
+Table 2: Typical binding capacities for one mg of Dynabeads™ magnetic beads.
+target complex before adding the beads. non-specific binding.
+Indirect target capture is an advantage • Run the PCR with limiting Biotinylated target Binding/mg
+when molecule-target kinetics are slow, concentrations of biotinylated Free Biotin (pmol) 650–900
+affinity is weak, molecule concentration primer, or remove free biotinylated
+Biotinylated peptides (pmol) ~200
+is low, or molecule-target binding primer by ultrafiltration,
+requires optimal molecule orientation microdialysis or other clean-up Biotinylated antibody (µg) ~10
+and true liquid-phase kinetics. protocols (PCR clean-up products are ds DNA (µg) * ~10
+available from thermofisher.com). Ss oligonucleotides (pmol) * ~200
+* Oligonucleotides and DNA fragments
+For oligonucleotides, capacity is inversely related to molecule size (number of bases). Reduced binding capacity
+for large DNA fragments may be due to steric hindrance.
+For research use only. Not for use in diagnostic procedures.
+
+--- PAGE 2 ---
+
+Dynabeads™ magnetic beads for RNA manipulation Automation
+As Dynabeads™ Streptavidin are not supplied in RNase-free solutions, perform the Magnetic separation and handling using Dynabeads™ magnetic beads can easily
+following steps after washing for RNA applications: be automated on a wide variety of liquid handling platforms. Dynabeads™
+1. Wash the beads twice in Solution A for 2 min. Use the same volume (or larger) of MyOne™ Streptavidin T1 share similar properties to Dynabeads™ M-280
+Solution A as the initial volume of beads taken from the vial. Streptavidin but are smaller, making them ideal for automation applications
+due to their small size, low sedimentation rate and high magnetic mobility.
+2. Wash the beads once in Solution B. Use the same volume of beads as in step 5.
+Selected protocols are available at thermofisher.com/automation.
+3. Resuspend the beads in Solution B.
+The beads are now ready to be coated with the biotinylated molecule of your choice. Description of materials
+Immobilization protocol Dynabeads™ Streptavidin are uniform, superparamagnetic beads of 2.8 µm in
+Wash the Dynabeads™ magnetic beads according to “Wash Dynabeads™ magnetic diameter with a streptavidin monolayer covalently coupled to the surface. This
+layer ensures negligible streptavidin leakage while the lack of excess adsorbed
+beads” section before use.
+streptavidin ensures batch consistency and reproducibility of results.
+1. Add the biotinylated molecule to the washed beads.
+2. Incubate for 15–30 min at room temperature with gentle rotation of the tube. Related products
+3. Place the tube in a magnet for 2–3 min and discard the supernatant.
+4. Wash the coated beads 3–4 times in washing buffer. Product Cat. No.
+5. Resuspend to desired concentration in a suitable buffer for your downstream use. Dynabeads™ M-270 Streptavidin 65305
+Here are some examples of immobilization protocols for specific applications. Dynabeads™ MyOne™ Streptavidin C1 65001
+Dynabeads™ MyOne™ Streptavidin T1 65601
+Immobilize nucleic acids
+Dynabeads™ Kit kilobaseBINDER™ 60101
+1. Resuspend beads in 2X B&W Buffer to a final concentration of 5 µg/µL (twice
+original volume). DynaMag™-2 Magnet 12321D
+2. To immobilize, add an equal volume of the biotinylated DNA/RNA in distilled HulaMixer™ Sample Mixer 15920D
+water to dilute the NaCl concentration in the 2 B&W Buffer from 2 M to 1 M for
+REF on labels is the symbol for catalog number.
+optimal binding.
+3. Incubate for 15 min at room temperature using gentle rotation. Incubation time
+Important licensing information
+depends on the nucleic acid length: short oligonucleotides (<30 bases) require
+max. 10 min. DNA fragments up to 1 kb require 15 min. These products may be covered by one or more Limited Use Label Licenses.
+By use of these products, you accept the terms and conditions of all applicable
+4. Separate the biotinylated DNA/RNA coated beads with a magnet for 2–3 min.
+Limited Use Label Licenses.
+5. Wash 2–3 times with a 1X B&W Buffer.
+Manufactured by Thermo Fisher Scientific AS, Ullernchausseen 52 PO Box 114,
+6. Resuspend to the desired concentration. Binding is now complete. Resuspend
+Smestad, Olso, Norway N-0379 and by Thermo Fisher Scientific Baltics UAB,
+the beads with the immobilized DNA/RNA fragment in a buffer with low salt
+V.A. Graiciuno 8, LT-02241 Vilnius, Lithuania. Thermo Fisher Scientific AS and
+concentration, suitable for downstream applications.
+Thermo Fisher Scientific Baltics UAB comply with the Quality System Standards
+Immobilize antibodies/proteins ISO 9001 and ISO 13485.
+1. Incubate the beads and biotinylated antibodies in PBS for 30 min at room Limited product warranty
+temperature using gentle rotation.
+Life Technologies Corporation and/or its affiliate(s) warrant their products as
+2. Separate the antibody-coated beads with a magnet for 2–3 min.
+set forth in the Life Technologies' General Terms and Conditions of Sale found
+3. Wash the coated beads 4–5 times in PBS containing 0.1% BSA. on Life Technologies' website at www.thermofisher.com/us/en/home/global/
+4. Resuspend to the desired concentration for your application. terms-and-conditions.html. If you have any questions, please contact Life
+Technologies at www.thermofisher.com/support.
+Corporate entity: Life Technologies | Carlsbad, CA 92008 USA | Toll Free in USA 1.800.955.6288
+©2018 Thermo Fisher Scientific Inc. All rights reserved. All trademarks are the property of Thermo Fisher Scientific and its
+subsidiaries unless otherwise specified.Tween is a registered trademark of Croda Americas, PLC
+DISCLAIMER: TO THE EXTENT ALLOWED BY LAW, LIFE TECHNOLOGIES AND/OR ITS AFFILIATE(S) WILL NOT BE LIABLE FOR SPECIAL,
+INCIDENTAL, INDIRECT, PUNITIVE, MULTIPLE OR CONSEQUENTIAL DAMAGES IN CONNECTION WITH OR ARISING FROM THIS DOCUMENT,
+INCLUDING YOUR USE OF IT.
+For support visit thermofisher.com/support or
+email techsupport@lifetech.com
+thermofisher.com
+14 June 2018

@@ -1,0 +1,497 @@
+--- PAGE 1 ---
+
+Corning® Matrigel® Basement Membrane
+Matrix for 3D Culture In Vitro
+Protocol
+Corning® Matrigel® basement membrane matrix is a soluble basement membrane extract of the
+Engelbreth-Holm-Swarm (EHS) mouse tumor that gels at room temperature to form a genuine
+reconstituted basement membrane. The major components of Corning Matrigel matrix are laminin
+(~60%), collagen IV (~30%), entactin (~8%) and heparan sulfate proteoglycan. Growth factors,
+collagenases, plasminogen activators, and other undefined components have also been reported
+in Corning Matrigel matrix.
+Reagents and Materials
+◗◗MDCK cell line (ATCC CCL-34, Canis familiaris kidney cell line, derived from normal tissue)
+◗◗Corning Matrigel matrix (Corning Cat. No. 356234)
+◗◗MEM (Corning Cat. No. 10-009-CV)
+◗◗FBS (Corning Cat. No. 35-015-CV)
+◗◗PBS (Corning Cat. No. 21-040-CV)
+◗◗0.25% Trypsin/EDTA (Corning Cat. No. 25-053-Cl)
+◗◗24-well plate (Corning Cat. No. 3524)
+Protocol 1. On-top MDCK 3D culture
+1. Thaw Matrigel matrix overnight by submerging the vial in a 4°C refrigerator before use. Once Matrigel
+matrix is thawed, swirl vial to ensure the material is dispersed.
+2. Add 200 μL of Matrigel matrix (8 to 11 mg/mL) into each well of a pre-chilled 24-well plate, spread
+evenly with a pipet tip, and then incubate at 37°C for 30 min. to allow the Matrigel matrix to gel.
+Note: All cultureware or media coming in contact with Matrigel matrix should be pre-chilled/ice-cold.
+Keep Matrigel matrix on ice during the entire process and do not overdry the Matrigel matrix during
+the gel process.
+3. Wash the MDCK cells once with PBS. Trypsinize the cells to make a single-cell suspension, and then
+pellet the cells through centrifugation at 125 x g for 5 min. at room temperature (RT).
+Note: Use cells that are healthy and not more than 85% confluent. MDCK cells tend to form cell
+clumps; therefore, it is often necessary to pipet them vigorously to obtain a single cell suspension.
+4. Re-suspend the cells with MDCK complete medium (MEM + 10% FBS) to adjust the final cell density to
+3 x 105 cells/mL, plate 250 μL prepared cell suspension into each well of the pre-coated 24-well plate,
+and then incubate at 37°C for 30 min.
+Note: The number of cells may need optimization depending on the growth properties of the cell line.
+5. Chill the MDCK complete medium on ice and add Matrigel matrix to 10% of the final volume (final
+concentration: 0.8 to 1.1 mg/mL). Gently add 250 μL of Matrigel matrix medium mixture to the plated
+culture.
+Note: Medium must be thoroughly chilled before the addition of Matrigel matrix to ensure
+homogenous mixing and even deposition of Matrigel matrix onto cells in culture. Pipet the Matrigel
+matrix medium mixture down the side of the well to avoid disturbance of the cells or Matrigel Matrix.
+6. Continuously culture for 4 to 7 days and change Matrigel matrix medium mixture every 2 days.
+7. Immunostaining of 3D cultures and observing cell morphology with confocal microscopy
+is recommended.
+
+--- PAGE 2 ---
+
+Protocol 2. Embedded MDCK 3D culture
+1. Thaw Corning® Matrigel® basement membrane matrix overnight by submerging the vial in ice in a 4°C
+refrigerator before use. Once Matrigel matrix is thawed, swirl vial to ensure the material is dispersed.
+2. On Day 0, dilute the Matrigel matrix to 5 mg/mL with ice-cold MDCK complete cell culture medium
+(MEM + 10% FBS).
+Note: Keep all cultureware and reagents coming in contact with Matrigel matrix on ice during the
+entire operation process.
+3. Using pre-chilled tips, coat the pre-chilled 24-well plate by adding 100 μL of Matrigel matrix (5 mg/mL)
+into each well, spread evenly with a pipet tip, and incubate at 37°C for 30 min. to form gel.
+Note: Do not overdry the Matrigel matrix during the gel process.
+4. Trypsinize the MDCK cells from a monolayer to make a single-cell suspension, and then pellet the cells
+through centrifugation at 125 x g for 5 min. at room temperature (RT).
+Note: Use cells that are healthy and not more than 85% confluent. MDCK cells tend to form cell
+clumps; therefore, it is often necessary to pipet them vigorously to obtain a single cell suspension.
+5. Re-suspend the cells with MDCK complete medium and adjust the cell density to 5 × 106 cells/mL. Add
+30 μL prepared cell suspension to 270 μL Matrigel matrix solution (5 mg/mL) which is kept on ice for a
+final cell density is 5 x 105 cells/mL. Incubate the plate at 37°C for 30 to 45 min.
+Note: The volume of the cells should not be over 10% of the Matrigel solution to ensure the diluted
+Matrigel solution can polymerize properly into a matrix. The number of cells may need optimization
+depending on the growth properties of the cell line.
+6. Gently add 500 μL MDCK complete media to each well.
+7. Keep culture for 8 to 10 days and change medium every 2 days.
+8. Immunostaining of 3D cultures and observing cell morphology with confocal microscopy are
+recommended.
+References
+1. Genee Y Lee, et al., Nature Methods. 4(4):359-365 (2007).
+1. Natalie Elia, et al., Curr Protoc Cell Biol. Chapter 4:Unit 4.22 (2009).
+For more specific information on claims, visit the Certificates page at www.corning.com/lifesciences.
+Warranty/Disclaimer: Unless otherwise specified, all products are for research use only. Not intended for use in
+diagnostic or therapeutic procedures. Not for use in humans. Corning Life Sciences makes no claims regarding
+the performance of these p roducts for clinical or diagnostic applications.
+For additional product or technical information, visit www.corning.com/lifesciences or
+call 800.492.1110. Outside the United States, call +1.978.442.2200 or contact your local
+Corning sales office. 1 4
+4
+N-
+A
+DL-
+Corning Incorporated Worldwide Japan EUROPE All Other European
+CLS-
+Life Sciences Support Offices t 81 3-3586 1996 France Countries 7
+8
+B
+3
+u
+6
+il d
+N
+in
+o
+g
+rt
+3
+h
+0
+S
+0
+t
+,
+.
+Suite 3401 ASIA/PACIFIC
+f
+K
+8
+o
+1
+re
+3
+a
+-3586 1291 t
+f 0
+0
+8
+8
+0
+0
+0
+0
+9
+9
+1
+1
+8
+6
+6
+8
+3
+8
+6
+2 t
+f 3
+3
+1
+1
+(
+(
+0
+0
+)
+)
+2
+2
+0
+0
+6
+6
+5
+5
+9
+9
+7
+6
+6
+0
+7
+5
+3
+1
+US A
+1/ 1
+Tewksbury, MA 01876 Australia/New Zealand t 82 2-796-9500 Germany n
+t
+t
+8
+9
+0
+7
+0
+8
+.
+.
+4
+4
+9
+4
+2
+2
+.
+.
+1
+2
+1
+2
+1
+0
+0
+0
+t
+C h
+0
+i
+4
+n
+0
+a
+2-794-347 f
+S i
+8
+n
+2
+g a
+2
+p
+-7
+o
+9
+re
+6-9300 t
+f 0
+0
+8
+8
+0
+0
+0
+0
+1
+1
+0
+0
+1
+1
+2
+1
+4
+1
+2
+5
+7
+3 L
+B
+A
+ra
+T
+si
+I
+l
+N AMERICA
+Pri
+nte d i
+f
+w
+9
+w
+7
+w
+8.
+.
+4
+c
+4
+o
+2
+rn
+.2
+in
+4
+g
+7
+.
+6
+com/lifesciences
+t
+f
+I
+t
+f
+n
+8
+9
+8
+9
+d
+6
+1
+6
+1
+ia
+2
+1
+2
+1
+1
+2
+1
+2
+4
+4
+6
+2
+4
+2
+4
+2
+6
+1
+6
+1
+0
+5
+0
+5
+4
+4
+2
+2
+0
+0
+9
+8
+9
+0
+8
+8
+9
+0
+8
+8 t
+f
+T
+t
+f
+a
+6
+8
+6
+8
+i
+5
+8
+5
+8
+w
+6
+6
+6
+6
+a
+2
+8
+2
+7
+n
+-
+6
+-
+3
+2
+2
+1
+3
+5
+7
+-
+-
+1
+2
+1
+6
+6
+9
+6
+5
+-
+1
+-
+1
+7
+0
+3
+1
+5
+3
+0
+3
+0
+8
+T
+t
+f
+U
+t
+h
+0
+0
+0
+n
+e
+2
+2
+8
+it
+0
+0
+0
+N
+e
+0
+d
+6
+6
+e
+5
+t
+3
+5
+K
+h
+9
+7
+5
+i
+e
+n
+6
+7
+7
+r
+g
+l
+6
+8
+9
+a
+d
+6
+n
+7
+2
+o
+6
+d
+3
+8
+m
+0
+s t
+M
+t
+(
+(
+e
+5
+5
+x
+5
+2
+i
+-
+-
+c
+1
+8
+o
+1
+1
+)
+)
+3
+8
+0
+1
+8
+5
+9
+8
+-
+-
+7
+8
+4
+4
+1
+0
+9
+0
+All
+rig
+hts
+reserve d.
+f 0800 279 1117
+d.f
+porate
+ncor
+ng I
+ni
+Cor
+7
+For a listing of trademarks, visit www.corning.com/clstrademarks. 0 1
+All other trademarks are the property of their respective owners. © 2

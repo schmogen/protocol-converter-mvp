@@ -1,0 +1,229 @@
+--- PAGE 1 ---
+
+USER GUIDE
+TRIzol™ Reagent
+Experimental protocol for DNA isolation
+Catalog Numbers 15596026 and 15596018
+Pub. No. MAN0016385 Rev. A.0
+WARNING! Read the Safety Data Sheets (SDSs) and follow the Required materials not supplied
+handling instructions. Wear appropriate protective eyewear, Unless otherwise indicated, all materials are available through
+clothing, and gloves. Safety Data Sheets (SDSs) are available thermofisher.com. MLS: Fisher Scientific (fisherscientific.com) or
+from thermofisher.com/support. other major laboratory supplier.
+Table 1 Materials required for all isolations
+Product information
+Item Source
+Invitrogen™ TRIzol™ Reagent is a ready-to-use reagent, designed to
+isolate high quality total RNA (as well as DNA and proteins) from cell Equipment
+and tissue samples of human, animal, plant, yeast, or bacterial origin, Centrifuge and rotor capable of reaching
+MLS
+within one hour. TRIzol™ Reagent is a monophasic solution of phenol, 12,000 × g and 4°C
+guanidine isothiocyanate, and other proprietary components which Tubes
+facilitate the isolation of a variety of RNA species of large or small Polypropylene microcentrifuge tubes MLS
+molecular size. TRIzol™ Reagent maintains the integrity of the RNA Reagents
+due to highly effective inhibition of RNase activity while disrupting
+Chloroform MLS
+cells and dissolving cell components during sample homogenization.
+TRIzol™ Reagent allows for simultaneous processing of a large number Table 2 Materials required for DNA isolation
+of samples, and is an improvement to the single-step RNA isolation
+Item Source
+method developed by Chomcynski and Sacchi (Chomczynski and
+Reagents
+Sacchi, 1987).
+Ethanol, 100% MLS
+TRIzol™ Reagent allows to perform sequential precipitation of RNA,
+Ethanol, 75% MLS
+DNA, and proteins from a single sample (Chomczynski, 1993). After
+homogenizing the sample with TRIzol™ Reagent, chloroform is added, 0.1 M sodium citrate in 10% ethanol MLS
+and the homogenate is allowed to separate into a clear upper aqueous 8 mM NaOH MLS
+layer (containing RNA), an interphase, and a red lower organic layer HEPES MLS
+(containing the DNA and proteins). RNA is precipitated from the
+aqueous layer with isopropanol. DNA is precipitated from the Input sample requirements
+interphase/organic layer with ethanol. Protein is precipitated from the
+IMPORTANT! Perform DNA isolation immediately after sample
+phenol-ethanol supernatant by isopropanol precipitation. The
+collection or quick-freeze samples immediately after collection and
+precipitated RNA, DNA, or protein is washed to remove impurities,
+store at –80°C or in liquid nitrogen until DNA isolation.
+and then resuspended for use in downstream applications.
+• Isolated RNA can be used in RT-PCR, Northern Blot analysis, Dot Starting material per 1 mL of
+Sample type
+Blot hybridization, poly(A)+ selection, in vitro translation, RNase TRIzol™ Reagent
+protection assay, and molecular cloning. Tissues[1] 50–100 mg of tissue
+• Isolated DNA can be used in PCR, Restriction Enzyme digestion, 1 × 105–1 × 107 cells grown in
+and Southern Blots. Cells grown in monolayer monolayer in a 3.5–cm culture dish
+• Isolated protein can be used for Western Blots, recovery of some (10 cm2)
+enzymatic activity, and some immunoprecipitation. 5–10 × 106 cells from animal, plant,
+Cells grown in suspension or yeasty origin or 1 × 107 cells of
+For RNA and protein isolation, refer to TRIzol™ Reagent User Guide
+bacterial origin
+(Pub. No. MAN0001271).
+TRIzol™ Reagent can also be used with Phasemaker™ Tubes to isolate [1] Fresh tissues or tissues stored in RNAlater™ Stabilization Solution (Cat.
+No. AM7020).
+RNA. Refer to TRIzol™ Reagent and Phasemaker™ Tubes Complete System
+User Guide (Pub. No. MAN0016163) for the full protocol. Procedural guidelines
+• Perform all steps at room temperature (20–25°C) unless otherwise
+Contents and storage
+noted.
+Cat. No. 15596026 Cat. No. 15596018 • Use cold TRIzol™ Reagent if the starting material contains high
+Contents Storage
+(100 reactions) (200 reactions) levels of RNase, such as spleen or pancreas samples.
+TRIzol™ Reagent 100 mL 200 mL 15–30°C • Use disposable, individually wrapped, sterile plastic ware and
+sterile, disposable RNase-free pipettes, pipette tips, and tubes.
+• Wear disposable gloves while handling reagents and RNA
+samples to prevent RNase contamination from the surface of the
+skin; change gloves frequently, particularly as the protocol
+progresses from crude extracts to more purified materials.
+For Research Use Only. Not for use in diagnostic procedures.
+
+--- PAGE 2 ---
+
+• Always use proper microbiological aseptic techniques when Note: Do not wash cells before addition of TRIzol™ Reagent
+working with RNA. to avoid mRNA degradation.
+• Use RNaseZap™ RNase Decontamination Solution (Cat. c. Pipet the lysate up and down several times to homogenize.
+no. AM9780) to remove RNase contamination from work surfaces Note: The sample volume should not exceed 10% of the volume
+and non-disposable items such as centrifuges and pipettes used of TRIzol™ Reagent used for lysis.
+during purification.
+STOPPING POINT Samples can be stored at 4°C overnight or at –
+Lyse samples and separate phases 20°C for up to a year.
+1. Lyse and homogenize samples in TRIzol™ Reagent according to 2. (Optional) If samples have a high fat content, centrifuge the lysate
+your starting material. for 5 minutes at 12,000 × g at 4–10°C, then transfer the clear
+supernatant to a new tube.
+• Tissues:
+3. Incubate for 5 minutes to permit complete dissociation of the
+Add 1 mL of TRIzol™ Reagent per 50–100 mg of tissue to the
+nucleoproteins complex.
+sample and homogenize using a homogenizer.
+4. Add 0.2 mL of chloroform per 1 mL of TRIzol™ Reagent used for
+• Cell grown in monolayer:
+lysis, then securely cap the tube.
+a. Remove growth media.
+5. Incubate for 2–3 minutes.
+b. Add 0.3–0.4 mL of TRIzol™ Reagent per 1 × 105—107 cells
+6. Centrifuge the sample for 15 minutes at 12,000 × g at 4°C.
+directly to the culture dish to lyse the cells.
+The mixture separates into a lower red phenol-chloroform, and
+c. Pipet the lysate up and down several times to homogenize.
+interphase, and a colorless upper aqueous phase.
+• Cells grown in suspension:
+7. Discard the aqueous phase containing the RNA, then proceed
+a. Pellet the cells by centrifugation and discard the
+directly to the next section with the interphase containing the
+supernatant.
+DNA.
+b. Add 0.75 mL of TRIzol™ Reagent per 0.25 mL of sample (5–
+10 × 106 cells from animal, plant, or yeasty origin or 1 ×107
+cells of bacterial origin) to the pellet.
+Isolate DNA
+Isolate DNA from the interphase and the lower phenol-chloroform phase saved from “Lyse samples and separate phases“ on page 2.
+1 Precipitate the DNA a. Remove any remaining aqueous phase overlying the interphase.
+This is critical for the quality of the isolated DNA.
+b. Add 0.3 mL of 100% ethanol per 1 mL of TRIzol™ Reagent used for lysis.
+c. Cap the tube, mix by inverting the tube several times.
+d. Incubate for 2–3 minutes.
+e. Centrifuge for 5 minutes at 2000 × g at 4°C to pellet the DNA.
+f. Transfer the phenol-ethanol supernatant to a new tube.
+The supernatant is used for protein isolation [refer to TRIzol™ Reagent User Guide
+(Pub. No. MAN0001271)], if needed, and can be stored at –70°C for several months.
+2 Wash the DNA a. Resuspend the pellet in 1 mL of 0.1 M sodium citrate in 10% ethanol, pH 8.5, per 1 mL of TRIzol™
+Reagent used for lysis.
+b. Incubate for 30 minutes, mixing occasionally by gentle inversion.
+Note: The DNA can be stored in sodium citrate/ethanol for at least 2 hours.
+c. Centrifuge for 5 minutes at 2000 × g at 4°C.
+d. Discard the supernatant with a micropipettor.
+e. Repeat step 2a–step 2d once.
+Note: Repeat step 2a–step 2d twice for large DNA pellets (>200 µg).
+f. Resuspend the pellet in 1.5–2 mL of 75% ethanol per 1 mL of TRIzol™ Reagent used for lysis.
+g. Incubate for 10–20 minutes, mixing occasionally by gentle inversion.
+Note: The DNA can be stored in 75% ethanol at several months at 4°C.
+h. Centrifuge for 5 minutes at 2000 × g at 4°C.
+i. Discard the supernatant with a micropipettor.
+j. Vacuum or air dry the DNA pellet for 5–10 minutes.
+IMPORTANT! Do not dry the pellet by vacuum centrifuge.
+3 Solubilize the DNA a. Resuspend the pellet in 0.3–0.6 mL of 8 mM NaOH by pipetting up and down.
+Note: We recommend resuspending the DNA is a mild base because isolated DNA does not resuspend
+well in water or Tris buffer.
+b. Centrifuge for 10 minutes at 12,000 × g at 4°C to remove insoluble materials.
+c. Transfer the supernatant to a new tube, then adjust pH as needed with HEPES.
+Proceed to downstream applications, or store the DNA at 4°C overnight. For longer-term storage at –20°C,
+adjust the pH to 7–8 with HEPES and add 1 mM EDTA.
+2 TRIzol™ Reagent (DNA isolation) User Guide
+
+--- PAGE 3 ---
+
+4 Determine the DNA yield Determine the DNA yield using one of the following methods.
+Method Procedure
+Absorbance 1. Dilute sample in water or buffer (pH >7.5), then measure
+absorbance at 260 nm and 280 nm.
+Absorbance at 260 nm provides total
+nucleic acid content, while absorbance at 2. Calculate the DNA concentration using the formula A260 ×
+280 nm determines sample purity. Since dilution × 50 = µg DNA/mL.
+free nucleotides, RNA, ssDNA, and dsDNS 3. Calculate the A260/A280 ratio.
+absorb at 260 nm, they all contribute to A ratio of ~1.8 is considered pure.
+the total absorbance of the sample.
+DNA samples can be quantified by absorbance without prior dilution
+using the NanoDrop™ Spectophotometer. Refer to the instrument's
+instructions for more information.
+Fluorescence • Quantify dsDNA yield using the appropriate Qubit™ or Quant-iT™ ds
+DNA Assay Kit (Cat. Nos. Q32850, Q32851, Q33120, or Q33130).
+Fluorescence selectively measures intact
+DNA, but does not measure protein or Refer to the kit's instructions for more information.
+other contaminant present in the sample
+Table 3 Typical DNA (A of 1.6–1.8) yields from various starting materials
+260/280
+Starting material Quantity DNA yield
+Fibroblasts 1 × 106 cells 5–7 µg
+Cultured cells, mammal 1 × 106 cells 5–7 µg
+Skeletal muscles and brain 1 mg 2–3 µg
+Placenta 1 mg 2–3 µg
+Liver 1 mg 3–4 µg
+Kidney 1 mg 3–4 µg
+Troubleshooting
+Observation Possible cause Recommended action
+A lower yield than expected is The samples were incompletely Decrease the amount of starting material.
+observed homogenized or lysed.
+Cut tissue samples into smaller pieces and ensure the tissue is
+completely immersed in TRIzol™ Reagent to achieve total lysis.
+The pellet was incompletely Increase the solubilization rate by pipetting the sample repeatedly, and
+solubilized heat the sample to 50–60°C.
+The sample is degraded Samples were not immediately Sample must be processed or frozen immediately after collection.
+processed or frozen after collection.
+Sample preparations were stored at Store RNA samples at –60 to –70°C. Store DNA and protein samples at –
+the incorrect temperature. 20°C.
+The DNA is contaminated The aqueous phase is incompletely Remove remnants of the aqueous phase prior to DNA precipitation.
+removed.
+The DNA pellet is insufficiently Make sure pellet is washed with 0.1 M sodium citrate in 10% ethanol.
+washed with 0.1 M sodium citrate in
+10% ethanol
+The DNA A ratio is low Phenol was not sufficiently removed Wash the DNA pellet one additional time in 0.1 M sodium citrate in 10%
+260/280
+from the DNA preparation. ethanol.
+Limited product warranty Chomczynski, P., and Sacchi, N. 1987 Single Step Method of RNA
+Isolation by Acid Guanidinium Thiocyanate-Phenol-Chloroform Extraction.
+Life Technologies Corporation and/or its affiliate(s) warrant their
+Anal. Biochem. 162, 156-159
+products as set forth in the Life Technologies' General Terms and
+Conditions of Sale found on Life Technologies' website at Hummon, A. B., Lim S. R., Difilippantonio, M. J., and Ried, T. 2007
+www.thermofisher.com/us/en/home/global/terms-and- Isolation and solubilization of proteins after TRIzol® extraction of RNA and
+conditions.html. If you have any questions, please contact Life DNA from patient material following prolonged storage. BioTechniques 42,
+Technologies at www.thermofisher.com/support. 467-472
+References
+Chomczynski, P. 1993. A reagent for the single-step simultaneous isolation
+of RNA, DNA and proteins from cell and tissue samples. BioTechniques 15,
+532-537
+TRIzol™ Reagent (DNA isolation) User Guide 3
+
+--- PAGE 4 ---
+
+The information in this guide is subject to change without notice.
+DISCLAIMER: TO THE EXTENT ALLOWED BY LAW, LIFE TECHNOLOGIES AND/OR ITS AFFILIATE(S) WILL NOT BE LIABLE FOR SPECIAL, INCIDENTAL, INDIRECT, PUNITIVE,
+MULTIPLE, OR CONSEQUENTIAL DAMAGES IN CONNECTION WITH OR ARISING FROM THIS DOCUMENT, INCLUDING YOUR USE OF IT.
+Revision history: Pub. No. MAN0016385
+Revision Date Description
+A.0 08 December 2016 New document
+Important Licensing Information: These products may be covered by one or more Limited Use Label Licenses. By use of these products, you accept the terms and conditions of all
+applicable Limited Use Label Licenses.
+Corporate entity: Life Technologies Corporation | Carlsbad, CA 92008 USA | Toll Free in USA 1 800 955 6288
+©2016 Thermo Fisher Scientific Inc. All rights reserved. All trademarks are the property of Thermo Fisher Scientific and its subsidiaries unless otherwise specified.
+For support visit thermofisher.com/support or email techsupport@lifetech.com
+thermofisher.com
+8 December 2016

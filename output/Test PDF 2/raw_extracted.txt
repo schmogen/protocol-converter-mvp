@@ -1,0 +1,462 @@
+--- PAGE 1 ---
+
+TECHNICAL MANUAL
+Wizard® HMW DNA Extraction Kit
+Instructions for Use of Product
+A2920
+Revised 7/22
+TM604
+
+--- PAGE 2 ---
+
+Wizard® HMW DNA Extraction Kit
+All technical literature is available at: www.promega.com/protocols/
+Visit the web site to verify that you are using the most current version of this Technical Manual.
+E-mail Promega Technical Services if you have questions on use of this system: techserv@promega.com
+1. Description ............................................................................................................................................2
+2. Product Components and Storage Conditions ..............................................................................................3
+3. Protocols for HMW Genomic DNA Isolation .................................................................................................3
+3.A. Isolating HMW DNA from Whole Blood ...............................................................................................3
+3.B. Isolating HMW DNA from Tissue Culture Cells ....................................................................................5
+3.C. Isolating HMW Genomic DNA from Plant Tissue ..................................................................................7
+3.D. Isolating HMW DNA from Gram-Positive and Gram-Negative Bacteria .....................................................9
+4. Troubleshooting ...................................................................................................................................11
+5. References ..........................................................................................................................................12
+6. Composition of Buffer ...........................................................................................................................13
+7. Related Products .................................................................................................................................13
+8. Summary of Changes ............................................................................................................................13
+Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516 1
+www.promega.com TM604 · Revised 7/22
+
+--- PAGE 3 ---
+
+1. Description
+The Wizard® HMW DNA Extraction Kit is designed for isolation of high-molecular-weight (HMW) DNA from white blood
+cells (Section 3.A), tissue culture cells (Section 3.B), plant tissue (Section 3.C) and Gram-positive and Gram-negative
+bacteria (Section 3.D). Table 1 lists the recommended starting material from each of these sources.
+DNA purified with this system is particularly suitable for long-read sequencing platforms when the protocol is closely
+followed and DNA handled carefully. Deviating from the recommended protocol, particularly the pipette-mixing or
+vortexing instructions, will cause mechanical shearing of HMW DNA and decrease average fragment sizes. Such DNA
+shearing will negatively affect performance in long-read sequencing applications. To maximize genomic DNA size, the
+protocols for this kit incorporate the use of commonly available 1,000µl wide-bore pipette tips. Using these wide-bore tips
+minimizes mechanical damage that may occur during required mixing steps. While these wide-bore tips will yield larger
+average fragment sizes, be careful during mixing steps and when handling purified DNA after rehydration. Avoid vigorous
+vortexing and use 200µl wide-bore pipette tips to homogenize rehydrated DNA samples, if necessary.
+Note: If wide-bore pipette tips are unavailable, you can still extract HMW genomic DNA by substituting an alternate mixing
+strategy described in the protocol. This alternative combines the use of standard-bore pipette tips with gentle vortexing to
+replace wide-bore pipette mixing. While there is a slight reduction in average size of purified DNA, the yield may increase.
+Table 1. Recommendations for Sample Input.
+Species and Material Suggested Starting Material
+Human Whole Blood 300µl
+(Yield varies with
+white blood cell count)
+Tissue Culture Cells 1–3 × 106 cells
+Plant Tissue 40mg
+Gram-Negative Bacteria 1ml
+Escherichia coli JM109
+overnight culture,
+~3 × 109 cells/ml
+Gram-Positive Bacteria 1ml
+Listeria innocua
+overnight culture
+2 Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516
+TM604 · Revised 7/22 www.promega.com
+
+--- PAGE 4 ---
+
+2. Product Components and Storage Conditions
+PRODUCT SIZE CAT.#
+Wizard® HMW DNA Extraction Kit 50 isolations A2920
+Each system contains sufficient reagents for 50 miniprep isolations of genomic DNA from a variety of sample types.
+Includes:
+• 50ml HMW Blood Lysis Buffer
+• 25ml HMW Lysis Buffer A
+• 1.0ml Proteinase K Solution
+• 25ml Protein Precipitation Solution
+• 50ml DNA Rehydration Solution
+• 250µl RNase A Solution
+Storage Conditions: Store the Wizard® HMW DNA Extraction Kit at room temperature (+15°C to +30°C). See product label
+for expiration date.
+3. Protocols for HMW Genomic DNA Isolation
+3.A. Isolating HMW DNA from Whole Blood
+We tested the purification of genomic DNA from fresh whole blood collected in EDTA, heparin and citrate anticoagulant
+tubes and detected no adverse effects during subsequent DNA manipulations, including PCR (2).
+This protocol has been designed and tested for 300µl blood samples. Larger volumes may be processed by first harvesting
+the white blood cells, then resuspending and pooling up to three resuspended white blood cell pellets prior to treatment
+with HMW Lysis Buffer A. The yield of genomic DNA will vary, depending on the quantity of white blood cells present.
+Frozen blood can be used in the following protocols, but yield may be lower than that obtained using fresh blood and
+require additional HMW Blood Lysis Buffer.
+When handling blood samples, follow the recommended procedures for biohazardous materials at your institution or see
+!
+reference 3.
+Materials to Be Supplied by the User
+• sterile ClickFit Microtubes, 1.5ml
+• standard 1.5ml microcentrifuge tubes
+• phosphate-buffered saline (PBS) or TE buffer
+• 37°C water bath or dry incubator/shaker
+• 56°C water bath or dry incubator/shaker
+• isopropanol, room temperature
+• 70% ethanol, room temperature
+• wide-bore pipette tips (1,000µl and 200µl)
+• optional: 65°C water bath (for rapid DNA rehydration)
+Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516 3
+www.promega.com TM604 · Revised 7/22
+
+--- PAGE 5 ---
+
+3.A. Isolating HMW DNA from Whole Blood (continued)
+1. Add 900µl of HMW Blood Lysis Buffer to a sterile ClickFit Microtube, 1.5ml.
+! Blood must be collected in EDTA, heparin or citrate anticoagulant tubes to prevent clotting.
+2. Gently rock the tube of blood until thoroughly mixed; then transfer 300µl of blood to the tube containing the HMW
+Blood Lysis Buffer. Invert the tube 5–6 times to mix.
+3. Incubate the mixture for 10 minutes at room temperature (invert 2–3 times once during the incubation) to lyse the
+red blood cells. Centrifuge at 13,000–16,000 × g for 20 seconds at room temperature.
+4. Remove and discard as much supernatant as possible without disturbing the visible white pellet. Approximately
+10–20µl of residual liquid may remain in the 1.5ml tube.
+5. If blood sample has been frozen, repeat Steps 1–4 until pellet is white. There may be some DNA loss from frozen
+samples.
+Note: Some red blood cells or cell debris may be visible along with the white blood cells. If the pellet appears bright
+red, add an additional aliquot of HMW Blood Lysis Buffer after removing the supernatant above the cell pellet, and
+then repeat Steps 3–4.
+6. Add 100µl of PBS to the cell pellet and vortex the tube vigorously until the white blood cells are resuspended
+(10–15 seconds). If pooling multiple tubes, transfer the 100µl of suspension to the additional tubes in sequence,
+vortexing each to suspend the pellets.
+! Completely resuspend the white blood cells to obtain efficient cell lysis.
+7. Add 500µl of HMW Lysis Buffer A. Using 1,000µl wide bore pipette tips, mix the solution five times to lyse the white
+blood cells. Draw the tube contents slowly from the bottom of the tube, then expel the lysate rapidly down the side
+of the tube. The solution should become very viscous. Do not pipet more than five times to avoid DNA shearing.
+Notes:
+a. If wide-bore pipette tips are unavailable, use standard 1,000µl pipette tips for mixing, gently aspirating and
+expelling after adding HMW Lysis Buffer A.
+b. If clumps of cells are visible after mixing, incubate the solution at 37°C until the clumps are disappear.
+8. Add 3.0µl of RNase A Solution to the lysate and mix the sample by inverting the tube 5–7 times. Incubate the mixture
+at 37°C for 15 minutes.
+9. Add 20µl of Proteinase K Solution to each lysate and mix the sample by inverting the tube 10 times. Incubate the
+mixture at 56°C for 15 minutes. Cool to room temperature for at least 5 minutes or chill on ice 1 minute.
+10. Add 200µl of Protein Precipitation Solution to the lysate. Using 1,000µl wide bore pipette tips, aspirate to mix the
+solution five times. Draw the tube contents from the bottom of the tube, then expel the lysate rapidly down the side
+of the tube. Do not mix by pipette more than five times to avoid DNA shearing. Small protein clumps may be visible
+after mixing.
+Note: If wide-bore pipette tips are unavailable, vortex for 5 seconds to mix lysate and Protein Precipitation Solution.
+4 Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516
+TM604 · Revised 7/22 www.promega.com
+
+--- PAGE 6 ---
+
+11. Centrifuge at 13,000–16,000 × g for 5 minutes at room temperature. A dark brown protein pellet should be visible. If
+any unpelleted debris is visible, repeat the centrifugation step. If no pellet is observed, refer to Section 4,
+Troubleshooting.
+12. Slowly transfer the supernatant to a clean 1.5ml microcentrifuge by decanting the sample into a tube containing
+600µl of room-temperature isopropanol.
+Note: Some supernatant may remain in the original tube containing the protein pellet. Leave this residual liquid in
+the tube to avoid contaminating the DNA solution with the precipitated protein.
+13. Gently mix the solution by gently inverting the tube eight times. Allow 1 minute at room temperature and repeat the
+inversion. White thread-like strands of DNA may become visible. Centrifuge at 13,000–16,000 × g for 2 minutes at
+room temperature. The DNA will be visible as a small white pellet.
+14. Decant the supernatant and add 600µl of room temperature 70% ethanol to the DNA. Gently invert the tube several
+times to wash the DNA pellet and the sides of the microcentrifuge tube. Centrifuge at 13,000–16,000 × g for
+2 minutes at room temperature.
+15. Carefully aspirate the ethanol. Standard pipette tips can be used for this step. The DNA pellet is very loose at this
+point so carefully avoid disturbing or aspirating the pellet into the pipette. Invert the tube on clean absorbent paper
+and air-dry the pellet for 10–15 minutes.
+16. Add 100µl of DNA Rehydration Solution to the tube. Do not vortex because this will cause mechanical shearing and
+decrease average fragment size. Rehydrate the DNA by incubating the solution overnight at room temperature.
+Alternatively, incubate the purified DNA at 65°C for 1 hour, periodically mixing the solution by gently tapping the tube.
+17. If DNA appears nonhomogeneous (e.g., undissolved pellet is still visible), mix with 200µl wide-bore pipette tips.
+Store the DNA at 2–8°C.
+3.B. Isolating HMW DNA from Tissue Culture Cells
+Materials to Be Supplied by the User
+• sterile ClickFit Microtubes, 1.5ml
+• standard 1.5ml microcentrifuge tubes
+• phosphate-buffered saline (PBS)
+• 37°C water bath or dry incubator/shaker
+• 56°C water bath or dry incubator/shaker
+• isopropanol, room temperature
+• 70% ethanol, room temperature
+• wide-bore pipette tips (1,000µl and 200µl)
+• optional: 65°C water bath, (for rapid DNA rehydration)
+Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516 5
+www.promega.com TM604 · Revised 7/22
+
+--- PAGE 7 ---
+
+3.B. Isolating HMW DNA from Tissue Culture Cells (continued)
+1. Harvest tissue culture cells, and transfer them to a 1.5ml microcentrifuge tube. For adherent cells, trypsinize the
+cells before harvesting.
+Note: Do not exceed 3 × 106 cells for each isolation.
+2. Centrifuge at 13,000–16,000 × g for 20 seconds to pellet the cells.
+3. Remove the supernatant, leaving behind the cell pellet plus 10–50µl of residual liquid.
+4. Wash the cells by adding 200µl of PBS and vortexing vigorously to resuspend cells. Centrifuge as instructed in Step 2,
+and remove the PBS.
+5. Resuspend the pellet in 100µl of PBS by vigorous vortexing.
+6. Add 500µl of HMW Lysis Buffer A. Using 1,000µl wide bore pipette tips, mix the solution five times to lyse the cells.
+Draw the tube contents slowly from the bottom of the tube, then expel the lysate rapidly down the side of the tube.
+The solution should become very viscous. Do not pipet more than five times to avoid DNA shearing.
+Notes:
+a. If wide-bore pipette tips are unavailable, use standard 1,000µl pipette tips for mixing the HMW Lysis Buffer A.
+b. If clumps of cells are visible after mixing, incubate the solution at 37°C until the clumps disappear.
+7. Add 3.0µl of RNase A Solution to the nuclear lysate and mix the sample by inverting the tube 5–7 times. Incubate
+the mixture at 37°C for 15 minutes.
+8. Add 20µl of Proteinase K Solution to each and mix the sample by inverting the tube 10 times. Incubate the mixture at
+56°C for 15 minutes. Cool to room temperature for at least 5 minutes or chill on ice for 1 minute.
+9. Add 200µl of Protein Precipitation Solution to the nuclear lysate. Using 1,000µl wide bore pipette tips, mix the
+solution 5 times. Draw the tube contents from the bottom of the tube, then expel the lysate rapidly down the side of
+the tube. Small protein clumps may be visible after mixing. Incubate on ice for 5 minutes.
+Note: If wide-bore pipette tips are unavailable, vortex lysate and Protein Precipitation Solution for 5 seconds. Do
+not tip mix.
+10. Centrifuge at 13,000–16,000 × g for 10 minutes at room temperature. A whitish protein pellet should be visible. If
+any unpelleted debris is visible, repeat the centrifugation step. If no pellet is observed, refer to Section 4,
+Troubleshooting.
+11. Slowly transfer the supernatant to a clean 1.5ml microcentrifuge by decanting the sample into a tube containing
+600µl of room-temperature isopropanol.
+Note: Some supernatant may remain in the original tube containing the protein pellet. Leave this residual liquid in
+the tube to avoid contaminating the DNA solution with the precipitated protein.
+12. Gently mix the solution by gently inverting the tube eight times. Incubate 1 minute at room temperature and repeat
+the inversion. White thread-like strands of DNA may form a visible mass.
+13. Centrifuge at 13,000–16,000 × g for 2 minutes at room temperature The DNA will be visible as a small white pellet.
+6 Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516
+TM604 · Revised 7/22 www.promega.com
+
+--- PAGE 8 ---
+
+14. Decant the supernatant and add 600µl of room temperature 70% ethanol to the DNA. Gently invert the tube several
+times to wash the DNA pellet and the sides of the microcentrifuge tube. Centrifuge as instructed in Step 13.
+15. Carefully aspirate the ethanol. Standard pipette tips can be used for this step. The DNA pellet is very loose at this
+point so carefully avoid disturbing or aspirating the pellet into the pipette. Invert the tube on clean absorbent paper
+and air-dry the pellet for 10–15 minutes.
+16. Add 100µl of DNA Rehydration Solution to the tube. Do not vortex because this will cause mechanical shearing and
+decrease average fragment size. Rehydrate the DNA by incubating the solution overnight at room temperature.
+Alternatively, incubate the purified DNA at 65°C for 1 hour, periodically mixing the solution by gently tapping the tube.
+17. If DNA appears nonhomogeneous (e.g., undissolved pellet is still visible), mix with 200µl wide-bore pipette tips.
+Store the DNA at 2–8°C
+3.C. Isolating HMW Genomic DNA from Plant Tissue
+Materials to Be Supplied by the User
+• sterile 1.5ml microcentrifuge tubes
+• sterile ClickFit Microtubes, 1.5ml
+• liquid nitrogen
+• microcentrifuge tube pestle or mortar and pestle
+• 65°C water bath
+• 37°C water bath
+• isopropanol, room temperature
+• 70% ethanol, room temperature
+• wide-bore pipette tips (1,000µl and 200µl)
+1. Process leaf tissue by freezing with liquid nitrogen and grinding into a fine powder using a microcentrifuge tube
+pestle or a mortar and pestle. Add 40mg of this leaf powder to a 1.5ml microcentrifuge tube.
+2. Add 500µl of HMW Lysis Buffer A, and vortex 1–5 seconds to wet the tissue.
+3. Incubate at 65°C for 15–30 minutes.
+4. Cool the lysate to room temperature for 5 minutes. Add 3µl of RNase A Solution to the sample and mix by inverting
+the tube 5–7 times. Incubate the mixture at 37°C for 15 minutes.
+5. Add 20µl of Proteinase K Solution to each leaf sample and mix the sample by inverting the tube 10 times. Incubate
+the mixture at 56°C for 15 minutes. Cool to room temperature for at least 5 minutes or chill on ice 1 minute.
+6. Centrifuge at 13,000–16,000 × g for 3 minutes at room temperature to pellet any insoluble material. Transfer the
+lysate to a clean 1.5ml microcentrifuge tube.
+7. Add 200µl of Protein Precipitation Solution to the nuclear lysate. Using 1,000µl wide bore pipette tips, mix the
+solution five times. Draw the tube contents from the bottom of the tube, then expel the lysate rapidly down the side
+of the tube. Small protein clumps may be visible after mixing. Incubate on ice for 5 minutes.
+Note: If wide-bore pipette tips are unavailable, vortex lysate and Protein Precipitation Solution for 5 seconds. Do
+not tip mix.
+Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516 7
+www.promega.com TM604 · Revised 7/22
+
+--- PAGE 9 ---
+
+3.C. Isolating HMW Genomic DNA from Plant Tissue (continued)
+8. Centrifuge at 13,000–16,000 × g for 10 minutes at room temperature. A greenish pellet should be visible. If any
+unpelleted debris is visible, repeat the centrifugation step.
+9. Slowly transfer the supernatant to a clean 1.5ml microcentrifuge tube by decanting the sample into a tube
+containing 600µl of room-temperature isopropanol.
+Note: Some supernatant may remain in the original tube containing the protein pellet. Leave this residual liquid in
+the tube to avoid contaminating the DNA solution with the precipitated protein.
+10. Gently mix the solution by gently inverting the tube eight times. Incubate for 1 minute at room temperature and
+repeat the inversion. White thread-like strands of DNA may form a visible mass.
+11. Centrifuge at 13,000–16,000 × g for 2 minutes at room temperature. The DNA may be visible as a small white pellet.
+12. Decant the supernatant and add 600µl of room temperature 70% ethanol to the DNA. Gently invert the tube several
+times to wash the DNA pellet and the sides of the microcentrifuge tube. Centrifuge as instructed in Step 11.
+13. Discard the supernatant then repeat Step 12.
+14. Carefully aspirate the ethanol. The DNA pellet is very loose at this point so carefully avoid disturbing or aspirating the
+pellet into the pipette. Invert the tube on clean absorbent paper and air-dry the pellet for 10–15 minutes.
+15. Add 100µl of DNA Rehydration Solution to the tube. Do not vortex because this will cause mechanical shearing and
+decrease average fragment size. Rehydrate the DNA by incubating the solution overnight at room temperature.
+Alternatively, incubate the purified DNA at 65°C for 1 hour, periodically mixing the solution by gently tapping the tube.
+16. If DNA appears nonhomogeneous (e.g., undissolved pellet is still visible), mix with 200µl wide-bore pipette tips.
+Store the DNA at 2–8°C.
+8 Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516
+TM604 · Revised 7/22 www.promega.com
+
+--- PAGE 10 ---
+
+3.D. Isolating HMW DNA from Gram-Positive and Gram-Negative Bacteria
+Purifying genomic DNA from bacteria works best when cultures are grown for 14 hours or less, ideally in exponential
+growth phase. Cultures grown for longer tend to produce large amounts of protein and RNA that can affect the
+performance and purity of the isolated genomic DNA.
+Materials to Be Supplied by the User
+• sterile 1.5ml microcentrifuge tubes
+• sterile ClickFit Microtubes, 1.5ml
+• phosphate-buffered saline (PBS)
+• 80°C water bath
+• 37°C water bath
+• 56°C water bath
+• isopropanol, room temperature
+• 70% ethanol, room temperature
+• wide-bore pipette tips (1,000µl and 200µl)
+• 10mg/ml lysozyme (Sigma Cat.# L4919; for Gram-positive bacteria)
+• 10mg/ml lysostaphin (Sigma Cat.# L7386; for Gram-positive bacteria)
+• optional: 65°C water bath (for rapid DNA rehydration)
+1. Add 1ml of an overnight culture to a 1.5ml microcentrifuge tube.
+2. Centrifuge at 13,000–16,000 × g for 2 minutes to pellet the cells. Remove the supernatant. For Gram-positive bacteria,
+proceed to Step 3. For Gram-negative bacteria, resuspend the cells thoroughly in 100µl of PBS, then proceed to Step 5.
+3. Add the appropriate lytic enzyme(s) to the cell pellet in a total volume of 100µl, and gently pipet to mix. This treatment
+will weaken the cell wall for efficient cell lysis.
+Note: For certain Staphylococcus species, a mixture of 60µl of 10mg/ml lysozyme and 60µl of 10mg/ml lysostaphin
+is required for efficient lysis. However, many Gram-positive bacterial strains (e.g., Bacillus subtilis, Micrococcus
+luteus, Nocardia otitidiscaviarum, Rhodococcus rhodochrous and Brevibacterium albidium) lyse efficiently using
+lysozyme alone.
+4. Incubate the sample at 37°C for 30–60 minutes.
+5. Add 500µl of HMW Lysis Buffer A. Using 1,000µl wide bore pipette tips, mix the solution five times to lyse the cells.
+Draw the tube contents slowly from the bottom of the tube, then expel the lysate rapidly down the side of the tube.
+The solution should become very viscous. Do not pipet more than five times to avoid DNA shearing.
+Note: If wide-bore pipette tips are unavailable, use standard 1,000µl pipette tips for mixing sample with HMW Lysis
+Buffer A.
+6. If lysis appears incomplete, incubate at 80°C for 5 minutes to lyse the cells then cool to room temperature.
+7. Add 3µl of RNase A Solution to the cell lysate, and mix by inverting the tube 5–7 times. Incubate the mixture at 37°C
+for 15 minutes.
+Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516 9
+www.promega.com TM604 · Revised 7/22
+
+--- PAGE 11 ---
+
+3.D. Isolating HMW DNA from Gram-Positive and Gram-Negative Bacteria (continued)
+8. Add 20µl of Proteinase K Solution to each sample and mix by inverting the tube 10 times. Incubate the mixture at
+56°C for 15 minutes. Cool to room temperature for at least 5 minutes or chill on ice for 1 minute.
+9. Add 200µl of Protein Precipitation Solution to the cell lysate. Using 1,000µl wide bore pipette tips, mix the solution
+five times. Draw the tube contents from the bottom of the tube, then expel the lysate rapidly down the side of the
+tube. Small protein clumps may be visible after mixing. Incubate on ice for 5 minutes.
+Note: If wide-bore pipette tips are unavailable, vortex lysate and Protein Precipitation Solution for 5 seconds. Do
+not tip mix.
+10. Centrifuge at 13,000–16,000 × g for 10 minutes at room temperature. A protein pellet should be visible. If any
+unpelleted debris is visible, repeat the centrifugation step. If no pellet is observed, refer to Section 4, Troubleshooting.
+11. Slowly transfer the supernatant to a clean 1.5ml microcentrifuge tube by decanting the sample into a tube containing
+600µl of room-temperature isopropanol.
+Note: Some supernatant may remain in the original tube containing the protein pellet. Leave this residual liquid in
+the tube to avoid contaminating the DNA solution with the precipitated protein.
+12. Gently mix the solution by gently inverting the tube eight times. Incubate for 1 minute at room temperature and
+repeat the inversion. White thread-like strands of DNA may form a visible mass.
+13. Centrifuge at 13,000–16,000 × g for 2 minutes at room temperature. The DNA will be visible as a small white pellet.
+14. Decant the supernatant and add 600µl of room temperature 70% ethanol to the DNA. Gently invert the tube several
+times to wash the DNA pellet and the sides of the microcentrifuge tube. Centrifuge as instructed in Step 13.
+15. Carefully aspirate the ethanol. The DNA pellet is very loose at this point so carefully avoid disturbing or aspirating
+the pellet into the pipette. Invert the tube on clean absorbent paper and air-dry the pellet for 10–15 minutes.
+16. Add 100µl of DNA Rehydration Solution to the tube. Do not vortex because this will cause mechanical shearing and
+decrease average fragment size. Rehydrate the DNA by incubating the solution overnight at room temperature.
+Alternatively, incubate the purified DNA at 65°C for 1 hour, periodically mixing the solution by gently tapping the tube.
+17. If DNA appears nonhomogeneous (e.g., undissolved pellet is still visible), mix with 200µl wide-bore pipette tips.
+Store the DNA at 2–8°C.
+10 Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516
+TM604 · Revised 7/22 www.promega.com
+
+--- PAGE 12 ---
+
+4. Troubleshooting
+For questions not addressed here, please contact your local Promega Branch Office or Distributor. Contact information
+available at: www.promega.com. E-mail: techserv@promega.com
+Symptoms Causes and Comments
+Blood clots present in blood samples The collection tube may have been stored improperly; the blood
+was not thoroughly mixed, or inappropriate tubes were used for
+drawing blood. Discard the clotted blood and draw new samples
+using EDTA-, heparin- or citrate-treated anticoagulant tubes.
+Poor DNA yield Blood sample may contain too few white blood cells. Draw new
+blood samples.
+White blood cell pellet was not resuspended thoroughly in
+Section 3.A, Step 5. The white blood cell pellet must be vortexed
+vigorously to resuspend the cells.
+Blood sample was too old. Best yields are obtained with fresh
+blood. Samples that have been stored at 2–8°C for more than
+5 days may give reduced yields.
+The DNA pellet was lost during isopropanol precipitation. Be
+careful when removing the isopropanol to avoid losing the pellet.
+Sample is contaminated with RNA. DNA yield can be skewed by
+the presence of digested RNA when assayed spectrophotometri-
+cally. We recommend the use of DNA-specific fluorometric
+assays.
+Isolated genomic DNA is not homogeneous, affecting concentra-
+tion determination. Purified genomic DNA commonly forms
+concentration gradients and can affect the concentration
+determination. Mix the sample by flicking the tube several times
+or vortex briefly. Do not mix with a pipette. Re-assay the samples.
+High RNA contamination Overgrown bacterial culture. When bacterial cultures are grown
+longer than 14 hours (stationary phase), they are prone to high
+amounts of RNA during purification. Limit growth to exponential
+phase.
+Poor separation after protein precipitation Added too much sample. Do not exceed the recommended
+maximum inputs for sample type. Too much sample results in
+excess viscosity, which will affect separations.
+Degraded DNA (<50kb in size) Improper collection or storage of the blood sample. Obtain a new
+sample under the proper conditions.
+Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516 11
+www.promega.com TM604 · Revised 7/22
+
+--- PAGE 13 ---
+
+4. Troubleshooting (continued)
+Symptoms Causes and Comments
+Poor DNA yield using Gram-positive Bacterial culture grown too long. Cultures grown for an
+bacteria protocol extended time contain a high proportion of cells that lyse easily
+upon exposure to lysostaphin treatment. Start purifications with a
+healthy culture.
+No protein pellet The sample was not cooled to room temperature before adding
+the Protein Precipitation Solution. Cool the sample to room
+temperature (at least 5 minutes) or chill on ice for 5 minutes,
+vortex for 20 seconds, centrifuge for 3 minutes at
+13,000–16,000 × g and proceed with the protocol.
+The Protein Precipitation Solution was not thoroughly mixed with
+the lysate. Always mix the lysate and Protein Precipitation
+Solution completely.
+DNA pellet difficult to dissolve Samples may have been overdried. Rehydrate DNA by
+incubating for 1 hour at 65°C, and then leave the sample at room
+temperature or 4°C overnight. Caution: Do not leave the DNA at
+65°C overnight.
+Samples were not mixed during the rehydration step. Remember
+to mix the samples periodically during the rehydration step. Use
+only 200µl wide-bore pipette tips for mixing.
+5. References
+1. Miller, S.A., Dykes, D.D. and Polesky, H.F. (1988) A simple salting out procedure for extracting DNA from human
+nucleated cells. Nucleic Acids Res. 16, 1215.
+2. Beutler, E., Gelbart, T. and Kuhl, W. (1990) Interference of heparin with the polymerase chain reaction.
+BioTechniques 9, 166.
+3. U.S. Department of Labor, Occupational Safety and Health Administration (1991) Occupational exposure to blood-
+borne pathogens, final rule. Federal Register 56, 64175.
+12 Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516
+TM604 · Revised 7/22 www.promega.com
+
+--- PAGE 14 ---
+
+6. Composition of Buffer
+phosphate-buffered saline (PBS) 10X (per liter)
+11.5g NaHPO
+2 4
+2g KHPO
+2 4
+80g NaCl
+2g KCl
+Dissolve in 1 liter of sterile, deionized water. The pH of 1X PBS will be 7.4.
+7. Related Products
+DNA Purification Systems
+Product Size Cat.#
+ProNex® Size-Selective Purification System 10ml NG2001
+ProNex® Size-Selective Purification System 125ml NG2002
+ProNex® Size-Selective Purification System 500ml NG2003
+Maxwell® RSC Plant DNA Kit 48 preps AS1490
+ReliaPrep™ Blood gDNA Miniprep System 100 preps A5081
+8. Summary of Changes
+The following changes were made to the 7/22 revision of this document:
+1. In Section 3.C, PBS was removed from the Materials to Be Supplied by User list. PBS is not needed in Section 3.C.
+2. Miscellaneous text updates were made.
+3. Font was updated.
+© 2020, 2022 Promega Corporation. All Rights Reserved.
+Maxwell, ProNex and Wizard are registered trademarks of Promega Corporation. ReliaPrep is a trademark of Promega Corporation.
+Products may be covered by pending or issued patents or may have certain limitations. Please visit our Web site for more information.
+All prices and specifications are subject to change without prior notice.
+Product claims are subject to change. Please contact Promega Technical Services or access the Promega online catalog for the most up-to-date information on
+Promega products.
+Promega Corporation · 2800 Woods Hollow Road · Madison, WI 53711-5399 USA · Toll Free in USA 800-356-9526 · 608-274-4330 · Fax 608-277-2516 13
+www.promega.com TM604 · Revised 7/22

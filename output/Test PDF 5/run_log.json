@@ -1,0 +1,9 @@
+{
+  "pdf": "Test PDF 5.pdf",
+  "started_at": "2026-01-25 16:32:52",
+  "model": "gpt-4.1-mini",
+  "status": "success",
+  "raw_chars": 73697,
+  "cleaned_chars": 74455,
+  "elapsed_seconds": 37.25
+}

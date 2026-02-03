@@ -1,0 +1,154 @@
+--- PAGE 1 ---
+
+APPLICATION PROTOCOL Cell Factory systems
+P rotocol for MRC-5 cultivation
+Nunc High Density Cell Factory systems
+Introduction
+This protocol was developed to validate the performance
+of Thermo Scientific™ Nunc™ High Density Cell Factory™
+systems for the culturing of MRC-5 cells. The protocol
+includes the recommended use of standard Nunc Cell
+Factory systems as controls. This protocol may be used
+as a reference or as a resource for options to optimize the
+performance of established protocols.
+Cell thawing
+1. Thaw 1 vial of MRC-5 cells with approximately 6 x 106 • Recommended reagents:
+cells in a 37°C water bath. Thaw until there is a minimal
+– Gibco™ DPBS without Ca2+ and Mg2+
+amount of ice remaining.
+– Gibco™ 0.25% Trypsin-EDTA
+2. Decontaminate the exterior of the vial with 70% ethanol
+or a similar decontamination solution. 4. Gently triturate the cell suspension with a pipette.
+3. Transfer the cell suspension from the vial to a 15 mL Passage 1
+centrifuge tube containing 9 mL of the recommended 1. Seed a T-175 flask containing 50 mL of the
+growth medium. recommended growth medium with 15,000 cells/cm2.
+• Recommended growth medium:
+2. Incubate the T-175 flask with the cells for 7 days at 37°C
+– Gibco™ DMEM, high glucose, with NEAA, no
+under 5% CO aeration. Please note: If CO aeration
+glutamine, with phenol red (liquid) 2 2
+is not available, add HEPES to the culture medium and
+– 100 U/mL penicillin, 100 µg/mL streptomycin incubate at 37°C.
+(stock solution: Gibco™ Penicillin-Streptomycin,
+10,000 U/mL penicillin + 10,000 μg/mL
+3. Take a sample from the flask for measurement of
+streptomycin (100X))
+glucose, lactate, and metabolites (e.g., pH, glutamate,
+– 2 mM L-glutamine (stock solution: Gibco™ 200 mM and ammonium).
+L-glutamine (100X))
+– 10% FBS (Gibco™ Fetal Bovine Serum, Certified, 4. Remove the remaining medium from the cells.
+US origin)
+– 5–10 mM HEPES (pH 7.2) (stock solution: Gibco™
+1 M HEPES)
+[deliberately omitted pH 7.2 from the HEPES
+stock solution]
+
+--- PAGE 2 ---
+
+5. Wash with 10 mL DPBS with no Ca2+ and Mg2+. 4. Remove the remaining medium from the cells.
+6. Add 5 mL 0.25% trypsin-EDTA. 5. Wash with 40 mL DPBS with no Ca2+ and Mg2+ per layer.
+Cell Factory system DPBS volume per system
+7. Incubate for 2–3 minutes or until cell layer detachment
+Cell Factory 2-layer system 80 mL (40 mL per layer)
+can be verified visually.
+High Density Cell Factory
+120 mL (40 mL per layer)
+3-layer system
+8. Inactivate the trypsin-EDTA with 20 mL growth medium
+and collect the cell suspension. 6. Discard the used wash buffer.
+9. Gently triturate the cell suspension with a pipette. 7. Add 15 mL 0.25% trypsin-EDTA per layer.
+Trypsin-EDTA volume
+Cell Factory system
+10. Sample a small amount of the cell suspension for cell per system
+counting.
+Cell Factory 2-layer system 30 mL (15 mL per layer)
+High Density Cell Factory
+45 mL (15 mL per layer)
+11. Count the cells using available methods and record the 3-layer system
+counts for both viable and nonviable cells.
+8. Incubate for 4–5 minutes or until cell detachment is
+12. Use the cell count to determine the amount of cell visually verified.
+suspension needed, to reach the intended cell density of
+the next vessel. 9. Inactivate the trypsin-EDTA with 40 mL of the
+recommended growth medium per layer.
+Passage 2: cell expansion in T-flasks Growth medium volume
+Cell Factory system
+1. Plate 6 x T-175 flasks with 15,000 cells/cm2 using 50 mL per system
+of the recommended growth medium for each T-flask. Cell Factory 2-layer system 80 mL (40 mL per layer)
+High Density Cell Factory
+2. Incubate the T-175 flasks for 7 days at 37°C with 5% 120 mL (40 mL per layer)
+3-layer system
+CO aeration. Please note: If CO aeration is not
+2 2
+available, add HEPES to growth medium and incubate 10. Collect the cell suspension in a suitable sterile collection
+at 37°C. vessel (e.g., single-use bottle or carboy).
+3. Repeat steps 3–12 from passage 1 for each T-175 flask. 11. Repeat step 9 to remove as many cells from the Cell
+Factory/High Density Cell Factory systems as possible.
+Passage 3–5: cell expansion in High Density Cell
+Factory systems 12. Collect and pool the remaining cell suspension.
+1. Plate 2 x Cell Factory 2-layer system (control) and 2 x
+High Density Cell Factory 3-layer system with 15,000 13. Agitate the collection vessel by gentle swirling or
+cells/cm2 using 200 mL per layer of the recommended rotation, ensuring a homogeneous cell suspension.
+growth medium.
+14. Sample a small volume of cell suspension from the
+Cell Factory system Medium volume per system
+middle of each collection vessel.
+Cell Factory 2-layer system 400 mL (200 mL per layer)
+High Density Cell Factory 15. Count the cells using available methods and record
+600 mL (200 mL per layer)
+3-layer system
+the count.
+2. Incubate the Cell Factory and High Density Cell Factory
+units for 6 days at 37°C. 16. Use the cell count to determine the amount of cell
+suspension needed to reach the intended cell density
+3. Take a sample from each unit for measurement of in the next vessel.
+glucose, lactate, and other metabolites (e.g., pH,
+glutamate, and ammonium).
+
+--- PAGE 3 ---
+
+Passaging into High Density Cell Factory 8. Incubate for 4–5 minutes or until detachment is
+13-layer systems visually verified.
+1. Plate 3 x Cell Factory 10-layer system (control) and
+3 x High Density Cell Factory 13-layer system with 9. Inactivate the trypsin-EDTA with 40 mL of the
+15,000 cells/cm2 using 200 mL of the recommended recommended growth medium per layer.
+growth medium per layer.
+Growth medium volume
+Cell Factory system
+per system
+Medium volume
+Cell Factory system
+per system Cell Factory 10-layer system 400 mL (40 mL per layer)
+Cell Factory 10-layer system 2 L (200 mL per layer) High Density Cell Factory
+520 mL (40 mL per layer)
+13-layer system
+High Density Cell Factory
+2.6 L (200 mL per layer)
+13-layer system
+10. Collect the cell suspension in a suitable sterile
+2. Incubate for 6 days at 37°C. collection vessel.
+3. Take a sample from each unit for measurement of 11. Repeat step 9 to ensure complete removal of cells from
+glucose, lactate, and other metabolites (e.g., pH, the Standard and High Density Cell Factory systems.
+glutamate, and ammonium).
+12. Collect and pool the remaining cell suspension into the
+4. Remove the remaining medium from the cells. collection vessel.
+5. Wash with 40 mL DPBS with no Ca2+ and Mg2+ 13. Count the cells using available methods and record
+per layer. the count.
+Cell Factory system DPBS volume per system
+Cell Factory 10-layer system 400 mL (40 mL per layer)
+High-Density Cell Factory
+520 mL (40 mL per layer)
+13-layer system
+6. Discard the used wash buffer.
+7. Add 15 mL 0.25% trypsin-EDTA per layer.
+Trypsin-EDTA volume
+Cell Factory system
+per system
+Cell Factory 10-layer system 150 mL (15 mL per layer)
+High Density Cell Factory
+195 mL (15 mL per layer)
+13-layer system
+Find out more at thermofisher.com/cellfactory
+For Research Use or Further Manufacturing. Not for diagnostic use or direct administration into humans or animals.
+© 2017 Thermo Fisher Scientific Inc. All rights reserved. All trademarks are the property of Thermo Fisher Scientific and its subsidiaries
+unless otherwise specified. COL05573 1217
