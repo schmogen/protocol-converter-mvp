@@ -1,20 +1,25 @@
 # AI Task – Build Local MVP Wrapper
 
 ## Objective
-Wrap the existing converter into a local web MVP:
-- Backend endpoint: POST /convert (multipart form upload: file)
-- Response: converted .docx file download
+Create a local web MVP wrapper around the existing pipeline.
 
 ## Requirements
-- Do not rewrite conversion logic
-- Reuse existing scripts/functions (likely convert_protocol.py)
-- Add a small FastAPI app to call the converter
-- Add a minimal frontend page (static HTML) with upload + convert button
-- Show status states and errors
-- Add file validation: PDF only, max 20MB
-- Provide commands to run locally on Windows Git Bash
+- Do NOT rewrite the LLM logic or extraction logic
+- Reuse functions from run_batch.py where possible:
+  - extract_text_from_pdf, clean_text
+  - convert_to_protocol_markdown, finalize_protocol_md
+  - generate_flags_md, append_flags_summary
+- Add FastAPI backend: POST /convert (multipart upload: file)
+- Validate: PDF only, <= 20MB
+- Use repo-root contract.md as contract
+- Return a .docx download (Markdown -> DOCX)
+  - Prefer pypandoc (pandoc may be missing)
+  - Provide fallback using python-docx if pandoc not available
+- Add minimal frontend page with file picker + Convert + status + download
+- Provide exact Windows Git Bash commands to run locally
 
 ## Output Format (MANDATORY)
-- Show final file tree
-- For every new/modified file: provide FULL file contents
-- Provide exact commands to install deps and run
+- Final file tree
+- FULL contents for every new/modified file
+- Exact commands to install and run
+

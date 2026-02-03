@@ -1,23 +1,22 @@
 # Protocol Converter MVP (Local)
 
 ## Goal
-User uploads a PDF and gets a converted DOCX back immediately (download).
+User uploads a PDF and downloads a converted DOCX.
 
 ## MVP Flow
 1. User opens a local web page
 2. User selects a PDF
 3. User clicks Convert
-4. The system returns a DOCX for download
+4. System returns a DOCX download
 5. Errors are shown clearly
 
 ## Constraints
-- Input: PDF only
+- PDF only, max 20MB
 - Output: DOCX
-- Max file size: 20MB
-- No auth for MVP
-- Conversion logic must be reused as-is (no rewrite)
+- Local-first MVP
+- Do NOT rewrite existing pipeline logic; wrap/reuse it
 
 ## Acceptance Criteria
-- One command starts the backend
-- User can convert via browser UI end-to-end locally
-- Clear error handling
+- One command starts backend
+- Conversion works end-to-end via browser locally
+
