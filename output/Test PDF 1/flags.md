@@ -1,66 +1,55 @@
 ## Critical Parameters Checklist (from the protocol)
 
-- **Temperatures:**  
-  - Thawing: 4°C  
-  - Gel incubation: 37°C  
-  - Centrifugation temperature: Room temperature (RT)  
-- **Times:**  
-  - Matrigel thaw: Overnight  
-  - Gelation on 24-well plate: 30 min (both protocols)  
-  - Cell incubation on top of gel (on-top): 30 min  
-  - Cell-Matrigel gel incubation (embedded): 30 to 45 min  
-  - Culture duration (on-top): 4 to 7 days  
-  - Culture duration (embedded): 8 to 10 days  
-  - Medium/Matrigel mixture change interval: Every 2 days  
-- **Volumes:**  
-  - Matrigel on-bottom coating (on-top): 200 μL per well  
-  - Cell suspension plating (on-top): 250 μL per well  
-  - Matrigel-medium overlay (on-top): 250 μL per well  
-  - Matrigel coating (embedded): 100 μL per well  
-  - Cell suspension mixed with Matrigel (embedded): 30 μL + 270 μL (total 300 μL)  
-  - Media added after gelation (embedded): 500 μL per well  
-- **Concentrations:**  
-  - Matrigel used on-top: 8–11 mg/mL (initial), 0.8–1.1 mg/mL (final overlay)  
-  - Cell density on-top: 3 × 10^5 cells/mL  
-  - Matrigel diluted (embedded): 5 mg/mL  
-  - Cell density initial suspension embedded: 5 × 10^6 cells/mL  
-  - Final cell density embedded: 5 × 10^5 cells/mL  
-  - Trypsin/EDTA concentration: 0.25%  
-- **Centrifugation:**  
-  - Speed: 125 x g  
-  - Duration: 5 minutes  
-  - Temperature: Room temperature (RT)  
-- **CO2/O2:** MISSING  
-
----
+- Matrigel thawing: overnight at 4°C  
+- Matrigel concentration:  
+  - On-top base coat: 8 to 11 mg/mL  
+  - On-top overlay: 0.8 to 1.1 mg/mL (10% of final volume)  
+  - Embedded coating and mixture: 5 mg/mL  
+- Matrigel volumes:  
+  - On-top base coat: 200 μL per well  
+  - On-top overlay: 250 μL per well  
+  - Embedded coating: 100 μL per well  
+  - Embedded cell-Matrigel mix: 300 μL total (30 μL cells + 270 μL Matrigel)  
+  - Embedded overlay medium: 500 μL per well  
+- Cell densities:  
+  - On-top: 3 × 10^5 cells/mL, plated 250 μL per well  
+  - Embedded: prepare 5 × 10^6 cells/mL stock; final 5 × 10^5 cells/mL in Matrigel mixture  
+- Centrifugation: 125 x g, 5 min, room temperature (RT)  
+- Incubations:  
+  - Matrigel gelation: 37°C for 30 min  
+  - On-top cell attach/incubation post plating: 37°C for 30 min  
+  - Embedded gel with cells: 37°C, 30 to 45 min  
+- Culture durations:  
+  - On-top: 4 to 7 days, medium change every 2 days  
+  - Embedded: 8 to 10 days, medium change every 2 days  
+- Temperature details for procedure steps: keep all materials and cultureware on ice or pre-chilled before gelation steps  
+- Media composition: MEM + 10% FBS (referred to as MDCK complete medium)  
+- Pipetting instructions: gently add overlay down the side of wells  
+- Cell confluency: use cells not more than 85% confluent  
 
 ## Potential Missing Parameters (compare to source)
 
-- CO2 concentration during incubation (likely 5% CO2) is not mentioned in the generated protocol but is a standard parameter and usually assumed [CHECK].
-- The source mentions to avoid overdrying Matrigel during gel formation but no quantitative guidance is given—this is consistent, but no further clarification appears.
-- The source protocol notes to keep medium thoroughly chilled before addition of Matrigel in the on-top method; the generated protocol mentions this but not the detailed rationale.
-- The source mentions swirls the vial to "ensure material is dispersed" during thaw; generated protocol mentions swirl but omits the detail that the vial is submerged in ice specifically in the embedded protocol thaw step (they say "submerging the vial in ice in a 4°C refrigerator" vs "submerging the vial in a 4°C refrigerator").
-- The source mentions use of "pre-chilled 24-well plates" in on-top protocol step 2, and also for embedded protocol step 3; generated protocol reflects this, no omission.
-- The specific note "The volume of the cells should not be over 10% of the Matrigel solution" in embedded protocol step 5 is present.
-- No explicit mention of CO2/O2 levels anywhere in the source PDF; generated protocol did not add.
+- CO2 concentration during incubation (commonly 5% but missing in protocol)  
+- Exact RPM for centrifugation is missing; only RCF is provided (125 x g)  
+- Details on O2 levels during culture are not mentioned (not specified in source, so acceptable)  
+- Temperature stated as "room temperature" for centrifugation—no exact numeric range (acceptable but [CHECK] if RT varies in lab)  
+- No explicit mention whether medium changes involve removal of old overlay medium or complete replacement (source does not clarify)  
+- No details on temperature/humidity/CO2 conditions during 4-7 or 8-10 day culture periods (source only states 37°C)  
+- No instructions or specifics about the immunostaining procedure (only recommended; omission probably acceptable here)  
 
----
+## Possible Unsupported Claims
 
-## Possible Hallucinations / Unsupported Claims
-
-- None detected.  
-The generated protocol closely tracks the source text's instructions and notes without adding unsupported details.
-
----
+- None detected. All protocol steps, parameters, and notes are supported by source text.  
+- The protocol’s objective and recommended immunostaining/confocal microscopy are consistent with source text.  
 
 ## Step Order / Omission Risks
 
-- None detected.  
-The step order matches the source instructions as presented.  
-All critical steps (thawing, spreading Matrigel, centrifugation, resuspension, plating, incubation times) are present and in the correct sequence.
+- None detected. Step order aligns well with source text for both on-top and embedded methods.  
+- The note about "pipet vigorously to obtain single-cell suspensions" occurs at consistent steps.  
+- The caution to avoid overdrying Matrigel during gelation is included at appropriate points.  
+- All recommended medium changes every 2 days during culture are retained in correct order.  
+- No steps appear skipped or reordered relative to source text.  
 
 ---
 
-# Summary
-
-The generated protocol accurately reflects all critical numeric parameters and procedural details present in the source text and does not add any unsupported claims. It omits specification of CO2 environment, which is not detailed in the source text but important for cell culture [CHECK]. Other procedural notes and parameters are well transcribed. No major risks of omitted steps or reordering are apparent.
+Summary: The generated protocol is a faithful and safe extraction of the source method with key numeric parameters retained. Minor omissions on incubation atmosphere details and centrifuge RPM may warrant flagging depending on experimental rigor requirements, but no critical unsafe omissions or unsupported claims are present.

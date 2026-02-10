@@ -1,149 +1,171 @@
 # TRIzol™ Reagent Experimental Protocol for DNA Isolation
 
 ## Objective
-To isolate high-quality DNA from cell and tissue samples using TRIzol™ Reagent following RNA extraction, enabling sequential recovery of RNA, DNA, and proteins from a single sample.
+To isolate high-quality DNA from cell and tissue samples of human, animal, plant, yeast, or bacterial origin using TRIzol™ Reagent. The protocol enables sequential precipitation of RNA, DNA, and proteins from a single sample.
 
 ## Materials
-- Invitrogen™ TRIzol™ Reagent  
-- Chloroform  
-- Ethanol, 100%  
-- Ethanol, 75%  
-- 0.1 M sodium citrate in 10% ethanol (pH 8.5)  
-- 8 mM NaOH  
-- HEPES  
-- Polypropylene microcentrifuge tubes  
-- Centrifuge and rotor capable of reaching 12,000 × g and 4°C  
-- Sterile plastic ware (individually wrapped)  
-- Sterile, disposable RNase-free pipettes, pipette tips, and tubes  
-- Homogenizer (for tissue samples)  
+
+- Invitrogen™ TRIzol™ Reagent (Cat. No. 15596026 or 15596018)
+- Chloroform
+- Ethanol, 100%
+- Ethanol, 75%
+- 0.1 M sodium citrate in 10% ethanol, pH 8.5
+- 8 mM NaOH
+- HEPES buffer
+- Sterile polypropylene microcentrifuge tubes
+- Centrifuge capable of 12,000 × g and 4°C
+- Homogenizer
+- RNaseZap™ RNase Decontamination Solution (Cat. No. AM9780)
+- Disposable, sterile, RNase-free pipettes and tips
 
 ## Procedure
 
-### 1. Sample Preparation and Lysis
-1. Perform all steps at room temperature (20–25°C) unless otherwise indicated.  
-2. Use disposable plastic ware and change gloves frequently to prevent RNase contamination.  
-3. Prepare samples according to the following:
-   - **Tissues:** Add 1 mL TRIzol™ Reagent per 50–100 mg tissue, then homogenize.  
+### Sample Preparation and Lysis
+
+1. Perform all steps at room temperature (20–25°C) unless otherwise noted.
+2. Prepare samples according to type:
+   - **Tissues:** Add 1 mL of TRIzol™ Reagent per 50–100 mg tissue. Homogenize thoroughly.
    - **Cells grown in monolayer:**
-     - Remove growth media.  
-     - Add 0.3–0.4 mL TRIzol™ Reagent per 1 × 10^5–10^7 cells directly to the culture dish to lyse cells.  
-     - Pipet lysate up and down several times to homogenize.
+     - Remove growth media.
+     - Add 0.3–0.4 mL of TRIzol™ Reagent per 1 × 10^5–10^7 cells directly to the culture dish.
+     - Pipet lysate up and down to homogenize.
    - **Cells grown in suspension:**
-     - Pellet cells by centrifugation and discard supernatant.  
-     - Add 0.75 mL TRIzol™ Reagent per 0.25 mL cell pellet (5–10 × 10^6 animal, plant, or yeast cells, or 1 × 10^7 bacterial cells).  
-     - Pipet up and down to homogenize.
+     - Pellet cells by centrifugation and discard supernatant.
+     - Add 0.75 mL of TRIzol™ Reagent per 0.25 mL of sample (5–10 × 10^6 animal, plant, or yeast cells or 1 × 10^7 bacterial cells).
+     - Pipet lysate up and down several times to homogenize.
 
-### 2. Phase Separation
-4. (Optional) For high fat content samples, centrifuge lysate for 5 min at 12,000 × g, 4–10°C, and transfer clear supernatant to a new tube.  
-5. Incubate the lysate for 5 min at room temperature to dissociate nucleoprotein complexes.  
-6. Add 0.2 mL chloroform per 1 mL TRIzol™ Reagent used, cap securely.  
-7. Incubate 2–3 min at room temperature.  
-8. Centrifuge for 15 min at 12,000 × g, 4°C.  
-9. The mixture separates into:
-   - Upper aqueous phase (contains RNA)  
-   - Interphase  
-   - Lower red phenol-chloroform organic phase (contains DNA and proteins)  
-10. Discard the aqueous phase carefully; proceed with interphase and organic phase for DNA isolation immediately after collection or freeze samples at –80°C or in liquid nitrogen.
+### Phase Separation
 
-### 3. DNA Precipitation
-11. Remove any remaining aqueous phase overlying the interphase.  
-12. Add 0.3 mL of 100% ethanol per 1 mL TRIzol™ Reagent used for lysis.  
-13. Cap tube, mix by inverting several times.  
-14. Incubate 2–3 min at room temperature.  
-15. Centrifuge 5 min at 2,000 × g, 4°C to pellet DNA.  
-16. Transfer phenol-ethanol supernatant to a new tube for protein isolation or storage at –70°C.
+3. (Optional) For samples with high fat content, centrifuge lysate for 5 minutes at 12,000 × g at 4–10°C and transfer the clear supernatant to a new tube.
+4. Incubate lysate for 5 minutes at room temperature to dissociate nucleoprotein complexes.
+5. Add 0.2 mL chloroform per 1 mL TRIzol™ Reagent. Cap tube securely.
+6. Incubate for 2–3 minutes at room temperature.
+7. Centrifuge for 15 minutes at 12,000 × g and 4°C. The mixture separates into:
+   - Colorless upper aqueous phase (RNA)
+   - Interphase (DNA)
+   - Lower red phenol-chloroform phase (DNA and proteins)
 
-### 4. DNA Washing
-17. Resuspend DNA pellet in 1 mL of 0.1 M sodium citrate in 10% ethanol (pH 8.5) per 1 mL TRIzol™ Reagent used.  
-18. Incubate 30 min at room temperature, mixing occasionally by gentle inversion.  
-19. Centrifuge 5 min at 2,000 × g, 4°C.  
-20. Discard supernatant with micropipettor.  
-21. Repeat steps 17–20 once.  
-   - For large DNA pellets (>200 µg), repeat wash steps twice.  
-22. Resuspend pellet in 1.5–2 mL 75% ethanol per 1 mL TRIzol™ Reagent used.  
-23. Incubate 10–20 min at room temperature, mixing occasionally by gentle inversion.  
-24. Centrifuge 5 min at 2,000 × g, 4°C.  
-25. Discard supernatant with micropipettor.  
-26. Vacuum or air dry the pellet for 5–10 min.  
-   - **Important:** Do not dry the pellet by vacuum centrifuge.
+### DNA Precipitation
 
-### 5. DNA Solubilization
-27. Resuspend pellet in 0.3–0.6 mL of 8 mM NaOH by pipetting up and down.  
-   - DNA resuspends better in mild base than in water or Tris buffer.  
-28. Centrifuge 10 min at 12,000 × g, 4°C to remove insoluble material.  
-29. Transfer supernatant to a new tube, adjust pH with HEPES as needed.  
-30. Proceed to downstream applications or:
-   - Store DNA at 4°C overnight.  
-   - For long-term storage at –20°C, adjust pH to 7–8 with HEPES and add 1 mM EDTA.
+8. Carefully remove and discard the aqueous phase.
+9. Remove any remaining aqueous phase overlying the interphase carefully.
+10. Add 0.3 mL of 100% ethanol per 1 mL TRIzol™ Reagent used for lysis.
+11. Cap tube and mix by inverting several times.
+12. Incubate for 2–3 minutes at room temperature.
+13. Centrifuge for 5 minutes at 2,000 × g and 4°C to pellet DNA.
+14. Transfer phenol-ethanol supernatant to a new tube for protein isolation or storage at –70°C.
 
-### 6. DNA Yield Determination (Optional)
-31. Measure DNA concentration by:
-   - **Absorbance:** Dilute sample in water or buffer (pH >7.5); measure absorbance at 260 nm and 280 nm.  
-     - Calculate DNA concentration: A260 × 50 = µg DNA/mL.  
-     - Assess purity by A260/A280 ratio; ~1.8 is considered pure.  
-   - **Fluorescence:** Use Qubit™ or Quant-iT™ dsDNA Assay Kits according to kit instructions.  
+### DNA Washing
+
+15. Resuspend DNA pellet in 1 mL of 0.1 M sodium citrate in 10% ethanol (pH 8.5) per 1 mL TRIzol™ Reagent used.
+16. Incubate for 30 minutes, mixing occasionally by gentle inversion.
+17. Centrifuge 5 minutes at 2,000 × g and 4°C.
+18. Remove supernatant carefully with micropipette.
+19. Repeat steps 15–18 once. For large DNA pellets (>200 µg), repeat twice.
+20. Resuspend pellet in 1.5–2 mL of 75% ethanol per 1 mL TRIzol™ Reagent used.
+21. Incubate 10–20 minutes, mixing occasionally by gentle inversion.
+22. Centrifuge 5 minutes at 2,000 × g, 4°C.
+23. Remove supernatant with micropipette.
+24. Air or vacuum dry pellet for 5–10 minutes.
+   - **Important:** Do not dry DNA pellet by vacuum centrifuge.
+
+### DNA Solubilization
+
+25. Resuspend pellet in 0.3–0.6 mL of 8 mM NaOH by pipetting up and down.
+26. Centrifuge 10 minutes at 12,000 × g and 4°C to remove insoluble material.
+27. Transfer supernatant to a new tube.
+28. Adjust pH as needed with HEPES.
+29. Use immediately or store at 4°C overnight.
+30. For long-term storage at –20°C, adjust pH to 7–8 with HEPES and add 1 mM EDTA.
+
+### DNA Quantification
+
+31. Determine DNA yield using one of the following methods:
+
+   - **Absorbance:**
+     1. Dilute DNA sample in water or buffer (pH >7.5).
+     2. Measure absorbance at 260 nm and 280 nm.
+     3. Calculate concentration: A260 × 50 = µg DNA/mL.
+     4. Calculate A260/A280 ratio; ~1.8 indicates purity.
+
+   - **Fluorescence:**
+     - Measure dsDNA using Qubit™ or Quant-iT™ dsDNA Assay Kits following manufacturer instructions.
 
 ## Notes
-- Do not wash cells before adding TRIzol™ Reagent to avoid mRNA degradation.  
-- Use cold TRIzol™ Reagent for samples with high RNase content (e.g., spleen, pancreas).  
-- Samples can be stored at 4°C overnight or at –20°C for up to a year before DNA isolation.  
-- DNA yields vary by sample type:  
-  - Fibroblasts or cultured mammalian cells (1 × 10^6 cells): 5–7 µg DNA  
-  - Skeletal muscle, brain, placenta (1 mg): 2–3 µg DNA  
-  - Liver, kidney (1 mg): 3–4 µg DNA  
+
+- Do not wash cells before adding TRIzol™ Reagent to prevent mRNA degradation.
+- Use sterile, RNase-free disposables and wear gloves, changing frequently to avoid RNase contamination.
+- If samples contain high RNase levels (e.g., spleen or pancreas), use cold TRIzol™ Reagent.
+- Samples can be stored at 4°C overnight or at –20°C for up to one year before DNA isolation.
+- DNA can be stored in sodium citrate/ethanol for at least 2 hours or in 75% ethanol at 4°C for several months.
+- Avoid incomplete removal of aqueous phase to prevent DNA contamination.
+- Do not dry DNA pellet using vacuum centrifuge.
 
 ## Review Checklist
-- [ ] Growth conditions verified (temperature, CO2/O2, time)  
-- [ ] Media composition and volumes verified  
-- [ ] Mixing parameters verified (rpm/RCF, time)  
-- [ ] Incubation times verified  
-- [ ] Centrifugation settings verified (RCF, time, temp)  
-- [ ] Step order confirmed against source  
+- [ ] Growth conditions verified (temperature, CO2/O2, time)
+- [ ] Media composition and volumes verified
+- [ ] Mixing parameters verified (rpm/RCF, time)
+- [ ] Incubation times verified
+- [ ] Centrifugation settings verified (RCF, time, temp)
+- [ ] Step order confirmed against source
 - [ ] Any ambiguous values flagged with [CHECK]
 
 ## Review Flags
 
 ## Critical Parameters Checklist (from the protocol)
-- Temperature: Room temperature (20–25°C); centrifugation at 4°C  
-- TRIzol™ volume per sample:  
-  - Tissues: 1 mL per 50–100 mg  
-  - Monolayer cells: 0.3–0.4 mL per 1 × 10^5–10^7 cells  
-  - Suspension cells: 0.75 mL per 0.25 mL of cell pellet (5–10 × 10^6 animal/plant/yeast or 1 × 10^7 bacterial cells)  
-- Chloroform: 0.2 mL per 1 mL TRIzol™  
-- Ethanol (100%): 0.3 mL per 1 mL TRIzol™  
-- Sodium citrate wash: 1 mL 0.1 M sodium citrate in 10% ethanol per 1 mL TRIzol™ (repeat wash once or twice for large pellets)  
-- Ethanol (75%): 1.5–2 mL per 1 mL TRIzol™  
-- NaOH for solubilization: 0.3–0.6 mL 8 mM NaOH  
-- Centrifugation settings:  
-  - Lysate clarification (optional): 5 min, 12,000 × g, 4–10°C  
-  - Phase separation: 15 min, 12,000 × g, 4°C  
-  - DNA pellet: 5 min, 2,000 × g, 4°C  
-  - DNA pellet wash centrifugations: 5 min, 2,000 × g, 4°C  
-  - Insoluble removal after DNA resuspension: 10 min, 12,000 × g, 4°C  
-- Incubations:  
-  - Nucleoprotein dissociation: 5 min at RT  
-  - Post-ethanol DNA precipitation incubation: 2–3 min RT  
-  - Sodium citrate wash incubation: 30 min RT (mixing occasionally)  
-  - 75% ethanol wash incubation: 10–20 min RT (mixing occasionally)  
-  - Pellet drying: 5–10 min (air or vacuum, not vacuum centrifuge)  
-- Storage:  
-  - Samples: 4°C overnight or –20°C up to a year before DNA isolation  
-  - Protein fraction: –70°C for months  
-  - DNA: 4°C overnight or –20°C with pH adjustment and 1 mM EDTA  
+
+- Temperature:
+  - Room temperature (20–25°C) for most steps
+  - 4°C for centrifugation steps
+  - 4–10°C centrifugation optional for high-fat samples
+  - Storage: 4°C overnight, –20°C longer storage, –70°C for protein supernatant
+- Centrifugation:
+  - 12,000 × g at 4°C for 5 min (optional for fat removal)
+  - 12,000 × g at 4°C for 15 min (phase separation)
+  - 2,000 × g at 4°C for 5 min (DNA pellet)
+  - 12,000 × g at 4°C for 10 min (DNA solubilization)
+- Volumes:
+  - 1 mL TRIzol per 50–100 mg tissue
+  - 0.3–0.4 mL TRIzol per 1 × 10^5–10^7 monolayer cells
+  - 0.75 mL TRIzol per 0.25 mL of suspension sample
+  - 0.2 mL chloroform per 1 mL TRIzol
+  - 0.3 mL 100% ethanol per 1 mL TRIzol
+  - 1 mL 0.1 M sodium citrate in 10% ethanol per 1 mL TRIzol (wash)
+  - 1.5–2 mL 75% ethanol per 1 mL TRIzol (wash)
+  - 0.3–0.6 mL 8 mM NaOH for DNA solubilization
+- Incubation times:
+  - 5 min after lysis before chloroform
+  - 2–3 min after chloroform addition
+  - 2–3 min ethanol precipitation incubation
+  - 30 min wash in sodium citrate/ethanol
+  - 10–20 min wash in 75% ethanol
+  - 5–10 min air or vacuum drying DNA pellet (avoid vacuum centrifuge)
+- pH:
+  - Sodium citrate in 10% ethanol at pH 8.5
+  - Adjust pH with HEPES in final DNA solution; 7–8 for long term storage
 
 ## Potential Missing Parameters (compare to source)
-- "Sample volume should not exceed 10% of TRIzol™ volume" for lysis step is missing or unclear.  
-- The protocol does not explicitly state to "Remove any remaining aqueous phase carefully" before DNA precipitation as a critical step (though step 11 says remove remaining aqueous phase, explicit emphasis is less).  
-- No mention of gentle inversion/mixing frequency/duration during sodium citrate and ethanol washes beyond "mix occasionally".  
-- No specific instructions on preventing mRNA degradation by not washing cells prior to lysis appear explicitly in the protocol steps (only in notes).  
-- No explicit instruction for keeping steps aseptic or use of RNaseZap or decontamination methods for surfaces and equipment.  
-- No explicit caution regarding not drying DNA pellet by vacuum centrifuge emphasized in the steps, although stated as important.  
-- Absence of specific mention on adjusting pH of DNA resuspension with HEPES to 7–8 for long-term storage with 1 mM EDTA is mentioned but pH adjustment details before storage are minimal.  
-- The protocol does not include instruction related to handling samples with high fat content beyond a single optional centrifugation — no parameters for this centrifugation other than brief mention (5 min, 12,000 × g, 4–10°C).  
 
-## Possible Hallucinations / Unsupported Claims
-- None detected. The protocol content aligns well with the source text; wording differences are present but no unsupported steps or parameters introduced.  
+- Media removal for cells grown in monolayer is mentioned in source but step detailing removal is brief; the protocol mentions remove media but no specified method or time.
+- No explicit mention of using cold TRIzol for tissues with high RNase (e.g., spleen/pancreas) is flagged in notes but no detailed instructions about temperature of TRIzol at use.
+- Optional centrifugation after lysis for high fat content is noted but without specific mention of precise temp range (4–10°C is in source, protocol states 4–10°C).
+- The source mentions "pipetting lysate up and down several times" vs protocol’s "pipetting up and down"—slight difference in emphasis.
+- The recommendation to not wash cells before adding TRIzol to avoid mRNA degradation is mentioned but no procedural emphasis on avoiding washing other than in notes.
+- The source mentions storing DNA in sodium citrate/ethanol for at least 2 hours; the protocol states at least 2 hours but does not advise max storage before next step.
+- The use of RNaseZap™ is mentioned in materials and notes but no specific step for surface decontamination is present in the procedure besides a general note.
+- Adjust pH for DNA storage with addition of 1 mM EDTA for long-term storage is stated in protocol with recommendation from source; explicit caution or concentration of EDTA is supported but somewhat minimal in protocol.
+
+## Possible Unsupported Claims
+
+- None detected. The protocol closely follows details from the source text without making unsupported statements.
 
 ## Step Order / Omission Risks
-- None detected. The step order corresponds closely to the source text, including sample lysis, phase separation, DNA precipitation, washing, solubilization, and optional yield determination.  
-- The only minor risk is that the protocol places some points (e.g., RNase contamination prevention, temperature handling) in notes rather than integrated into procedure steps, which may lead to user oversight.
+
+- The order of phases separation, DNA precipitation, washing, and solubilization matches source text.
+- The protocol omits explicit step-by-step instructions for preparation of starting material beyond tissue and cells; e.g., no mention of cutting tissue into smaller pieces, which source notes as possible troubleshooting.
+- Optional centrifugation for high fat lysates is left as optional; consistent with source.
+- No explicit mention of storage conditions for DNA between washes or after solubilization apart from overnight at 4°C and longer-term at –20°C; partial details but possibly incomplete.
+- No detailed instructions on how to handle large DNA pellets beyond repeat wash cycles; protocol states repeat more wash cycles but no instructions what to do if pellet is too small or fragile.
+- No mention of precipitation or processing of RNA or protein phases beyond noting protein supernatant can be stored or used later.
+
+Overall, the protocol is comprehensive but some minor items on RNase control and starting material preparation steps could present risks if omitted or unclear.

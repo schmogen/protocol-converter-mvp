@@ -1,119 +1,134 @@
-# Dynabeads™ M-280 Streptavidin Coupling and Immobilization Protocol
+# Use of Dynabeads™ M-280 Streptavidin for Molecular Coupling and RNA Applications
 
 ## Objective
-To provide detailed protocols for immobilizing biotinylated molecules such as nucleic acids, proteins, and antibodies onto Dynabeads™ M-280 Streptavidin magnetic beads for various downstream applications.
+To provide protocols for immobilizing biotinylated molecules (nucleic acids, proteins, antibodies) on Dynabeads™ M-280 Streptavidin magnetic beads and guidelines for washing and handling buffers, including preparation for RNA applications.
 
 ## Materials
-- Dynabeads™ M-280 Streptavidin (10 mg/mL in PBS pH 7.4 with 0.1% BSA, 0.02% sodium azide)
-- DynaMag™ Magnet (e.g. Cat. No. 11205D, 11206D, 60210)
-- Mixing device with tilting and rotation (e.g. HulaMixer™ Sample Mixer)
-- Binding and washing buffers (see Table 1):
-  - 1X B&W Buffer (PBS pH 7.4)
-  - PBS/BSA (PBS pH 7.4 with 0.01% w/v BSA)
-  - PBST (PBS pH 7.4 with 0.01% v/v Tween™-20)
-  - Solution A (DEPC-treated 0.1 M NaOH, 10 mM Tris-HCl pH 7.5, 0.05 M NaCl, 1 mM EDTA)
-  - Solution B (2 M NaCl, DEPC-treated 0.1 M NaCl)
-- Biotinylated molecules (e.g., peptides, proteins, antibodies, nucleotides, DNA/RNA)
-- Distilled water
-- Optional: detergent Tween™-20 (0.01–0.1%) to reduce non-specific binding
+- Dynabeads™ M-280 Streptavidin magnetic beads (10 mg/mL in PBS, pH 7.4 with 0.1% BSA, 0.02% sodium azide)
+- DynaMag™ magnet (Cat. Nos. 11205D (2 mL), 11206D (10 mL), 60210 (100 mL))
+- Mixing device with tilting and rotation (e.g., HulaMixer™ Sample Mixer)
+- Buffers and solutions as per Table 1:
+  - 1X B&W Buffer (PBS, pH 7.4)
+  - PBS/BSA (PBS pH 7.4 containing 0.01% w/v BSA)
+  - PBST (PBS pH 7.4 containing 0.01% v/v Tween™-20)
+  - Solution A: DEPC-treated 0.1 M NaOH, 10 mM Tris-HCl (pH 7.5), 1 mM EDTA
+  - Solution B: 2 M NaCl, DEPC-treated 0.05 M NaCl
+- Biotinylated molecules (e.g., peptides, proteins, antibodies, oligonucleotides, DNA/RNA)
+- PBS containing 0.1% BSA (for antibody/protein washing)
+- Tween™ 20 (if required, 0.01–0.1%)
+- Ultrafiltration or clean-up protocols (optional for removing free biotin or primers) [download from thermofisher.com/handbook]
 
 ## Procedure
 
-### General Preparation of Beads
-1. Resuspend Dynabeads™ M-280 Streptavidin beads in the vial by vortexing for >30 seconds or tilting and rotating for 5 minutes.
+### General Preparation
+1. Resuspend beads in the vial by vortexing >30 sec or tilting and rotating for 5 min.
 2. Transfer the desired volume of beads to a new tube.
-3. Add at least an equal volume of washing buffer (e.g., 1X B&W Buffer) and mix by vortexing for 5 seconds or by gentle rotation for at least 5 minutes.
-4. Place the tube on a magnet for 1–2 minutes to separate beads and discard the supernatant.
-5. Remove the tube from the magnet and resuspend the washed beads in washing buffer equal to the initial bead volume.
+3. Wash beads:
+   - Add an equal volume of suitable washing buffer (at least 1 mL).
+   - Mix by vortexing for 5 sec or keep on a roller for at least 5 min.
+4. Place the tube on the magnet for 1–2 min to collect beads and discard the supernatant.
+5. Remove tube from magnet and resuspend beads in the washing buffer equal to the initial bead volume used.
 
 ### Immobilization of Biotinylated Molecules
+1. Add biotinylated molecule solution to the washed beads.
+2. Incubate for 15–30 min at room temperature with gentle rotation.
+3. Place tube on magnet for 2–3 min and discard the supernatant.
+4. Wash coated beads 3–5 times in appropriate washing buffer:
+   - For nucleic acids: 1X B&W Buffer.
+   - For proteins/antibodies: PBS containing 0.1% BSA.
+5. Resuspend beads in a suitable buffer at desired concentration for downstream use.
 
-#### Nucleic Acids (DNA or RNA)
-1. Wash beads twice in Solution A for 2 minutes each with the same volume of Solution A as beads.
-2. Wash beads once in Solution B with the same volume.
-3. Resuspend beads in Solution B to prepare for coupling.
-4. Resuspend beads in 2X B&W Buffer to a final concentration of 5 µg/µL (double original volume).
-5. Add an equal volume of biotinylated DNA/RNA diluted in distilled water to reduce NaCl concentration from 2 M to 1 M.
-6. Incubate for 15 minutes at room temperature with gentle rotation.
-   - For oligonucleotides <30 bases, incubation time is a maximum of 10 minutes.
-   - For DNA fragments up to 1 kb, incubation time is 15 minutes.
-7. Separate beads with a magnet for 2–3 minutes and discard the supernatant.
-8. Wash beads 2–3 times with 1X B&W Buffer.
-9. Resuspend beads in buffer with low salt concentration appropriate for downstream applications.
+### RNA Applications (Post-washing Protocol)
+1. Wash beads twice in Solution A for 2 min each (use equal or larger volume than initial bead volume).
+2. Wash beads once in Solution B using equivalent volume.
+3. Resuspend beads in Solution B ready for coating with biotinylated molecules.
 
-#### Antibodies/Proteins
-1. Incubate beads with biotinylated antibodies or proteins in PBS for 30 minutes at room temperature with gentle rotation.
-2. Separate beads with a magnet for 2–3 minutes and discard supernatant.
-3. Wash beads 4–5 times in PBS containing 0.1% BSA.
-4. Resuspend beads to desired concentration for downstream applications.
+### Immobilization of Nucleic Acids
+1. Resuspend beads in 2X B&W Buffer to 5 µg/µL.
+2. Add an equal volume of biotinylated DNA/RNA diluted in distilled water to reduce NaCl from 2 M to 1 M.
+3. Incubate 15 min at room temperature with gentle rotation.
+4. Separate beads by magnet for 2–3 min; discard supernatant.
+5. Wash 2–3 times with 1X B&W Buffer.
+6. Resuspend beads in low-salt buffer suitable for downstream applications.
+
+**Incubation Times for Nucleic Acids:**
+- Short oligonucleotides (<30 bases): up to 10 min.
+- DNA fragments up to 1 kb: 15 min.
+
+### Immobilization of Antibodies/Proteins
+1. Incubate beads and biotinylated antibodies in PBS for 30 min at room temperature with gentle rotation.
+2. Separate beads by magnet for 2–3 min; discard supernatant.
+3. Wash coated beads 4–5 times with PBS containing 0.1% BSA.
+4. Resuspend beads in desired buffer and concentration.
 
 ## Notes
-- Use up to a two-fold excess of binding capacity of the biotinylated molecule to saturate streptavidin.
-- Keep tubes on the magnet for at least 2 minutes to ensure complete bead capture.
 - Avoid air bubbles during pipetting.
-- Free biotin in samples will reduce bead binding capacity.
-- For diluted samples, increase incubation time or use smaller batches.
-- Using detergents such as 0.01–0.1% Tween™-20 in buffers can reduce non-specific binding.
-- Indirect target capture (mixing biotinylated molecules with sample before adding beads) may improve results for weak affinities or low molecule concentrations.
-- Binding capacities per 1 mg beads (typical values):
+- Free biotin reduces bead binding capacity; remove free biotin if necessary.
+- Use up to two-fold excess of biotinylated molecule relative to beads’ binding capacity.
+- Binding capacity varies with molecule size and conformation.
+- For diluted samples, increase incubation time or isolate in smaller batches.
+- Adding 0.01–0.1% Tween™ 20 can reduce non-specific binding during capture.
+- Biotinylated target binding capacities (typical per mg beads):
+  - Free Biotin: 650–900 pmol
   - Biotinylated peptides: ~200 pmol
   - Biotinylated antibodies: ~10 µg
-  - Double-stranded DNA: ~10 µg
-  - Single-stranded oligonucleotides: ~200 pmol
-- For RNA applications, Dynabeads™ are not supplied in RNase-free solutions; perform washing steps accordingly.
+  - ds DNA: ~10 µg
+  - Ss oligonucleotides: ~200 pmol
+- Dynabeads™ MyOne™ Streptavidin beads may be used for automation due to smaller size and higher magnetic mobility.
+- For best results, optimize bead quantity and incubation time for each application.
 
 ## Review Checklist
-- [ ] Growth conditions verified (temperature, CO2/O2, time)
-- [ ] Media composition and volumes verified
-- [ ] Mixing parameters verified (rpm/RCF, time)
-- [ ] Incubation times verified
-- [ ] Centrifugation settings verified (RCF, time, temp)
-- [ ] Step order confirmed against source
+- [ ] Growth conditions verified (temperature, CO2/O2, time)  
+- [ ] Media composition and volumes verified  
+- [ ] Mixing parameters verified (rpm/RCF, time)  
+- [ ] Incubation times verified  
+- [ ] Centrifugation settings verified (RCF, time, temp) [CHECK] (centrifugation not specified)  
+- [ ] Step order confirmed against source  
 - [ ] Any ambiguous values flagged with [CHECK]
 
 ## Review Flags
 
 ## Critical Parameters Checklist (from the protocol)
-- Bead concentration for immobilization: 5 µg/µL (2X B&W Buffer)
-- Washing volumes: same volume as beads or at least 1 mL (varies per step)
-- Vortexing times: >30 sec for resuspension, 5 sec for mixing after adding washing buffer
-- Rotation/incubation times:
-  - 5 min tilting/rotation for bead resuspension
-  - Nucleic acid binding incubation: 10 min max for oligos <30 bases; 15 min for DNA ≤1 kb
-  - Protein/antibody coupling: 30 min at room temperature
-  - Washing: twice 2 min washes in Solution A; one wash in Solution B (time given only for Solution A washes)
-  - Magnetic separation: 1–2 min for general washing steps, 2–3 min for bead separations after binding
-- Buffers and solutions:
-  - Solution A: DEPC-treated 0.1 M NaOH, 10 mM Tris-HCl pH 7.5, 0.05 M NaCl, 1 mM EDTA
-  - Solution B: 2 M NaCl, DEPC-treated 0.1 M NaCl
-  - 1X B&W Buffer (PBS pH 7.4)
-  - PBS with 0.1% BSA (for antibody/protein washing)
-  - PBST with 0.01% Tween-20 optional for non-specific binding reduction
-- Binding capacities per 1 mg beads:
-  - Biotinylated peptides: ~200 pmol
-  - Biotinylated antibodies: ~10 µg
-  - dsDNA: ~10 µg
-  - ss oligonucleotides: ~200 pmol
-- Magnetization step duration: 1–2 or 2–3 min depending on step
-- Temperature: room temperature (implicit for all incubations)
+- Bead concentration for nucleic acid immobilization: 5 µg/µL in 2X B&W Buffer  
+- Incubation times:  
+  - General immobilization: 15–30 min at room temperature  
+  - Nucleic acids: short oligonucleotides <30 bases up to 10 min; DNA up to 1 kb, 15 min  
+  - Antibodies/proteins: 30 min at room temperature  
+- Washing:  
+  - Washing times: typically 1–5 min (mixing at least 5 min recommended)  
+  - Number of washes: 3–5 times for coated beads  
+  - RNA application washes: 2 × Solution A for 2 min, 1 × Solution B (times mentioned)  
+- Volumes: equal volume of buffer to beads or at least 1 mL during washing  
+- Magnet separation time: 1–3 min  
+- Buffer compositions used explicitly (e.g., PBS pH 7.4, PBS/BSA 0.1%, Tween 0.01–0.1%)  
+- Tween™ 20 concentration for reducing nonspecific binding: 0.01–0.1%  
+- Free biotin removal recommended (no numeric detail)  
+- Storage temperature for buffers: 2 to 8°C (from source but not re-stated in protocol)  
 
 ## Potential Missing Parameters (compare to source)
-- Washing time for Solution B wash during RNA application is missing in the protocol (SOURCE: wash once in Solution B, time not specified—only Solution A wash time given as 2 min)
-- Explicit volume for incubation steps with biotinylated molecules is not always specified; the protocol mentions "add an equal volume" or "same volume," but original text gives “at least 1 mL” or “use same or larger volume” which may be ambiguous.
-- The protocol lacks explicit mention of RNase-free handling precaution details beyond stating to wash for RNA applications
-- Detergent concentration range in washing buffers optional phrase appears in notes but no clear step for adding Tween concentration 0.01–0.1% stated explicitly in washing steps
+- Source specifies buffer pH ranges for binding/washing buffers typically 5–9; protocol only mentions pH 7.4 PBS based buffers without explicit pH variations  
+- Salt concentration adjustment in immobilization step for nucleic acids: Source details dilution from 2 M to 1 M NaCl during nucleic acid immobilization. Protocol states this but lacks precision on starting buffer salt concentrations (Solution B details are fragmented, e.g., Solution B is 2 M NaCl in source but protocol states 2X B&W Buffer used to achieve 2 M NaCl) — may cause ambiguity.  
+- The source mentions use of detergent Tween specifically for some applications with concentrations 0.01–0.1%, protocol correctly notes this but does not clarify when exactly addition during binding is recommended vs only in wash buffer  
+- The source states beads contain ~6–7 × 10^8 beads/mL at 10 mg/mL, which affects binding capacity calculations; the protocol does not mention beads per mL or bead counts  
+- Sample volume or total reaction volume is not always specified or suggested (e.g., no explicit total volume for immobilization or washing steps)  
+- Source suggests that incubation time for bead resuspension is vortex >30 s or tilt/rotate 5 min; protocol specifies this but the mixing recommendation for washing (vortex 5 sec or roller 5 min) is less in duration than source original for resuspension step  
+- Source details use of spin columns or disposable separation columns to remove free biotin or unincorporated biotinylated primers; protocol references ultrafiltration or cleanup but is less specific  
+- The source reports Dynabeads M-280 Streptavidin are not supplied in RNase-free solutions but must be washed for RNA use; protocol captures this partially but does not explicitly warn about potential RNase contamination risk  
+- The recommended storage and handling conditions for beads (e.g., temperature, shelf life) are missing in protocol  
+- Binding capacity numbers from table (e.g., pmol or µg per mg beads) are included but not referenced with units in every context (e.g. "binding capacity varies" is vague)  
 
-## Possible Hallucinations / Unsupported Claims
-- None detected. All protocol steps and parameters appear supported by the source text.
+## Possible Unsupported Claims
+- None detected. All major protocol steps and claims appear supported by source text.
 
 ## Step Order / Omission Risks
-- The protocol omits specifying that for nucleic acid immobilization, initial bead washing is first according to "Wash Dynabeads™ magnetic beads" section (general washing), then a separate washing series with Solution A and B. The protocol conflates these into the "Nucleic Acids" section which could risk skipping initial washing steps.
-- Incubation times for antibodies proteins and nucleic acids are given but range phrasing (e.g., 15–30 min for immobilization in general) is not consistently reflected in the protocol:
-  - Source text: 15–30 min incubation for immobilization generally; protocol uses fixed 15 min for nucleic acids or 30 min for antibodies.
-- The protocol states placing tube on magnet for 1–2 min for general washing but source suggests 2 min minimum to ensure bead capture; possible risk if minimum time shortened
-- The protocol specifies vortexing 5 sec or rotation 5 min after adding washing buffer, source states “vortex 5 sec or keep on roller at least 5 min” — protocol uses “or gentle rotation” without minimum time specified
-- No explicit mention of removal of free biotin by ultrafiltration/microdialysis or PCR primer cleanup for nucleic acid immobilization as mentioned in source; may affect binding efficiency but protocol only notes free biotin reduces binding capacity
+- The protocol consolidates some washing steps and timing but generally follows source order closely.  
+- Potential risk: the RNA application washing steps (two washes with Solution A for 2 min each) appear only as a general note under RNA applications and not integrated explicitly into a unified overall workflow, which may cause omission or misuse.  
+- The source warns about avoiding air bubbles during pipetting—this is only briefly mentioned in notes and might be overlooked.  
+- Source describes optimization by titration of beads and the use of up to two-fold excess of biotinylated molecules for saturation—protocol mentions but no detailed guidance, which may lead to suboptimal binding if not followed carefully.  
+- Protocol omits mention of steric availability and charge interactions impacting binding capacity from source text, which could affect expectations.  
+- Potential [CHECK]: centrifugation steps are not described; source is silent on centrifugation but protocol raises it in checklist—should be explicitly noted if absent.  
+- The protocol instruction "Add equal volume of washing buffer (or at least 1 mL)" matches source but source also notes increased incubation time for diluted samples—protocol mentions increasing incubation or smaller batches, but this is easily overlooked and may pose risk of under-binding.
 
 ---
 
-Overall, the generated protocol is consistent with source text but would benefit from clearer specification of washing times, explicit mention of RNAse-free handling and free biotin removal, and careful note on magnet incubation times to avoid incomplete bead separation.
+Summary: Protocol is generally comprehensive and reflects source, but some numeric details and guidelines on buffer composition, volumes, and RNase-free considerations are less explicit, potentially risking protocol reproducibility or RNA integrity. No unsupported claims detected but RNA-specific handling and salt concentration nuances deserve clearer emphasis.

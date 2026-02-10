@@ -1,7 +1,7 @@
 # Corning® Matrigel® Basement Membrane Matrix for 3D Culture In Vitro Protocol
 
 ## Objective
-To culture MDCK cells in 3D using Corning Matrigel basement membrane matrix through two methods: on-top culture and embedded culture, enabling the formation of a reconstituted basement membrane for in vitro studies.
+To culture MDCK cells in 3D using Corning Matrigel basement membrane matrix by two methods: on-top and embedded culture, allowing formation of 3D structures for further analysis such as immunostaining and confocal microscopy.
 
 ## Materials
 - MDCK cell line (ATCC CCL-34, Canis familiaris kidney cell line)
@@ -14,52 +14,42 @@ To culture MDCK cells in 3D using Corning Matrigel basement membrane matrix thro
 
 ## Procedure
 
-### 1. On-top MDCK 3D culture
+### 1. On-top MDCK 3D Culture
+1. Thaw Matrigel matrix overnight at 4°C by submerging the vial in a refrigerator. Swirl the vial after thawing to disperse the matrix.
+2. Add 200 μL Matrigel matrix (8 to 11 mg/mL) to each well of a pre-chilled 24-well plate. Spread evenly with a pipet tip and incubate at 37°C for 30 min to allow gelling.
+   - Note: Keep all cultureware and media on ice when contacting Matrigel. Do not overdry the Matrigel during gelation.
+3. Wash MDCK cells once with PBS. Trypsinize cells to obtain a single-cell suspension.
+4. Centrifuge cells at 125 x g for 5 min at room temperature (RT) to pellet.
+   - Note: Use healthy cells less than 85% confluent. Pipet vigorously to break up clumps.
+5. Resuspend cells in MDCK complete medium (MEM + 10% FBS) to 3 x 10^5 cells/mL. Plate 250 μL of this suspension into each Matrigel-coated well. Incubate at 37°C for 30 min.
+   - Note: Cell number may require optimization.
+6. Chill MDCK complete medium on ice. Add Matrigel matrix to 10% of final volume (final concentration 0.8 to 1.1 mg/mL).
+7. Gently add 250 μL of the chilled Matrigel-medium mixture to each well by pipetting down the side to avoid disturbing cells or Matrigel.
+8. Incubate cultures continuously for 4 to 7 days, changing the Matrigel-medium mixture every 2 days.
+9. Immunostaining and confocal microscopy are recommended for observing 3D culture morphology.
 
-1. Thaw Matrigel matrix overnight by submerging the vial in a 4°C refrigerator. Swirl the vial to disperse.
-2. Add 200 μL of Matrigel matrix (8 to 11 mg/mL) into each well of a pre-chilled 24-well plate. Spread evenly with a pipet tip.
-3. Incubate the plate at 37°C for 30 min to allow the Matrigel to gel.
-   - **Note:** Keep all cultureware/media contacting Matrigel pre-chilled or ice-cold. Keep Matrigel on ice during the process. Avoid overdrying Matrigel during gelation.
-4. Wash MDCK cells once with PBS.
-5. Trypsinize cells to obtain a single-cell suspension.
-6. Pellet cells by centrifugation at 125 x g for 5 min at room temperature (RT).
-   - **Note:** Use healthy cells <85% confluent. Pipet vigorously to avoid cell clumps.
-7. Resuspend cells in complete medium (MEM + 10% FBS) to 3 x 10^5 cells/mL.
-8. Plate 250 μL of cell suspension into each Matrigel-coated well.
-9. Incubate at 37°C for 30 min.
-   - **Note:** Cell number may require optimization.
-10. Chill MDCK complete medium on ice and add Matrigel matrix to 10% of the final volume (final concentration 0.8 to 1.1 mg/mL).
-11. Gently add 250 μL of Matrigel-medium mixture to each well by pipetting down the side of the well.
-    - **Note:** Thoroughly chill medium before addition. Avoid disturbing cells or the Matrigel.
-12. Culture continuously for 4 to 7 days.
-13. Change Matrigel-medium mixture every 2 days.
-14. Immunostaining and confocal microscopy observation of 3D cultures are recommended.
-
-### 2. Embedded MDCK 3D culture
-
-1. Thaw Matrigel matrix overnight by submerging the vial in ice in a 4°C refrigerator. Swirl to disperse.
-2. On Day 0, dilute Matrigel matrix to 5 mg/mL with ice-cold complete MDCK medium (MEM + 10% FBS).
-   - **Note:** Keep all cultureware and reagents contacting Matrigel on ice.
-3. Using pre-chilled tips, coat pre-chilled 24-well plates by adding 100 μL of 5 mg/mL Matrigel to each well. Spread evenly.
-4. Incubate at 37°C for 30 min to form gel.
-   - **Note:** Avoid overdrying the Matrigel during gelation.
-5. Trypsinize MDCK cells to single-cell suspension.
-6. Pellet cells at 125 x g for 5 min at room temperature.
-   - **Note:** Use healthy, <85% confluent cells. Pipet vigorously to disperse clumps.
-7. Resuspend cells in complete medium; adjust concentration to 5 × 10^6 cells/mL.
-8. Mix 30 μL of cell suspension with 270 μL of 5 mg/mL Matrigel matrix (on ice) for a final cell density of 5 x 10^5 cells/mL.
-   - **Note:** Cell suspension volume should not exceed 10% of Matrigel volume for proper polymerization. Cell number may require optimization.
-9. Incubate the plate at 37°C for 30 to 45 min to allow gelation.
-10. Gently add 500 μL of MDCK complete medium to each well.
-11. Culture for 8 to 10 days.
-12. Change medium every 2 days.
-13. Immunostaining and confocal microscopy observation of 3D cultures are recommended.
+### 2. Embedded MDCK 3D Culture
+1. Thaw Matrigel matrix overnight at 4°C in ice. Swirl after thawing to disperse.
+2. On Day 0, dilute Matrigel matrix to 5 mg/mL with ice-cold MDCK complete medium (MEM + 10% FBS).
+   - Note: Keep all materials on ice when handling Matrigel.
+3. Using pre-chilled tips, coat a pre-chilled 24-well plate by adding 100 μL of 5 mg/mL Matrigel per well. Spread evenly and incubate at 37°C for 30 min to gel.
+   - Note: Avoid overdrying the Matrigel during gelation.
+4. Trypsinize MDCK cells to a single-cell suspension. Centrifuge at 125 x g for 5 min at RT.
+   - Note: Use healthy cells less than 85% confluent. Pipet vigorously to break up clumps.
+5. Resuspend cells in complete medium and adjust density to 5 × 10^6 cells/mL.
+6. Mix 30 μL cell suspension with 270 μL of 5 mg/mL Matrigel kept on ice to get final density 5 × 10^5 cells/mL.
+   - Note: Cell volume should not exceed 10% of Matrigel volume to ensure proper polymerization. Optimize cell number as needed.
+7. Add the cell-Matrigel mixture into each well and incubate at 37°C for 30 to 45 min to allow gelation.
+8. Gently add 500 μL MDCK complete medium to each well.
+9. Culture for 8 to 10 days, changing medium every 2 days.
+10. Immunostaining and confocal microscopy analysis are recommended.
 
 ## Notes
-- All cultureware/media contacting Matrigel must be pre-chilled.
-- Avoid overdrying Matrigel during gel formation.
-- Cell numbers may need optimization based on growth properties.
-- MDCK cells tend to form clumps; pipetting vigorously is recommended to obtain single-cell suspension.
+- Always keep Matrigel matrix and cultureware cold (on ice) before gelation steps.
+- Avoid overdrying Matrigel during gel polymerization.
+- Use cells that are healthy and not more than 85% confluent.
+- Some optimization of cell density may be required depending on cell growth properties.
+- Pipetting vigorously helps obtain a single-cell suspension from MDCK cells to prevent clumps.
 
 ## Review Checklist
 - [ ] Growth conditions verified (temperature, CO2/O2, time)
@@ -74,67 +64,56 @@ To culture MDCK cells in 3D using Corning Matrigel basement membrane matrix thro
 
 ## Critical Parameters Checklist (from the protocol)
 
-- **Temperatures:**  
-  - Thawing: 4°C  
-  - Gel incubation: 37°C  
-  - Centrifugation temperature: Room temperature (RT)  
-- **Times:**  
-  - Matrigel thaw: Overnight  
-  - Gelation on 24-well plate: 30 min (both protocols)  
-  - Cell incubation on top of gel (on-top): 30 min  
-  - Cell-Matrigel gel incubation (embedded): 30 to 45 min  
-  - Culture duration (on-top): 4 to 7 days  
-  - Culture duration (embedded): 8 to 10 days  
-  - Medium/Matrigel mixture change interval: Every 2 days  
-- **Volumes:**  
-  - Matrigel on-bottom coating (on-top): 200 μL per well  
-  - Cell suspension plating (on-top): 250 μL per well  
-  - Matrigel-medium overlay (on-top): 250 μL per well  
-  - Matrigel coating (embedded): 100 μL per well  
-  - Cell suspension mixed with Matrigel (embedded): 30 μL + 270 μL (total 300 μL)  
-  - Media added after gelation (embedded): 500 μL per well  
-- **Concentrations:**  
-  - Matrigel used on-top: 8–11 mg/mL (initial), 0.8–1.1 mg/mL (final overlay)  
-  - Cell density on-top: 3 × 10^5 cells/mL  
-  - Matrigel diluted (embedded): 5 mg/mL  
-  - Cell density initial suspension embedded: 5 × 10^6 cells/mL  
-  - Final cell density embedded: 5 × 10^5 cells/mL  
-  - Trypsin/EDTA concentration: 0.25%  
-- **Centrifugation:**  
-  - Speed: 125 x g  
-  - Duration: 5 minutes  
-  - Temperature: Room temperature (RT)  
-- **CO2/O2:** MISSING  
-
----
+- Matrigel thawing: overnight at 4°C  
+- Matrigel concentration:  
+  - On-top base coat: 8 to 11 mg/mL  
+  - On-top overlay: 0.8 to 1.1 mg/mL (10% of final volume)  
+  - Embedded coating and mixture: 5 mg/mL  
+- Matrigel volumes:  
+  - On-top base coat: 200 μL per well  
+  - On-top overlay: 250 μL per well  
+  - Embedded coating: 100 μL per well  
+  - Embedded cell-Matrigel mix: 300 μL total (30 μL cells + 270 μL Matrigel)  
+  - Embedded overlay medium: 500 μL per well  
+- Cell densities:  
+  - On-top: 3 × 10^5 cells/mL, plated 250 μL per well  
+  - Embedded: prepare 5 × 10^6 cells/mL stock; final 5 × 10^5 cells/mL in Matrigel mixture  
+- Centrifugation: 125 x g, 5 min, room temperature (RT)  
+- Incubations:  
+  - Matrigel gelation: 37°C for 30 min  
+  - On-top cell attach/incubation post plating: 37°C for 30 min  
+  - Embedded gel with cells: 37°C, 30 to 45 min  
+- Culture durations:  
+  - On-top: 4 to 7 days, medium change every 2 days  
+  - Embedded: 8 to 10 days, medium change every 2 days  
+- Temperature details for procedure steps: keep all materials and cultureware on ice or pre-chilled before gelation steps  
+- Media composition: MEM + 10% FBS (referred to as MDCK complete medium)  
+- Pipetting instructions: gently add overlay down the side of wells  
+- Cell confluency: use cells not more than 85% confluent  
 
 ## Potential Missing Parameters (compare to source)
 
-- CO2 concentration during incubation (likely 5% CO2) is not mentioned in the generated protocol but is a standard parameter and usually assumed [CHECK].
-- The source mentions to avoid overdrying Matrigel during gel formation but no quantitative guidance is given—this is consistent, but no further clarification appears.
-- The source protocol notes to keep medium thoroughly chilled before addition of Matrigel in the on-top method; the generated protocol mentions this but not the detailed rationale.
-- The source mentions swirls the vial to "ensure material is dispersed" during thaw; generated protocol mentions swirl but omits the detail that the vial is submerged in ice specifically in the embedded protocol thaw step (they say "submerging the vial in ice in a 4°C refrigerator" vs "submerging the vial in a 4°C refrigerator").
-- The source mentions use of "pre-chilled 24-well plates" in on-top protocol step 2, and also for embedded protocol step 3; generated protocol reflects this, no omission.
-- The specific note "The volume of the cells should not be over 10% of the Matrigel solution" in embedded protocol step 5 is present.
-- No explicit mention of CO2/O2 levels anywhere in the source PDF; generated protocol did not add.
+- CO2 concentration during incubation (commonly 5% but missing in protocol)  
+- Exact RPM for centrifugation is missing; only RCF is provided (125 x g)  
+- Details on O2 levels during culture are not mentioned (not specified in source, so acceptable)  
+- Temperature stated as "room temperature" for centrifugation—no exact numeric range (acceptable but [CHECK] if RT varies in lab)  
+- No explicit mention whether medium changes involve removal of old overlay medium or complete replacement (source does not clarify)  
+- No details on temperature/humidity/CO2 conditions during 4-7 or 8-10 day culture periods (source only states 37°C)  
+- No instructions or specifics about the immunostaining procedure (only recommended; omission probably acceptable here)  
 
----
+## Possible Unsupported Claims
 
-## Possible Hallucinations / Unsupported Claims
-
-- None detected.  
-The generated protocol closely tracks the source text's instructions and notes without adding unsupported details.
-
----
+- None detected. All protocol steps, parameters, and notes are supported by source text.  
+- The protocol’s objective and recommended immunostaining/confocal microscopy are consistent with source text.  
 
 ## Step Order / Omission Risks
 
-- None detected.  
-The step order matches the source instructions as presented.  
-All critical steps (thawing, spreading Matrigel, centrifugation, resuspension, plating, incubation times) are present and in the correct sequence.
+- None detected. Step order aligns well with source text for both on-top and embedded methods.  
+- The note about "pipet vigorously to obtain single-cell suspensions" occurs at consistent steps.  
+- The caution to avoid overdrying Matrigel during gelation is included at appropriate points.  
+- All recommended medium changes every 2 days during culture are retained in correct order.  
+- No steps appear skipped or reordered relative to source text.  
 
 ---
 
-# Summary
-
-The generated protocol accurately reflects all critical numeric parameters and procedural details present in the source text and does not add any unsupported claims. It omits specification of CO2 environment, which is not detailed in the source text but important for cell culture [CHECK]. Other procedural notes and parameters are well transcribed. No major risks of omitted steps or reordering are apparent.
+Summary: The generated protocol is a faithful and safe extraction of the source method with key numeric parameters retained. Minor omissions on incubation atmosphere details and centrifuge RPM may warrant flagging depending on experimental rigor requirements, but no critical unsafe omissions or unsupported claims are present.

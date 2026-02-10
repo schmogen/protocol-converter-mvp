@@ -1,9 +1,10 @@
 {
   "pdf": "Test PDF 10.pdf",
-  "started_at": "2026-01-25 16:30:51",
-  "model": "gpt-4.1-mini",
+  "started_at": "2026-02-10 06:16:27",
+  "model_convert": "gpt-4.1-mini",
+  "model_flag": "gpt-4.1-mini",
   "status": "success",
   "raw_chars": 101185,
   "cleaned_chars": 101918,
-  "elapsed_seconds": 36.89
+  "elapsed_seconds": 140.27
 }

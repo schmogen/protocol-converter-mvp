@@ -4,6 +4,8 @@ import time
 from pathlib import Path
 
 import pdfplumber
+from docx import Document
+from docx.shared import Pt
 from dotenv import load_dotenv
 from openai import APIConnectionError, APITimeoutError, InternalServerError, OpenAI, RateLimitError
 
@@ -111,7 +113,7 @@ def _call_with_retry(client: OpenAI, model: str, prompt: str) -> str:
         except _RETRYABLE as e:
             if attempt == MAX_RETRIES:
                 raise
-            print(f"  ⏳ Retry {attempt}/{MAX_RETRIES} after {type(e).__name__}, waiting {delay}s …")
+            print(f"  Retry {attempt}/{MAX_RETRIES} after {type(e).__name__}, waiting {delay}s...")
             time.sleep(delay)
             delay *= 2
 
@@ -216,6 +218,59 @@ def append_flags_summary(protocol_md: str, flags_md: str) -> str:
 
 
 # -------------------------
+# Markdown -> Word export
+# -------------------------
+_HEADING_MAP = {"# ": 1, "## ": 2, "### ": 3}
+
+
+def md_to_docx(md_text: str, docx_path: Path) -> None:
+    """Convert a Markdown protocol string to a .docx file with basic formatting."""
+    doc = Document()
+    style = doc.styles["Normal"]
+    style.font.name = "Calibri"
+    style.font.size = Pt(11)
+
+    for line in md_text.splitlines():
+        stripped = line.strip()
+
+        # Skip blank lines (Word handles paragraph spacing)
+        if not stripped:
+            continue
+
+        # Headings
+        heading_level = None
+        for prefix, level in _HEADING_MAP.items():
+            if stripped.startswith(prefix):
+                heading_level = level
+                stripped = stripped[len(prefix):]
+                break
+        if heading_level is not None:
+            doc.add_heading(stripped, level=heading_level)
+            continue
+
+        # Checkbox list items: - [ ] or - [x]
+        if re.match(r"^- \[[ x]\] ", stripped):
+            doc.add_paragraph(stripped[2:], style="List Bullet")
+            continue
+
+        # Bullet list items
+        if stripped.startswith("- "):
+            doc.add_paragraph(stripped[2:], style="List Bullet")
+            continue
+
+        # Numbered list items (e.g. "1. Step text")
+        m = re.match(r"^(\d+)\.\s+", stripped)
+        if m:
+            doc.add_paragraph(stripped[m.end():], style="List Number")
+            continue
+
+        # Regular paragraph
+        doc.add_paragraph(stripped)
+
+    doc.save(str(docx_path))
+
+
+# -------------------------
 # Main
 # -------------------------
 def main() -> None:
@@ -277,23 +332,26 @@ def main() -> None:
             protocol_with_flags = append_flags_summary(protocol_md, flags_md)
             (out_dir / "protocol.md").write_text(protocol_with_flags, encoding="utf-8")
 
+            # Export to Word
+            md_to_docx(protocol_with_flags, out_dir / "protocol.docx")
+
             log["status"] = "success"
             log["raw_chars"] = len(raw)
             log["cleaned_chars"] = len(cleaned)
             log["elapsed_seconds"] = round(time.time() - t0, 2)
 
-            print(f"✅ {pdf_path.name} -> {out_dir / 'protocol.md'}  ({log['elapsed_seconds']}s)")
+            print(f"[OK] {pdf_path.name} -> {out_dir / 'protocol.md'}  ({log['elapsed_seconds']}s)")
 
         except Exception as e:
             log["status"] = "error"
             log["error"] = repr(e)
             log["elapsed_seconds"] = round(time.time() - t0, 2)
-            print(f"❌ {pdf_path.name} failed: {e!r}")
+            print(f"[FAIL] {pdf_path.name} failed: {e!r}")
 
         try:
             (out_dir / "run_log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
         except OSError as e:
-            print(f"⚠️  Could not write run_log.json for {pdf_path.name}: {e!r}")
+            print(f"[WARN] Could not write run_log.json for {pdf_path.name}: {e!r}")
 
     print("\nDone. Review outputs in output/<pdfname>/{protocol.md, flags.md}")
 
