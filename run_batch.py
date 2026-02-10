@@ -1,3 +1,4 @@
+import argparse
 import json
 import re
 import time
@@ -274,15 +275,23 @@ def md_to_docx(md_text: str, docx_path: Path) -> None:
 # Main
 # -------------------------
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Convert protocol PDFs to Markdown and Word.")
+    parser.add_argument("--file", type=Path, help="Path to a single PDF to convert instead of the entire input folder.")
+    args = parser.parse_args()
+
     if not CONTRACT_PATH.exists():
         raise SystemExit("Missing contract.md in project root. Create it first.")
 
-    if not INPUT_DIR.is_dir():
-        raise SystemExit(f"Input directory '{INPUT_DIR}' does not exist. Create it and add PDFs.")
-
-    pdfs = sorted(INPUT_DIR.glob("*.pdf"))
-    if not pdfs:
-        raise SystemExit("No PDFs found in input_pdfs/. Add PDFs and try again.")
+    if args.file:
+        if not args.file.exists():
+            raise SystemExit(f"File not found: {args.file}")
+        pdfs = [args.file]
+    else:
+        if not INPUT_DIR.is_dir():
+            raise SystemExit(f"Input directory '{INPUT_DIR}' does not exist. Create it and add PDFs.")
+        pdfs = sorted(INPUT_DIR.glob("*.pdf"))
+        if not pdfs:
+            raise SystemExit("No PDFs found in input_pdfs/. Add PDFs and try again.")
 
     contract = CONTRACT_PATH.read_text(encoding="utf-8")
     client = OpenAI()
