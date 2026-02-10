@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pdfplumber
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import APIConnectionError, APITimeoutError, InternalServerError, OpenAI, RateLimitError
 
 # -------------------------
 # Paths
@@ -20,6 +20,8 @@ CONTRACT_PATH = Path("contract.md")
 MODEL_CONVERT = "gpt-4.1-mini"
 MODEL_FLAG = "gpt-4.1-mini"
 MAX_INPUT_CHARS = 120_000  # safety limit to avoid huge uploads by accident
+MAX_RETRIES = 5
+RETRY_BASE_DELAY = 2  # seconds; doubled each attempt
 
 # Always append this (deterministic), regardless of what the model outputs
 REVIEW_CHECKLIST_MD = """
@@ -76,6 +78,43 @@ def clean_text(raw: str) -> str:
     cleaned = tidy_spaces(cleaned)
     return cleaned
 
+# -------------------------
+# User-facing label normalization
+# -------------------------
+def normalize_user_facing_labels(md: str) -> str:
+    """
+    Normalize user-facing section titles to avoid AI-internal language.
+    """
+    replacements = {
+        "Possible Hallucinations/Unsupported Claims": "Possible Unsupported Claims",
+        "Possible Hallucinations / Unsupported Claims": "Possible Unsupported Claims",
+        "Possible Hallucinations and Unsupported Claims": "Possible Unsupported Claims",
+        "Possible Hallucinations": "Possible Unsupported Claims",
+    }
+    for old, new in replacements.items():
+        md = md.replace(old, new)
+    return md
+
+# -------------------------
+# Retry helper
+# -------------------------
+_RETRYABLE = (RateLimitError, APITimeoutError, APIConnectionError, InternalServerError)
+
+
+def _call_with_retry(client: OpenAI, model: str, prompt: str) -> str:
+    """Call the OpenAI responses API with exponential backoff on transient errors."""
+    delay = RETRY_BASE_DELAY
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            resp = client.responses.create(model=model, input=prompt)
+            return resp.output_text.strip()
+        except _RETRYABLE as e:
+            if attempt == MAX_RETRIES:
+                raise
+            print(f"  ⏳ Retry {attempt}/{MAX_RETRIES} after {type(e).__name__}, waiting {delay}s …")
+            time.sleep(delay)
+            delay *= 2
+
 
 # -------------------------
 # LLM: conversion
@@ -99,11 +138,7 @@ If something is unclear, write "[CHECK]" rather than guessing.
 {cleaned_text}
 """.strip()
 
-    resp = client.responses.create(
-        model=MODEL_CONVERT,
-        input=prompt,
-    )
-    return resp.output_text.strip()
+    return _call_with_retry(client, MODEL_CONVERT, prompt)
 
 
 def finalize_protocol_md(protocol_md: str) -> str:
@@ -139,7 +174,7 @@ If a category is not present, say "MISSING".
 Identify parameters that appear in the SOURCE TEXT but are missing or unclear in the GENERATED PROTOCOL.
 Only cite items that are supported by the SOURCE TEXT.
 
-## Possible Hallucinations / Unsupported Claims
+## Possible Unsupported Claims
 List any statements in the GENERATED PROTOCOL that are NOT clearly supported by the SOURCE TEXT.
 If none, say "None detected".
 
@@ -159,11 +194,7 @@ Rules:
 {protocol_md}
 """.strip()
 
-    resp = client.responses.create(
-        model=MODEL_FLAG,
-        input=prompt,
-    )
-    return resp.output_text.strip()
+    return _call_with_retry(client, MODEL_FLAG, prompt)
 
 
 def append_flags_summary(protocol_md: str, flags_md: str) -> str:
@@ -171,12 +202,17 @@ def append_flags_summary(protocol_md: str, flags_md: str) -> str:
     Add a short flags section at the end of protocol.md so users see it immediately.
     Keep it concise by extracting just the Potential Missing + Hallucinations headers if present.
     """
-    # Very light extraction: keep the whole flags_md but under a header.
-    # (We can make this more selective later.)
-    if "## Review Flags" in protocol_md:
-        return protocol_md
+    # Normalize both inputs first
+    protocol_md_norm = normalize_user_facing_labels(protocol_md)
+    flags_md_norm = normalize_user_facing_labels(flags_md)
 
-    return protocol_md.strip() + "\n\n## Review Flags\n\n" + flags_md.strip() + "\n"
+    if "## Review Flags" in protocol_md_norm:
+        return protocol_md_norm
+
+    result_md = protocol_md_norm.strip() + "\n\n## Review Flags\n\n" + flags_md_norm.strip() + "\n"
+    # Ensure normalization to the final concatenated string as well
+    result_md = normalize_user_facing_labels(result_md)
+    return result_md
 
 
 # -------------------------
@@ -186,12 +222,21 @@ def main() -> None:
     if not CONTRACT_PATH.exists():
         raise SystemExit("Missing contract.md in project root. Create it first.")
 
+    if not INPUT_DIR.is_dir():
+        raise SystemExit(f"Input directory '{INPUT_DIR}' does not exist. Create it and add PDFs.")
+
     pdfs = sorted(INPUT_DIR.glob("*.pdf"))
     if not pdfs:
         raise SystemExit("No PDFs found in input_pdfs/. Add PDFs and try again.")
 
     contract = CONTRACT_PATH.read_text(encoding="utf-8")
     client = OpenAI()
+
+    # Validate API key early to avoid wasting time on PDF extraction
+    try:
+        client.models.list()
+    except Exception as e:
+        raise SystemExit(f"OpenAI API key check failed: {e}") from e
 
     OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -245,7 +290,10 @@ def main() -> None:
             log["elapsed_seconds"] = round(time.time() - t0, 2)
             print(f"❌ {pdf_path.name} failed: {e!r}")
 
-        (out_dir / "run_log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
+        try:
+            (out_dir / "run_log.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
+        except OSError as e:
+            print(f"⚠️  Could not write run_log.json for {pdf_path.name}: {e!r}")
 
     print("\nDone. Review outputs in output/<pdfname>/{protocol.md, flags.md}")
 
