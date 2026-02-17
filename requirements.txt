@@ -1,1 +1,9 @@
--r mvp/backend/requirements.txt
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+openai
+anthropic
+pdfplumber
+pypandoc
+python-docx
