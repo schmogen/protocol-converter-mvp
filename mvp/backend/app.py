@@ -36,13 +36,19 @@ def health():
     return {"status": "ok", "timestamp": datetime.now().isoformat()}
 
 # CORS: allow Next.js frontend in dev and production
+# Set EXTRA_CORS_ORIGINS env var for additional origins (comma-separated)
+_origins = [
+    "http://localhost:3000",
+    "https://protocolfoundry.io",
+    "https://www.protocolfoundry.io",
+]
+_extra = os.getenv("EXTRA_CORS_ORIGINS", "")
+if _extra:
+    _origins.extend([o.strip() for o in _extra.split(",") if o.strip()])
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://protocolfoundry.io",
-        "https://www.protocolfoundry.io",
-    ],
+    allow_origins=_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
