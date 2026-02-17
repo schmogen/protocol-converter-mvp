@@ -1,14 +1,18 @@
+import logging
 import os
 import tempfile
 import shutil
+from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from dotenv import load_dotenv
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Import existing pipeline functions
 import sys
@@ -28,12 +32,17 @@ app = FastAPI()
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    logger.info("Health check pinged")
+    return {"status": "ok", "timestamp": datetime.now().isoformat()}
 
-# Enable CORS for local frontend
+# CORS: allow Next.js frontend in dev and production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://protocolfoundry.io",
+        "https://www.protocolfoundry.io",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -117,8 +126,11 @@ async def convert_pdf(file: UploadFile = File(...)):
     
     # Validate file size
     if len(file_content) > MAX_FILE_SIZE:
-        raise HTTPException(status_code=400, detail="File size exceeds 20MB limit")
-    
+        raise HTTPException(status_code=413, detail="File size exceeds 20MB limit")
+
+    file_size_mb = len(file_content) / (1024 * 1024)
+    logger.info(f"[{datetime.now()}] Conversion started: {file.filename} ({file_size_mb:.2f} MB)")
+
     # Create temporary directory
     temp_dir = Path(tempfile.mkdtemp())
     
@@ -152,6 +164,7 @@ async def convert_pdf(file: UploadFile = File(...)):
             flags_md = generate_flags_md(client, cleaned_text, protocol_md)
             final_md = append_flags_summary(protocol_md, flags_md)
         except Exception as e:
+            logger.error(f"[{datetime.now()}] Pipeline failed: {file.filename} - {e}")
             raise HTTPException(status_code=500, detail=f"Pipeline error: {str(e)}")
         
         # Convert to DOCX
@@ -165,6 +178,8 @@ async def convert_pdf(file: UploadFile = File(...)):
             except Exception as e:
                 raise HTTPException(status_code=500, detail=f"DOCX conversion failed: {str(e)}")
         
+        logger.info(f"[{datetime.now()}] Conversion completed: {file.filename}")
+
         # Return file
         return FileResponse(
             path=str(docx_path),
@@ -178,6 +193,7 @@ async def convert_pdf(file: UploadFile = File(...)):
         raise
     
     except Exception as e:
+        logger.error(f"[{datetime.now()}] Unexpected error: {file.filename} - {e}")
         # Clean up temp directory
         shutil.rmtree(temp_dir, ignore_errors=True)
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")

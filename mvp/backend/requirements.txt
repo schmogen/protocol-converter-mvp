@@ -3,6 +3,7 @@ uvicorn[standard]
 python-multipart
 python-dotenv
 openai
+anthropic
 pdfplumber
 pypandoc
 python-docx
