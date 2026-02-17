@@ -5,5 +5,4 @@ python-dotenv
 openai
 anthropic
 pdfplumber
-pypandoc
 python-docx

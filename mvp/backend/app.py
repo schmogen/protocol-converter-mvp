@@ -57,25 +57,9 @@ app.add_middleware(
 MAX_FILE_SIZE = 20 * 1024 * 1024  # 20MB
 
 
-def markdown_to_docx_pypandoc(md_content: str, output_path: Path) -> bool:
-    """Convert markdown to docx using pypandoc. Returns True on success."""
-    try:
-        import pypandoc
-        pypandoc.convert_text(
-            md_content,
-            'docx',
-            format='md',
-            outputfile=str(output_path)
-        )
-        return True
-    except (ImportError, RuntimeError, OSError):
-        return False
-
-
-def markdown_to_docx_fallback(md_content: str, output_path: Path):
-    """Fallback markdown to docx conversion using python-docx."""
+def markdown_to_docx(md_content: str, output_path: Path):
+    """Convert markdown to docx using python-docx."""
     from docx import Document
-    from docx.shared import Pt
     
     doc = Document()
     lines = md_content.split('\n')
@@ -176,13 +160,10 @@ async def convert_pdf(file: UploadFile = File(...)):
         # Convert to DOCX
         docx_path = temp_dir / "output.docx"
         
-        # Try pypandoc first
-        if not markdown_to_docx_pypandoc(final_md, docx_path):
-            # Fallback to python-docx
-            try:
-                markdown_to_docx_fallback(final_md, docx_path)
-            except Exception as e:
-                raise HTTPException(status_code=500, detail=f"DOCX conversion failed: {str(e)}")
+        try:
+            markdown_to_docx(final_md, docx_path)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"DOCX conversion failed: {str(e)}")
         
         logger.info(f"[{datetime.now()}] Conversion completed: {file.filename}")
 
