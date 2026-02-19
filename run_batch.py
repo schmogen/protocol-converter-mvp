@@ -146,32 +146,41 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
     """Return all tables from the PDF in page/vertical order as raw row data.
 
     Each entry is a dict with:
-      'page'  – 1-based page number
-      'top'   – top y-coordinate of the table on its page (pdfplumber coords)
-      'rows'  – list[list[str|None]] from pdfplumber table.extract()
+      'page'          – 1-based page number
+      'top'           – top y-coordinate of the table on its page
+      'rows'          – list[list[str|None]] from pdfplumber table.extract()
+      'preceding_text'– text on the same page immediately above the table,
+                        used as an anchor for reinsertion into model output
     """
     tables: list[dict] = []
     with pdfplumber.open(pdf_path) as pdf:
         for page_num, page in enumerate(pdf.pages, start=1):
-            for table in sorted(page.find_tables(), key=lambda t: t.bbox[1]):
+            tables_on_page = sorted(page.find_tables(), key=lambda t: t.bbox[1])
+            prev_bottom = 0.0
+            for table in tables_on_page:
+                top = table.bbox[1]
+                preceding = ""
+                if top > prev_bottom:
+                    crop = page.crop((0, prev_bottom, page.width, top))
+                    preceding = crop.extract_text() or ""
                 rows = table.extract()
                 if rows:
                     tables.append({
                         "page": page_num,
-                        "top": table.bbox[1],
+                        "top": top,
                         "rows": rows,
+                        "preceding_text": preceding.strip(),
                     })
+                prev_bottom = table.bbox[3]
     return tables
 
 
 def extract_text_from_pdf(pdf_path: Path) -> str:
-    """Extract page text with TABLE_PLACEHOLDER_N tokens where tables appear."""
+    """Extract page text with tables interleaved by vertical position."""
     parts: list[str] = []
-    table_counter = 1
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
-            content, n_tables = _extract_page_content_with_placeholders(page, table_counter)
-            table_counter += n_tables
+            content = _extract_page_content(page)
             parts.append(f"\n\n--- PAGE {i} ---\n\n{content}")
     return "".join(parts).strip()
 
@@ -226,6 +235,67 @@ def clean_text_preserving_placeholders(raw: str) -> str:
         else:
             result_parts.append(clean_text(seg))
     return "".join(result_parts).strip()
+
+# -------------------------
+# Table reinsertion
+# -------------------------
+def reinsert_tables_into_markdown(md: str, pdf_tables: list) -> str:
+    """Reinsert pdfplumber tables into model-generated markdown by anchor matching.
+
+    For each table, the text that preceded it in the original PDF extraction is
+    used to build a short anchor phrase.  The function searches the model output
+    for that anchor and inserts the table in markdown pipe format immediately
+    after the matching line.  Tables with no anchor match are appended at the
+    end of the document.  Any TABLE_PENDING markers left by the model are
+    stripped from the final output.
+
+    Tables are processed in document order; a forward-only cursor ensures that
+    each subsequent table is inserted after the previous one.
+    """
+    if not pdf_tables:
+        return "\n".join(
+            line for line in md.split("\n")
+            if line.strip() != "TABLE_PENDING"
+        )
+
+    lines = md.split("\n")
+    search_from = 0  # advance so tables stay in document order
+
+    for table_dict in pdf_tables:
+        preceding_text = table_dict.get("preceding_text", "")
+        rows = table_dict["rows"]
+        table_md = _table_to_markdown(rows)
+        if not table_md:
+            continue
+
+        table_block = ["", *table_md.splitlines(), ""]
+        words = preceding_text.split()
+        insert_at = None
+
+        # Try progressively shorter anchors until one matches
+        for n in (8, 6, 4, 3):
+            if len(words) < n:
+                continue
+            anchor = " ".join(words[-n:]).lower()
+            for i in range(search_from, len(lines)):
+                if lines[i].strip() == "TABLE_PENDING":
+                    continue
+                if anchor in lines[i].lower():
+                    insert_at = i + 1
+                    break
+            if insert_at is not None:
+                break
+
+        if insert_at is None:
+            lines.extend(table_block)
+        else:
+            lines = lines[:insert_at] + table_block + lines[insert_at:]
+            search_from = insert_at + len(table_block)
+
+    # Strip any TABLE_PENDING markers the model left in the output
+    lines = [line for line in lines if line.strip() != "TABLE_PENDING"]
+    return "\n".join(lines)
+
 
 # -------------------------
 # User-facing label normalization
@@ -292,7 +362,7 @@ NUMBERED STEPS: Output every procedural step as a markdown numbered list item us
 
 LIST NUMBERING: Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
 
-TABLES: Tables from the source document have been replaced with placeholder tokens of the form TABLE_PLACEHOLDER_N (where N is a sequential integer starting from 1). When you encounter a TABLE_PLACEHOLDER_N token in the input, output that exact token verbatim on its own line at the same position relative to surrounding steps and headings. Do not reproduce any table data, do not convert table content to text or bullets, and do not reorder, skip, or merge placeholder tokens.
+TABLES: If the source document contains tables, include a TABLE_PENDING marker on its own line at each position in the output where a table from the source should appear, in the same order and position as in the source. Do not reproduce table data.
 
 --- CONTRACT ---
 {contract}
@@ -586,7 +656,7 @@ def main() -> None:
             raw = extract_text_from_pdf(pdf_path)
             (out_dir / "raw_extracted.txt").write_text(raw, encoding="utf-8")
 
-            cleaned = clean_text_preserving_placeholders(raw)
+            cleaned = clean_text(raw)
             (out_dir / "cleaned.txt").write_text(cleaned, encoding="utf-8")
             (out_dir / "cleaned_debug.txt").write_text(cleaned, encoding="utf-8")
 
@@ -595,6 +665,7 @@ def main() -> None:
 
             protocol_md = convert_to_protocol_markdown(client, contract, cleaned)
             (out_dir / "model_output_debug.txt").write_text(protocol_md, encoding="utf-8")
+            protocol_md = reinsert_tables_into_markdown(protocol_md, pdf_tables)
             protocol_md = finalize_protocol_md(protocol_md)
 
             # Flagging pass (QA)
@@ -605,8 +676,8 @@ def main() -> None:
             protocol_with_flags = append_flags_summary(protocol_md, flags_md)
             (out_dir / "protocol.md").write_text(protocol_with_flags, encoding="utf-8")
 
-            # Export to Word — pass pre-extracted tables for placeholder substitution
-            md_to_docx(protocol_with_flags, out_dir / "protocol.docx", pdf_tables)
+            # Export to Word — tables are now embedded directly in the markdown
+            md_to_docx(protocol_with_flags, out_dir / "protocol.docx", [])
 
             log["status"] = "success"
             log["raw_chars"] = len(raw)

@@ -21,7 +21,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from run_batch import (
     extract_text_from_pdf,
     extract_tables_from_pdf,
-    clean_text_preserving_placeholders,
+    clean_text,
+    reinsert_tables_into_markdown,
     convert_to_protocol_markdown,
     finalize_protocol_md,
     generate_flags_md,
@@ -373,8 +374,9 @@ async def convert_pdf(file: UploadFile = File(...)):
         try:
             pdf_tables = extract_tables_from_pdf(pdf_path)
             raw_text = extract_text_from_pdf(pdf_path)
-            cleaned_text = clean_text_preserving_placeholders(raw_text)
+            cleaned_text = clean_text(raw_text)
             protocol_md = convert_to_protocol_markdown(client, contract, cleaned_text)
+            protocol_md = reinsert_tables_into_markdown(protocol_md, pdf_tables)
             protocol_md = finalize_protocol_md(protocol_md)
             flags_md = generate_flags_md(client, cleaned_text, protocol_md)
             final_md = append_flags_summary(protocol_md, flags_md)
@@ -382,11 +384,11 @@ async def convert_pdf(file: UploadFile = File(...)):
             logger.error(f"[{datetime.now()}] Pipeline failed: {file.filename} - {e}")
             raise HTTPException(status_code=500, detail=f"Pipeline error: {str(e)}")
 
-        # Convert to DOCX — pass pre-extracted tables for placeholder substitution
+        # Convert to DOCX — tables are now embedded directly in the markdown
         docx_path = temp_dir / "output.docx"
 
         try:
-            markdown_to_docx(final_md, docx_path, pdf_tables)
+            markdown_to_docx(final_md, docx_path, [])
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"DOCX conversion failed: {str(e)}")
         
