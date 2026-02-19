@@ -101,11 +101,77 @@ def _extract_page_content(page) -> str:
     return "\n\n".join(content for _, _, content in blocks)
 
 
+def _extract_page_content_with_placeholders(page, counter_start: int) -> tuple:
+    """Like _extract_page_content but replaces each table with a TABLE_PLACEHOLDER_N
+    token.  Returns (page_content_str, number_of_tables_found)."""
+    tables = page.find_tables()
+    if not tables:
+        return page.extract_text() or "", 0
+
+    tables_sorted = sorted(tables, key=lambda t: t.bbox[1])
+    blocks: list[tuple[float, float, str]] = []
+    counter = counter_start
+
+    for table in tables_sorted:
+        x0, top, x1, bottom = table.bbox
+        rows = table.extract()
+        if rows:
+            blocks.append((top, bottom, f"TABLE_PLACEHOLDER_{counter}"))
+            counter += 1
+
+    n_tables = counter - counter_start
+
+    crop_regions: list[tuple[float, float]] = []
+    prev_bottom: float = 0.0
+    for table in tables_sorted:
+        top = table.bbox[1]
+        bottom = table.bbox[3]
+        if top > prev_bottom:
+            crop_regions.append((prev_bottom, top))
+        prev_bottom = bottom
+    if prev_bottom < page.height:
+        crop_regions.append((prev_bottom, page.height))
+
+    for region_top, region_bottom in crop_regions:
+        cropped = page.crop((0, region_top, page.width, region_bottom))
+        text = cropped.extract_text() or ""
+        if text.strip():
+            blocks.append((region_top, region_bottom, text))
+
+    blocks.sort(key=lambda b: b[0])
+    return "\n\n".join(content for _, _, content in blocks), n_tables
+
+
+def extract_tables_from_pdf(pdf_path: Path) -> list:
+    """Return all tables from the PDF in page/vertical order as raw row data.
+
+    Each entry is a dict with:
+      'page'  – 1-based page number
+      'top'   – top y-coordinate of the table on its page (pdfplumber coords)
+      'rows'  – list[list[str|None]] from pdfplumber table.extract()
+    """
+    tables: list[dict] = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for page_num, page in enumerate(pdf.pages, start=1):
+            for table in sorted(page.find_tables(), key=lambda t: t.bbox[1]):
+                rows = table.extract()
+                if rows:
+                    tables.append({
+                        "page": page_num,
+                        "top": table.bbox[1],
+                        "rows": rows,
+                    })
+    return tables
+
+
 def extract_text_from_pdf(pdf_path: Path) -> str:
+    """Extract page text with TABLE_PLACEHOLDER_N tokens where tables appear."""
     parts: list[str] = []
+    table_counter = 1
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
-            content = _extract_page_content(page)
+            content, n_tables = _extract_page_content_with_placeholders(page, table_counter)
+            table_counter += n_tables
             parts.append(f"\n\n--- PAGE {i} ---\n\n{content}")
     return "".join(parts).strip()
 
@@ -136,6 +202,30 @@ def clean_text(raw: str) -> str:
     cleaned = normalize_newlines(cleaned)
     cleaned = tidy_spaces(cleaned)
     return cleaned
+
+
+# Matches a TABLE_PLACEHOLDER_N token that occupies its own line.
+_PLACEHOLDER_LINE_RE = re.compile(r"^(TABLE_PLACEHOLDER_\d+)$", re.MULTILINE)
+
+
+def clean_text_preserving_placeholders(raw: str) -> str:
+    """Like clean_text but keeps TABLE_PLACEHOLDER_N tokens on their own lines.
+
+    clean_text's normalize_newlines step collapses single newlines to spaces,
+    which would inline placeholder tokens with surrounding text.  This function
+    splits the raw string on placeholder lines, applies clean_text to each
+    non-placeholder segment independently, then reassembles with each placeholder
+    on its own blank-line-separated paragraph.
+    """
+    # re.split with a capturing group interleaves text and placeholder segments.
+    segments = _PLACEHOLDER_LINE_RE.split(raw)
+    result_parts: list[str] = []
+    for seg in segments:
+        if _PLACEHOLDER_LINE_RE.match(seg.strip()):
+            result_parts.append("\n\n" + seg.strip() + "\n\n")
+        else:
+            result_parts.append(clean_text(seg))
+    return "".join(result_parts).strip()
 
 # -------------------------
 # User-facing label normalization
@@ -202,7 +292,7 @@ NUMBERED STEPS: Output every procedural step as a markdown numbered list item us
 
 LIST NUMBERING: Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
 
-TABLES: If the source contains tables, preserve them in markdown table format using pipe characters (|). Every table must include a separator row (| --- | --- | ...) immediately after the header row. Never collapse table content into plain text or bullet points. When two or more tables appear consecutively in the output, insert a blank line between them so each table is clearly separated. When multiple tables appear in the same section of the source document, output them in the exact order they appear in the source. Do not reorder tables.
+TABLES: Tables from the source document have been replaced with placeholder tokens of the form TABLE_PLACEHOLDER_N (where N is a sequential integer starting from 1). When you encounter a TABLE_PLACEHOLDER_N token in the input, output that exact token verbatim on its own line at the same position relative to surrounding steps and headings. Do not reproduce any table data, do not convert table content to text or bullets, and do not reorder, skip, or merge placeholder tokens.
 
 --- CONTRACT ---
 {contract}
@@ -360,8 +450,13 @@ def _split_table_blocks(table_lines: list) -> list:
     return blocks
 
 
-def md_to_docx(md_text: str, docx_path: Path) -> None:
-    """Convert a Markdown protocol string to a .docx file with basic formatting."""
+def md_to_docx(md_text: str, docx_path: Path, pdf_tables: list = None) -> None:
+    """Convert a Markdown protocol string to a .docx file with basic formatting.
+
+    pdf_tables – ordered list of raw table dicts from extract_tables_from_pdf().
+    When present, TABLE_PLACEHOLDER_N lines are replaced with the corresponding
+    pre-extracted table rendered directly from pdfplumber row data.
+    """
     doc = Document()
     style = doc.styles["Normal"]
     style.font.name = "Calibri"
@@ -375,6 +470,16 @@ def md_to_docx(md_text: str, docx_path: Path) -> None:
 
         # Skip blank lines (Word handles paragraph spacing)
         if not stripped:
+            i += 1
+            continue
+
+        # TABLE_PLACEHOLDER_N — substitute the pre-extracted PDF table
+        m_ph = re.match(r"^TABLE_PLACEHOLDER_(\d+)$", stripped)
+        if m_ph:
+            idx = int(m_ph.group(1)) - 1  # convert 1-based N to 0-based index
+            if pdf_tables and 0 <= idx < len(pdf_tables):
+                md_lines = _table_to_markdown(pdf_tables[idx]["rows"]).splitlines()
+                _add_table_to_doc(doc, md_lines)
             i += 1
             continue
 
@@ -476,10 +581,12 @@ def main() -> None:
         }
 
         try:
+            pdf_tables = extract_tables_from_pdf(pdf_path)
+
             raw = extract_text_from_pdf(pdf_path)
             (out_dir / "raw_extracted.txt").write_text(raw, encoding="utf-8")
 
-            cleaned = clean_text(raw)
+            cleaned = clean_text_preserving_placeholders(raw)
             (out_dir / "cleaned.txt").write_text(cleaned, encoding="utf-8")
 
             if len(cleaned) < 500:
@@ -496,8 +603,8 @@ def main() -> None:
             protocol_with_flags = append_flags_summary(protocol_md, flags_md)
             (out_dir / "protocol.md").write_text(protocol_with_flags, encoding="utf-8")
 
-            # Export to Word
-            md_to_docx(protocol_with_flags, out_dir / "protocol.docx")
+            # Export to Word — pass pre-extracted tables for placeholder substitution
+            md_to_docx(protocol_with_flags, out_dir / "protocol.docx", pdf_tables)
 
             log["status"] = "success"
             log["raw_chars"] = len(raw)

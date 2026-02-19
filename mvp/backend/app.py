@@ -20,7 +20,8 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from run_batch import (
     extract_text_from_pdf,
-    clean_text,
+    extract_tables_from_pdf,
+    clean_text_preserving_placeholders,
     convert_to_protocol_markdown,
     finalize_protocol_md,
     generate_flags_md,
@@ -147,6 +148,27 @@ def _apply_num_id_to_para(para, num_id: int) -> None:
     num_id_elem.set(qn('w:val'), str(num_id))
 
 
+def _add_raw_table_to_doc(doc, rows: list) -> None:
+    """Render pdfplumber raw table rows (list[list[str|None]]) as a docx Table."""
+    if not rows:
+        return
+    num_cols = max((len(r) for r in rows), default=0)
+    if num_cols == 0:
+        return
+    tbl = doc.add_table(rows=len(rows), cols=num_cols)
+    tbl.style = 'Table Grid'
+    for r_idx, row_data in enumerate(rows):
+        for c_idx in range(num_cols):
+            val = row_data[c_idx] if c_idx < len(row_data) else None
+            cell_text = str(val).strip().replace('\n', ' ') if val is not None else ''
+            cell = tbl.rows[r_idx].cells[c_idx]
+            cell.text = cell_text
+            if r_idx == 0:
+                for para in cell.paragraphs:
+                    for run in para.runs:
+                        run.bold = True
+
+
 def _add_markdown_table_to_doc(doc, table_lines: list) -> None:
     """Create a python-docx Table from markdown table lines."""
     rows = []
@@ -211,8 +233,13 @@ def _split_table_blocks(table_lines: list) -> list:
     return blocks
 
 
-def markdown_to_docx(md_content: str, output_path: Path):
-    """Convert markdown to docx using python-docx."""
+def markdown_to_docx(md_content: str, output_path: Path, pdf_tables: list = None):
+    """Convert markdown to docx using python-docx.
+
+    pdf_tables – ordered list of raw table dicts from extract_tables_from_pdf().
+    When present, TABLE_PLACEHOLDER_N lines are replaced with the corresponding
+    pre-extracted table rendered directly from pdfplumber row data.
+    """
     from docx import Document
 
     doc = Document()
@@ -228,6 +255,15 @@ def markdown_to_docx(md_content: str, output_path: Path):
 
         # Skip empty lines
         if not line.strip():
+            i += 1
+            continue
+
+        # TABLE_PLACEHOLDER_N — substitute the pre-extracted PDF table
+        m_ph = re.match(r'^TABLE_PLACEHOLDER_(\d+)$', line.strip())
+        if m_ph:
+            idx = int(m_ph.group(1)) - 1  # convert 1-based N to 0-based index
+            if pdf_tables and 0 <= idx < len(pdf_tables):
+                _add_raw_table_to_doc(doc, pdf_tables[idx]['rows'])
             i += 1
             continue
 
@@ -335,8 +371,9 @@ async def convert_pdf(file: UploadFile = File(...)):
         
         # Run pipeline
         try:
+            pdf_tables = extract_tables_from_pdf(pdf_path)
             raw_text = extract_text_from_pdf(pdf_path)
-            cleaned_text = clean_text(raw_text)
+            cleaned_text = clean_text_preserving_placeholders(raw_text)
             protocol_md = convert_to_protocol_markdown(client, contract, cleaned_text)
             protocol_md = finalize_protocol_md(protocol_md)
             flags_md = generate_flags_md(client, cleaned_text, protocol_md)
@@ -344,12 +381,12 @@ async def convert_pdf(file: UploadFile = File(...)):
         except Exception as e:
             logger.error(f"[{datetime.now()}] Pipeline failed: {file.filename} - {e}")
             raise HTTPException(status_code=500, detail=f"Pipeline error: {str(e)}")
-        
-        # Convert to DOCX
+
+        # Convert to DOCX — pass pre-extracted tables for placeholder substitution
         docx_path = temp_dir / "output.docx"
-        
+
         try:
-            markdown_to_docx(final_md, docx_path)
+            markdown_to_docx(final_md, docx_path, pdf_tables)
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"DOCX conversion failed: {str(e)}")
         
