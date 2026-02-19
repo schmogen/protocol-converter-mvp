@@ -232,9 +232,10 @@ def markdown_to_docx(md_content: str, output_path: Path):
             text = line.strip()[2:]
             doc.add_paragraph(text, style='List Bullet')
 
-        # Handle numbered lists
-        elif len(line) > 2 and line[0].isdigit() and line[1:3] in ['. ', ') ']:
-            text = line.split('. ', 1)[-1].split(') ', 1)[-1]
+        # Handle numbered lists — match any number of leading digits (1., 10., 12.) etc.
+        elif re.match(r'^\d+[.)]\s', line):
+            m = re.match(r'^\d+[.)]\s+', line)
+            text = line[m.end():]
             para = doc.add_paragraph(text, style='List Number')
             # First numbered item after a heading: create a fresh numbering
             # sequence so this section restarts at 1.

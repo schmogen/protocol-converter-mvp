@@ -189,11 +189,20 @@ Follow the protocol output contract STRICTLY.
 Do not add or invent scientific content.
 Preserve all numbers/units/times/temperatures exactly.
 If something is unclear, write "[CHECK]" rather than guessing.
-If the source contains tables, preserve them in markdown table format using pipe characters (|).
-Every table must include a separator row (| --- | --- | ...) immediately after the header row.
-Never collapse table content into plain text or bullet points.
-Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
-Every numbered step must be a complete, self-contained sentence. No step may begin mid-sentence or omit its subject. If a step begins with an action verb, the full context for that action must be present in the same step.
+
+STEP COMPLETENESS: Every numbered step must begin with a verb or subject and be a fully self-contained sentence. If the source text for a step begins mid-sentence, reconstruct the full sentence before outputting it. Never output a step that begins with a lowercase letter, a conjunction (such as and, or, but, so, then, while), or a word that implies a preceding clause.
+
+SECTION HEADINGS: Preserve all section headings exactly as they appear in the source document. If the source contains labeled sections such as "Passage 1", "Passage 2", "Passage 3-5", or any other named or numbered subsection, output those as headings in the same order and with identical labels. Do not merge, rename, or reorder sections.
+
+SOURCE FIDELITY: Do not add any sections, content, checklists, flags, or commentary that does not exist in the source document. The output must contain only what is present in the source. Do not add review checklists, parameter summaries, missing-parameter analysis, unsupported-claims sections, or any other AI-generated content.
+
+REAGENT DEFINITIONS: When a protocol step references a named reagent mixture (e.g. "recommended growth medium", "complete medium", or any reagent given a proper name), include the full composition of that mixture either inline in that step as a sub-bullet or in a Materials section at the top of the document. Do not reference a named mixture without defining it somewhere in the document.
+
+NUMBERED STEPS: Output every procedural step as a markdown numbered list item using the format "1. text", "2. text", and so on. Every procedural step in the source must appear as a numbered list item in the output. Do not let any step fall through to plain text.
+
+LIST NUMBERING: Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
+
+TABLES: If the source contains tables, preserve them in markdown table format using pipe characters (|). Every table must include a separator row (| --- | --- | ...) immediately after the header row. Never collapse table content into plain text or bullet points.
 
 --- CONTRACT ---
 {contract}
