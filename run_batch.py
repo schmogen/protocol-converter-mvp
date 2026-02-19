@@ -45,12 +45,68 @@ load_dotenv(dotenv_path=".env")
 # -------------------------
 # PDF extraction
 # -------------------------
+def _table_to_markdown(table_data: list) -> str:
+    """Convert pdfplumber table data (list of rows) to markdown pipe format."""
+    if not table_data:
+        return ""
+    rows = []
+    for row in table_data:
+        cells = [str(cell).strip().replace("\n", " ") if cell is not None else "" for cell in row]
+        rows.append("| " + " | ".join(cells) + " |")
+    if len(rows) >= 1:
+        num_cols = len(table_data[0])
+        separator = "| " + " | ".join(["---"] * num_cols) + " |"
+        rows.insert(1, separator)
+    return "\n".join(rows)
+
+
+def _extract_page_content(page) -> str:
+    """Extract text and tables from a page, interleaved by vertical position."""
+    tables = page.find_tables()
+    if not tables:
+        return page.extract_text() or ""
+
+    # Sort tables by their top y-coordinate
+    tables_sorted = sorted(tables, key=lambda t: t.bbox[1])
+
+    blocks: list[tuple[float, float, str]] = []  # (top_y, bottom_y, content)
+
+    # Build table markdown blocks
+    for table in tables_sorted:
+        x0, top, x1, bottom = table.bbox
+        data = table.extract()
+        if data:
+            blocks.append((top, bottom, _table_to_markdown(data)))
+
+    # Build crop regions for text between/around tables
+    crop_regions: list[tuple[float, float]] = []
+    prev_bottom: float = 0.0
+    for table in tables_sorted:
+        top = table.bbox[1]
+        bottom = table.bbox[3]
+        if top > prev_bottom:
+            crop_regions.append((prev_bottom, top))
+        prev_bottom = bottom
+    if prev_bottom < page.height:
+        crop_regions.append((prev_bottom, page.height))
+
+    for region_top, region_bottom in crop_regions:
+        cropped = page.crop((0, region_top, page.width, region_bottom))
+        text = cropped.extract_text() or ""
+        if text.strip():
+            blocks.append((region_top, region_bottom, text))
+
+    # Sort all blocks by top_y and join
+    blocks.sort(key=lambda b: b[0])
+    return "\n\n".join(content for _, _, content in blocks)
+
+
 def extract_text_from_pdf(pdf_path: Path) -> str:
     parts: list[str] = []
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
-            text = page.extract_text() or ""
-            parts.append(f"\n\n--- PAGE {i} ---\n\n{text}")
+            content = _extract_page_content(page)
+            parts.append(f"\n\n--- PAGE {i} ---\n\n{content}")
     return "".join(parts).strip()
 
 
@@ -133,6 +189,9 @@ Follow the protocol output contract STRICTLY.
 Do not add or invent scientific content.
 Preserve all numbers/units/times/temperatures exactly.
 If something is unclear, write "[CHECK]" rather than guessing.
+If the source contains tables, preserve them in markdown table format using pipe characters (|).
+Every table must include a separator row (| --- | --- | ...) immediately after the header row.
+Never collapse table content into plain text or bullet points.
 
 --- CONTRACT ---
 {contract}
@@ -224,6 +283,45 @@ def append_flags_summary(protocol_md: str, flags_md: str) -> str:
 _HEADING_MAP = {"# ": 1, "## ": 2, "### ": 3}
 
 
+def _parse_markdown_table(table_lines: list) -> list:
+    """Parse markdown table lines into a list of rows (each a list of cell strings).
+    Separator rows (| --- | --- |) are skipped."""
+    rows = []
+    for line in table_lines:
+        line = line.strip()
+        if not line.startswith("|"):
+            continue
+        # Skip separator row — cells contain only dashes, colons, spaces
+        inner = line.strip("|")
+        if re.match(r"^[\s\-|:]+$", inner):
+            continue
+        cells = [c.strip() for c in line.split("|")[1:-1]]
+        rows.append(cells)
+    return rows
+
+
+def _add_table_to_doc(doc, table_lines: list) -> None:
+    """Create a python-docx Table from markdown table lines."""
+    rows = _parse_markdown_table(table_lines)
+    if not rows:
+        return
+
+    num_cols = max(len(row) for row in rows)
+    tbl = doc.add_table(rows=len(rows), cols=num_cols)
+    tbl.style = "Table Grid"
+
+    for r_idx, row_data in enumerate(rows):
+        row = tbl.rows[r_idx]
+        for c_idx in range(num_cols):
+            cell_text = row_data[c_idx] if c_idx < len(row_data) else ""
+            cell = row.cells[c_idx]
+            cell.text = cell_text
+            if r_idx == 0:
+                for para in cell.paragraphs:
+                    for run in para.runs:
+                        run.bold = True
+
+
 def md_to_docx(md_text: str, docx_path: Path) -> None:
     """Convert a Markdown protocol string to a .docx file with basic formatting."""
     doc = Document()
@@ -231,11 +329,24 @@ def md_to_docx(md_text: str, docx_path: Path) -> None:
     style.font.name = "Calibri"
     style.font.size = Pt(11)
 
-    for line in md_text.splitlines():
+    lines = md_text.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
         stripped = line.strip()
 
         # Skip blank lines (Word handles paragraph spacing)
         if not stripped:
+            i += 1
+            continue
+
+        # Detect start of a markdown table
+        if stripped.startswith("|"):
+            table_lines = []
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                table_lines.append(lines[i])
+                i += 1
+            _add_table_to_doc(doc, table_lines)
             continue
 
         # Headings
@@ -247,26 +358,31 @@ def md_to_docx(md_text: str, docx_path: Path) -> None:
                 break
         if heading_level is not None:
             doc.add_heading(stripped, level=heading_level)
+            i += 1
             continue
 
         # Checkbox list items: - [ ] or - [x]
         if re.match(r"^- \[[ x]\] ", stripped):
             doc.add_paragraph(stripped[2:], style="List Bullet")
+            i += 1
             continue
 
         # Bullet list items
         if stripped.startswith("- "):
             doc.add_paragraph(stripped[2:], style="List Bullet")
+            i += 1
             continue
 
         # Numbered list items (e.g. "1. Step text")
         m = re.match(r"^(\d+)\.\s+", stripped)
         if m:
             doc.add_paragraph(stripped[m.end():], style="List Number")
+            i += 1
             continue
 
         # Regular paragraph
         doc.add_paragraph(stripped)
+        i += 1
 
     doc.save(str(docx_path))
 

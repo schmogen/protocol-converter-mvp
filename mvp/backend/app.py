@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 import tempfile
 import shutil
 from datetime import datetime
@@ -57,22 +58,64 @@ app.add_middleware(
 MAX_FILE_SIZE = 20 * 1024 * 1024  # 20MB
 
 
+def _add_markdown_table_to_doc(doc, table_lines: list) -> None:
+    """Create a python-docx Table from markdown table lines."""
+    rows = []
+    for line in table_lines:
+        line = line.strip()
+        if not line.startswith('|'):
+            continue
+        # Skip separator row — inner content is only dashes, colons, spaces
+        inner = line.strip('|')
+        if re.match(r'^[\s\-|:]+$', inner):
+            continue
+        cells = [c.strip() for c in line.split('|')[1:-1]]
+        rows.append(cells)
+
+    if not rows:
+        return
+
+    num_cols = max(len(row) for row in rows)
+    tbl = doc.add_table(rows=len(rows), cols=num_cols)
+    tbl.style = 'Table Grid'
+
+    for r_idx, row_data in enumerate(rows):
+        row = tbl.rows[r_idx]
+        for c_idx in range(num_cols):
+            cell_text = row_data[c_idx] if c_idx < len(row_data) else ''
+            cell = row.cells[c_idx]
+            cell.text = cell_text
+            if r_idx == 0:
+                for para in cell.paragraphs:
+                    for run in para.runs:
+                        run.bold = True
+
+
 def markdown_to_docx(md_content: str, output_path: Path):
     """Convert markdown to docx using python-docx."""
     from docx import Document
-    
+
     doc = Document()
     lines = md_content.split('\n')
     i = 0
-    
+
     while i < len(lines):
         line = lines[i]
-        
+
         # Skip empty lines
         if not line.strip():
             i += 1
             continue
-        
+
+        # Detect markdown table
+        if line.strip().startswith('|'):
+            table_lines = []
+            while i < len(lines) and lines[i].strip().startswith('|'):
+                table_lines.append(lines[i])
+                i += 1
+            _add_markdown_table_to_doc(doc, table_lines)
+            continue
+
         # Handle headings
         if line.startswith('# '):
             doc.add_heading(line[2:], level=1)
@@ -82,23 +125,23 @@ def markdown_to_docx(md_content: str, output_path: Path):
             doc.add_heading(line[4:], level=3)
         elif line.startswith('#### '):
             doc.add_heading(line[5:], level=4)
-        
+
         # Handle bullet lists
         elif line.strip().startswith('- ') or line.strip().startswith('* '):
             text = line.strip()[2:]
             doc.add_paragraph(text, style='List Bullet')
-        
+
         # Handle numbered lists
         elif len(line) > 2 and line[0].isdigit() and line[1:3] in ['. ', ') ']:
             text = line.split('. ', 1)[-1].split(') ', 1)[-1]
             doc.add_paragraph(text, style='List Number')
-        
+
         # Regular paragraph
         else:
             doc.add_paragraph(line)
-        
+
         i += 1
-    
+
     doc.save(str(output_path))
 
 
