@@ -588,11 +588,13 @@ def main() -> None:
 
             cleaned = clean_text_preserving_placeholders(raw)
             (out_dir / "cleaned.txt").write_text(cleaned, encoding="utf-8")
+            (out_dir / "cleaned_debug.txt").write_text(cleaned, encoding="utf-8")
 
             if len(cleaned) < 500:
                 log["warning"] = "Very low extracted text. PDF may be scanned/image-only."
 
             protocol_md = convert_to_protocol_markdown(client, contract, cleaned)
+            (out_dir / "model_output_debug.txt").write_text(protocol_md, encoding="utf-8")
             protocol_md = finalize_protocol_md(protocol_md)
 
             # Flagging pass (QA)
