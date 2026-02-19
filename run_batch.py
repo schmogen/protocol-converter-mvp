@@ -202,7 +202,7 @@ NUMBERED STEPS: Output every procedural step as a markdown numbered list item us
 
 LIST NUMBERING: Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
 
-TABLES: If the source contains tables, preserve them in markdown table format using pipe characters (|). Every table must include a separator row (| --- | --- | ...) immediately after the header row. Never collapse table content into plain text or bullet points. When two or more tables appear consecutively in the output, insert a blank line between them so each table is clearly separated.
+TABLES: If the source contains tables, preserve them in markdown table format using pipe characters (|). Every table must include a separator row (| --- | --- | ...) immediately after the header row. Never collapse table content into plain text or bullet points. When two or more tables appear consecutively in the output, insert a blank line between them so each table is clearly separated. When multiple tables appear in the same section of the source document, output them in the exact order they appear in the source. Do not reorder tables.
 
 --- CONTRACT ---
 {contract}
