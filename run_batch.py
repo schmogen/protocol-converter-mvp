@@ -142,20 +142,51 @@ def _extract_page_content_with_placeholders(page, counter_start: int) -> tuple:
     return "\n\n".join(content for _, _, content in blocks), n_tables
 
 
+def _looks_like_heading(line: str) -> bool:
+    """Return True if the line looks like a section heading in PDF source text.
+
+    Criteria: ≤80 chars, contains at least one letter, does not end with
+    sentence punctuation, is not a bullet, and is not a numbered step.
+    """
+    s = line.strip()
+    if not s or len(s) > 80:
+        return False
+    if s[0] in "-*•◗":
+        return False
+    if re.match(r"^\d+[.)]\s", s):
+        return False
+    if s[-1] in ".,:;!?":
+        return False
+    if not re.search(r"[a-zA-Z]", s):
+        return False
+    return True
+
+
 def extract_tables_from_pdf(pdf_path: Path) -> list:
     """Return all tables from the PDF in page/vertical order as raw row data.
 
     Each entry is a dict with:
-      'page'          – 1-based page number
-      'top'           – top y-coordinate of the table on its page
-      'rows'          – list[list[str|None]] from pdfplumber table.extract()
-      'preceding_text'– text on the same page immediately above the table,
-                        used as an anchor for reinsertion into model output
+      'page'           – 1-based page number
+      'top'            – top y-coordinate of the table on its page
+      'rows'           – list[list[str|None]] from pdfplumber table.extract()
+      'preceding_text' – text on the same page immediately above the table
+      'section_heading'– most recent heading-like line seen before this table
+                         across the full document, used for section matching
     """
     tables: list[dict] = []
+    current_heading = ""
+
     with pdfplumber.open(pdf_path) as pdf:
         for page_num, page in enumerate(pdf.pages, start=1):
             tables_on_page = sorted(page.find_tables(), key=lambda t: t.bbox[1])
+
+            if not tables_on_page:
+                # No tables on this page — scan full text to advance heading tracker
+                for line in (page.extract_text() or "").splitlines():
+                    if _looks_like_heading(line):
+                        current_heading = line.strip()
+                continue
+
             prev_bottom = 0.0
             for table in tables_on_page:
                 top = table.bbox[1]
@@ -163,6 +194,10 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
                 if top > prev_bottom:
                     crop = page.crop((0, prev_bottom, page.width, top))
                     preceding = crop.extract_text() or ""
+                # Advance heading tracker from text above this table
+                for line in preceding.splitlines():
+                    if _looks_like_heading(line):
+                        current_heading = line.strip()
                 rows = table.extract()
                 if rows:
                     tables.append({
@@ -170,8 +205,17 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
                         "top": top,
                         "rows": rows,
                         "preceding_text": preceding.strip(),
+                        "section_heading": current_heading,
                     })
                 prev_bottom = table.bbox[3]
+
+            # Scan text after the last table on this page to keep tracker current
+            if prev_bottom < page.height:
+                remaining = page.crop((0, prev_bottom, page.width, page.height))
+                for line in (remaining.extract_text() or "").splitlines():
+                    if _looks_like_heading(line):
+                        current_heading = line.strip()
+
     return tables
 
 
@@ -240,60 +284,128 @@ def clean_text_preserving_placeholders(raw: str) -> str:
 # Table reinsertion
 # -------------------------
 def reinsert_tables_into_markdown(md: str, pdf_tables: list) -> str:
-    """Reinsert pdfplumber tables into model-generated markdown by anchor matching.
+    """Reinsert pdfplumber tables into model-generated markdown using
+    section-level structural matching.
 
-    For each table, the text that preceded it in the original PDF extraction is
-    used to build a short anchor phrase.  The function searches the model output
-    for that anchor and inserts the table in markdown pipe format immediately
-    after the matching line.  Tables with no anchor match are appended at the
-    end of the document.  Any TABLE_PENDING markers left by the model are
-    stripped from the final output.
+    Strategy:
+    1. Group tables by their section_heading (set by extract_tables_from_pdf).
+    2. Scan the model output for markdown headings and fuzzy-match each source
+       section heading against them.
+    3. For each matched section, insert all its tables at the end of that
+       section (immediately before the next heading of equal or higher level).
+    4. Tables with no section match are appended at the end of the document.
+    5. TABLE_PENDING markers left by the model are stripped.
 
-    Tables are processed in document order; a forward-only cursor ensures that
-    each subsequent table is inserted after the previous one.
+    Fuzzy heading match: normalize both to lowercase with punctuation stripped,
+    then accept if one string contains the other or if they share ≥4 consecutive
+    words.
     """
+    # Strip TABLE_PENDING markers first so they don't affect line indexing
+    lines = [ln for ln in md.split("\n") if ln.strip() != "TABLE_PENDING"]
+
     if not pdf_tables:
-        return "\n".join(
-            line for line in md.split("\n")
-            if line.strip() != "TABLE_PENDING"
-        )
+        return "\n".join(lines)
 
-    lines = md.split("\n")
-    search_from = 0  # advance so tables stay in document order
+    # --- inner helpers ---
 
-    for table_dict in pdf_tables:
-        preceding_text = table_dict.get("preceding_text", "")
-        rows = table_dict["rows"]
-        table_md = _table_to_markdown(rows)
-        if not table_md:
-            continue
+    def _heading_level(line: str) -> int:
+        m = re.match(r"^(#{1,4})\s", line.strip())
+        return len(m.group(1)) if m else 0
 
-        table_block = ["", *table_md.splitlines(), ""]
-        words = preceding_text.split()
-        insert_at = None
+    def _heading_text(line: str) -> str:
+        return re.sub(r"^#{1,4}\s+", "", line.strip())
 
-        # Try progressively shorter anchors until one matches
-        for n in (8, 6, 4, 3):
-            if len(words) < n:
+    def _normalize(text: str) -> str:
+        text = text.lower()
+        text = re.sub(r"[^\w\s]", "", text)
+        return re.sub(r"\s+", " ", text).strip()
+
+    def _headings_match(src: str, md_h: str) -> bool:
+        n_src, n_md = _normalize(src), _normalize(md_h)
+        if not n_src or not n_md:
+            return False
+        if n_src in n_md or n_md in n_src:
+            return True
+        words = n_src.split()
+        for i in range(len(words) - 3):
+            if " ".join(words[i : i + 4]) in n_md:
+                return True
+        return False
+
+    # --- group pdf tables by section_heading (preserve document order) ---
+    section_map: dict[str, list] = {}
+    unmatched: list = []
+    for td in pdf_tables:
+        heading = td.get("section_heading", "").strip()
+        if heading:
+            section_map.setdefault(heading, []).append(td)
+        else:
+            unmatched.append(td)
+
+    # --- collect all markdown headings from model output ---
+    md_headings: list[tuple[int, int, str]] = []  # (line_idx, level, text)
+    for i, line in enumerate(lines):
+        lvl = _heading_level(line)
+        if lvl:
+            md_headings.append((i, lvl, _heading_text(line)))
+
+    # --- match each source section to a model heading; build insertion plan ---
+    # insertion_plan: list of (insert_before_line_idx, [table_md_str, ...])
+    insertion_plan: list[tuple[int, list[str]]] = []
+    claimed: set[int] = set()  # model heading line indices already claimed
+
+    for src_heading, tables_for_section in section_map.items():
+        # Find first unclaimed model heading that fuzzy-matches this source heading
+        match_idx = None
+        match_level = None
+        for h_idx, h_lvl, h_text in md_headings:
+            if h_idx in claimed:
                 continue
-            anchor = " ".join(words[-n:]).lower()
-            for i in range(search_from, len(lines)):
-                if lines[i].strip() == "TABLE_PENDING":
-                    continue
-                if anchor in lines[i].lower():
-                    insert_at = i + 1
-                    break
-            if insert_at is not None:
+            if _headings_match(src_heading, h_text):
+                match_idx = h_idx
+                match_level = h_lvl
                 break
 
-        if insert_at is None:
-            lines.extend(table_block)
-        else:
-            lines = lines[:insert_at] + table_block + lines[insert_at:]
-            search_from = insert_at + len(table_block)
+        if match_idx is None:
+            unmatched.extend(tables_for_section)
+            continue
 
-    # Strip any TABLE_PENDING markers the model left in the output
-    lines = [line for line in lines if line.strip() != "TABLE_PENDING"]
+        claimed.add(match_idx)
+
+        # Section ends at the next heading of equal or higher hierarchy level
+        section_end = len(lines)
+        for h_idx, h_lvl, _ in md_headings:
+            if h_idx > match_idx and h_lvl <= match_level:
+                section_end = h_idx
+                break
+
+        # Collect non-empty table markdown blocks in document order
+        table_mds = [
+            _table_to_markdown(td["rows"])
+            for td in tables_for_section
+            if _table_to_markdown(td["rows"])
+        ]
+        if table_mds:
+            insertion_plan.append((section_end, table_mds))
+
+    # --- apply insertions from bottom to top to avoid index drift ---
+    insertion_plan.sort(key=lambda x: x[0], reverse=True)
+    for insert_at, table_mds in insertion_plan:
+        insert_lines: list[str] = []
+        for tmd in table_mds:
+            insert_lines.append("")
+            insert_lines.extend(tmd.splitlines())
+            insert_lines.append("")
+        lines = lines[:insert_at] + insert_lines + lines[insert_at:]
+
+    # --- append tables that had no section match at the end ---
+    for td in unmatched:
+        tmd = _table_to_markdown(td["rows"])
+        if tmd:
+            lines.append("")
+            lines.extend(tmd.splitlines())
+            lines.append("")
+
     return "\n".join(lines)
 
 
