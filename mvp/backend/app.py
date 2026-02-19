@@ -180,6 +180,37 @@ def _add_markdown_table_to_doc(doc, table_lines: list) -> None:
                         run.bold = True
 
 
+def _split_table_blocks(table_lines: list) -> list:
+    """Split a flat list of consecutive pipe-delimited lines into individual
+    table blocks.  When a separator row (cells containing only dashes/colons)
+    appears after the first two lines of the current block it signals that the
+    line immediately preceding it is the header of a NEW table.  That line is
+    moved into a fresh block together with the separator, and the old block is
+    closed.  This handles back-to-back tables that share no blank-line boundary.
+    """
+    if not table_lines:
+        return []
+
+    def _is_sep(line: str) -> bool:
+        inner = line.strip().strip('|')
+        return bool(inner and re.match(r'^[\s\-|:]+$', inner))
+
+    blocks = []
+    current = []
+    for line in table_lines:
+        if _is_sep(line) and len(current) >= 2:
+            # Separator found mid-block: everything up to (but not including)
+            # the last line belongs to the previous table; the last line becomes
+            # the header of the new table.
+            blocks.append(current[:-1])
+            current = [current[-1], line]
+        else:
+            current.append(line)
+    if current:
+        blocks.append(current)
+    return blocks
+
+
 def markdown_to_docx(md_content: str, output_path: Path):
     """Convert markdown to docx using python-docx."""
     from docx import Document
@@ -206,7 +237,8 @@ def markdown_to_docx(md_content: str, output_path: Path):
             while i < len(lines) and lines[i].strip().startswith('|'):
                 table_lines.append(lines[i])
                 i += 1
-            _add_markdown_table_to_doc(doc, table_lines)
+            for block in _split_table_blocks(table_lines):
+                _add_markdown_table_to_doc(doc, block)
             continue
 
         # Handle headings — each heading marks the start of a new list sequence

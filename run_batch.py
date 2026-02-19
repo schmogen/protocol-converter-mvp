@@ -192,7 +192,7 @@ If something is unclear, write "[CHECK]" rather than guessing.
 
 STEP COMPLETENESS: Every numbered step must begin with a verb or subject and be a fully self-contained sentence. If the source text for a step begins mid-sentence, reconstruct the full sentence before outputting it. Never output a step that begins with a lowercase letter, a conjunction (such as and, or, but, so, then, while), or a word that implies a preceding clause.
 
-SECTION HEADINGS: Preserve all section headings exactly as they appear in the source document. If the source contains labeled sections such as "Passage 1", "Passage 2", "Passage 3-5", or any other named or numbered subsection, output those as headings in the same order and with identical labels. Do not merge, rename, or reorder sections.
+SECTION HEADINGS: Output every section heading from the source document as its own standalone markdown heading using the exact wording from the source. This includes passage labels such as "Passage 1", "Passage 2", "Passage 3-5" and any other named or numbered subsections — each must appear as a separate heading and must not be merged with adjacent section titles or wrapped in parentheses as part of another heading. Do not reorder or rename any section. Do not add any section headings that do not exist in the source document, including headings such as "Objective", "Procedure", or "Materials" unless those exact words appear as headings in the source.
 
 SOURCE FIDELITY: Do not add any sections, content, checklists, flags, or commentary that does not exist in the source document. The output must contain only what is present in the source. Do not add review checklists, parameter summaries, missing-parameter analysis, unsupported-claims sections, or any other AI-generated content.
 
@@ -202,7 +202,7 @@ NUMBERED STEPS: Output every procedural step as a markdown numbered list item us
 
 LIST NUMBERING: Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
 
-TABLES: If the source contains tables, preserve them in markdown table format using pipe characters (|). Every table must include a separator row (| --- | --- | ...) immediately after the header row. Never collapse table content into plain text or bullet points.
+TABLES: If the source contains tables, preserve them in markdown table format using pipe characters (|). Every table must include a separator row (| --- | --- | ...) immediately after the header row. Never collapse table content into plain text or bullet points. When two or more tables appear consecutively in the output, insert a blank line between them so each table is clearly separated.
 
 --- CONTRACT ---
 {contract}
@@ -333,6 +333,33 @@ def _add_table_to_doc(doc, table_lines: list) -> None:
                         run.bold = True
 
 
+def _split_table_blocks(table_lines: list) -> list:
+    """Split a flat list of consecutive pipe-delimited lines into individual
+    table blocks.  A separator row (cells containing only dashes/colons) that
+    appears after the first two lines of the current block signals that the
+    preceding line is the header of a new table.  That line is moved into a
+    fresh block together with the separator, and the old block is closed.
+    """
+    if not table_lines:
+        return []
+
+    def _is_sep(line: str) -> bool:
+        inner = line.strip().strip("|")
+        return bool(inner and re.match(r"^[\s\-|:]+$", inner))
+
+    blocks = []
+    current = []
+    for line in table_lines:
+        if _is_sep(line) and len(current) >= 2:
+            blocks.append(current[:-1])
+            current = [current[-1], line]
+        else:
+            current.append(line)
+    if current:
+        blocks.append(current)
+    return blocks
+
+
 def md_to_docx(md_text: str, docx_path: Path) -> None:
     """Convert a Markdown protocol string to a .docx file with basic formatting."""
     doc = Document()
@@ -357,7 +384,8 @@ def md_to_docx(md_text: str, docx_path: Path) -> None:
             while i < len(lines) and lines[i].strip().startswith("|"):
                 table_lines.append(lines[i])
                 i += 1
-            _add_table_to_doc(doc, table_lines)
+            for block in _split_table_blocks(table_lines):
+                _add_table_to_doc(doc, block)
             continue
 
         # Headings
