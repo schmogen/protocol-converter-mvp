@@ -192,6 +192,8 @@ If something is unclear, write "[CHECK]" rather than guessing.
 If the source contains tables, preserve them in markdown table format using pipe characters (|).
 Every table must include a separator row (| --- | --- | ...) immediately after the header row.
 Never collapse table content into plain text or bullet points.
+Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
+Every numbered step must be a complete, self-contained sentence. No step may begin mid-sentence or omit its subject. If a step begins with an action verb, the full context for that action must be present in the same step.
 
 --- CONTRACT ---
 {contract}

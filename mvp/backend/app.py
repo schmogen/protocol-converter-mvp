@@ -58,6 +58,95 @@ app.add_middleware(
 MAX_FILE_SIZE = 20 * 1024 * 1024  # 20MB
 
 
+def _get_or_create_restart_num_id(doc):
+    """Create a new w:num entry with startOverride=1 that shares the same
+    abstractNum as the built-in 'List Number' style.  Returns the new numId
+    integer, or None if the numbering metadata cannot be located."""
+    from docx.oxml.ns import qn
+    from docx.oxml import OxmlElement
+
+    try:
+        numbering = doc.part.numbering_part._element
+    except Exception:
+        return None
+
+    # Find the numId referenced by the 'List Number' paragraph style.
+    try:
+        list_style = doc.styles['List Number']
+        style_numPr = list_style.element.find(qn('w:pPr')).find(qn('w:numPr'))
+        base_num_id = int(style_numPr.find(qn('w:numId')).get(qn('w:val')))
+    except (AttributeError, TypeError, ValueError):
+        return None
+
+    # Walk the numbering definitions to find the matching abstractNumId.
+    abstract_num_id = None
+    for num_elem in numbering.findall(qn('w:num')):
+        try:
+            if int(num_elem.get(qn('w:numId'))) == base_num_id:
+                abstract_num_id = int(
+                    num_elem.find(qn('w:abstractNumId')).get(qn('w:val'))
+                )
+                break
+        except (AttributeError, TypeError, ValueError):
+            continue
+
+    if abstract_num_id is None:
+        return None
+
+    all_ids = [
+        int(n.get(qn('w:numId')))
+        for n in numbering.findall(qn('w:num'))
+        if n.get(qn('w:numId')) is not None
+    ]
+    new_id = max(all_ids) + 1
+
+    # <w:num w:numId="new_id">
+    #   <w:abstractNumId w:val="abstract_num_id"/>
+    #   <w:lvlOverride w:ilvl="0"><w:startOverride w:val="1"/></w:lvlOverride>
+    # </w:num>
+    new_num = OxmlElement('w:num')
+    new_num.set(qn('w:numId'), str(new_id))
+
+    abstract_ref = OxmlElement('w:abstractNumId')
+    abstract_ref.set(qn('w:val'), str(abstract_num_id))
+    new_num.append(abstract_ref)
+
+    lvl = OxmlElement('w:lvlOverride')
+    lvl.set(qn('w:ilvl'), '0')
+    so = OxmlElement('w:startOverride')
+    so.set(qn('w:val'), '1')
+    lvl.append(so)
+    new_num.append(lvl)
+
+    numbering.append(new_num)
+    return new_id
+
+
+def _apply_num_id_to_para(para, num_id: int) -> None:
+    """Overwrite the numId in a paragraph's numPr so it belongs to the
+    specified list sequence rather than the style default."""
+    from docx.oxml.ns import qn
+    from docx.oxml import OxmlElement
+
+    pPr = para._p.get_or_add_pPr()
+    numPr = pPr.find(qn('w:numPr'))
+    if numPr is None:
+        numPr = OxmlElement('w:numPr')
+        pPr.append(numPr)
+
+    ilvl = numPr.find(qn('w:ilvl'))
+    if ilvl is None:
+        ilvl = OxmlElement('w:ilvl')
+        numPr.insert(0, ilvl)
+    ilvl.set(qn('w:val'), '0')
+
+    num_id_elem = numPr.find(qn('w:numId'))
+    if num_id_elem is None:
+        num_id_elem = OxmlElement('w:numId')
+        numPr.append(num_id_elem)
+    num_id_elem.set(qn('w:val'), str(num_id))
+
+
 def _add_markdown_table_to_doc(doc, table_lines: list) -> None:
     """Create a python-docx Table from markdown table lines."""
     rows = []
@@ -98,6 +187,10 @@ def markdown_to_docx(md_content: str, output_path: Path):
     doc = Document()
     lines = md_content.split('\n')
     i = 0
+    # Tracks whether the next numbered-list paragraph should restart at 1.
+    _restart_next_list = False
+    # The numId currently in use for the active section's numbered list.
+    _section_num_id = None
 
     while i < len(lines):
         line = lines[i]
@@ -116,15 +209,23 @@ def markdown_to_docx(md_content: str, output_path: Path):
             _add_markdown_table_to_doc(doc, table_lines)
             continue
 
-        # Handle headings
+        # Handle headings — each heading marks the start of a new list sequence
         if line.startswith('# '):
             doc.add_heading(line[2:], level=1)
+            _restart_next_list = True
+            _section_num_id = None
         elif line.startswith('## '):
             doc.add_heading(line[3:], level=2)
+            _restart_next_list = True
+            _section_num_id = None
         elif line.startswith('### '):
             doc.add_heading(line[4:], level=3)
+            _restart_next_list = True
+            _section_num_id = None
         elif line.startswith('#### '):
             doc.add_heading(line[5:], level=4)
+            _restart_next_list = True
+            _section_num_id = None
 
         # Handle bullet lists
         elif line.strip().startswith('- ') or line.strip().startswith('* '):
@@ -134,7 +235,18 @@ def markdown_to_docx(md_content: str, output_path: Path):
         # Handle numbered lists
         elif len(line) > 2 and line[0].isdigit() and line[1:3] in ['. ', ') ']:
             text = line.split('. ', 1)[-1].split(') ', 1)[-1]
-            doc.add_paragraph(text, style='List Number')
+            para = doc.add_paragraph(text, style='List Number')
+            # First numbered item after a heading: create a fresh numbering
+            # sequence so this section restarts at 1.
+            if _restart_next_list:
+                new_id = _get_or_create_restart_num_id(doc)
+                if new_id:
+                    _section_num_id = new_id
+                _restart_next_list = False
+            # Pin every item in this section to the same numId so the counter
+            # is continuous within the section and isolated from other sections.
+            if _section_num_id:
+                _apply_num_id_to_para(para, _section_num_id)
 
         # Regular paragraph
         else:
