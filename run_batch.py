@@ -2,9 +2,13 @@ import argparse
 import base64
 import io
 import json
+import logging
 import re
 import time
+import traceback
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 import pdfplumber
 from docx import Document
@@ -143,69 +147,79 @@ def _extract_tables_via_vision(page, client: OpenAI) -> list:
 
     Requires the 'pillow' and 'pikepdf' packages for page.to_image().
     """
+    logger.info("Vision fallback triggered for page %s", getattr(page, 'page_number', '?'))
     try:
-        pil_image = page.to_image(resolution=150).original
-        buf = io.BytesIO()
-        pil_image.save(buf, format="JPEG")
-        b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
-    except Exception:
-        return []
+        try:
+            pil_image = page.to_image(resolution=150).original
+            buf = io.BytesIO()
+            pil_image.save(buf, format="JPEG")
+            b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+        except Exception:
+            logger.error("Vision fallback: page render/encode failed:\n%s", traceback.format_exc())
+            return []
 
-    prompt = (
-        "This page contains one or more tables. Extract each table you see and "
-        "return them as markdown pipe-formatted tables, one after another, separated "
-        "by a blank line. Include the header row and a separator row of dashes. "
-        "Return only the markdown tables, nothing else."
-    )
-
-    try:
-        resp = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "image_url",
-                            "image_url": {
-                                "url": f"data:image/jpeg;base64,{b64}",
-                                "detail": "high",
-                            },
-                        },
-                        {
-                            "type": "text",
-                            "text": prompt,
-                        },
-                    ],
-                }
-            ],
+        prompt = (
+            "This page contains one or more tables. Extract each table you see and "
+            "return them as markdown pipe-formatted tables, one after another, separated "
+            "by a blank line. Include the header row and a separator row of dashes. "
+            "Return only the markdown tables, nothing else."
         )
+
+        try:
+            resp = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": f"data:image/jpeg;base64,{b64}",
+                                    "detail": "high",
+                                },
+                            },
+                            {
+                                "type": "text",
+                                "text": prompt,
+                            },
+                        ],
+                    }
+                ],
+            )
+        except Exception:
+            logger.error("Vision fallback: API call failed:\n%s", traceback.format_exc())
+            return []
+
+        response_text = (resp.choices[0].message.content or "").strip()
+        if not response_text:
+            logger.error("Vision fallback: API returned empty response")
+            return []
+
+        # Split on blank lines; treat each chunk containing a pipe as a table
+        all_tables = []
+        for chunk in re.split(r"\n\s*\n", response_text):
+            if "|" not in chunk:
+                continue
+            rows = []
+            for line in chunk.splitlines():
+                line = line.strip()
+                if not line or not line.startswith("|"):
+                    continue
+                # Skip separator rows (| --- | --- |)
+                if re.match(r"^[\s\-|:]+$", line.strip("|")):
+                    continue
+                cells = [c.strip() for c in line.split("|")[1:-1]]
+                rows.append(cells)
+            if rows:
+                all_tables.append(rows)
+
+        logger.info("Vision fallback: extracted %d table(s) from page %s", len(all_tables), getattr(page, 'page_number', '?'))
+        return all_tables
+
     except Exception:
+        logger.error("Vision fallback: unexpected error:\n%s", traceback.format_exc())
         return []
-
-    response_text = (resp.choices[0].message.content or "").strip()
-    if not response_text:
-        return []
-
-    # Split on blank lines; treat each chunk containing a pipe as a table
-    all_tables = []
-    for chunk in re.split(r"\n\s*\n", response_text):
-        if "|" not in chunk:
-            continue
-        rows = []
-        for line in chunk.splitlines():
-            line = line.strip()
-            if not line or not line.startswith("|"):
-                continue
-            # Skip separator rows (| --- | --- |)
-            if re.match(r"^[\s\-|:]+$", line.strip("|")):
-                continue
-            cells = [c.strip() for c in line.split("|")[1:-1]]
-            rows.append(cells)
-        if rows:
-            all_tables.append(rows)
-
-    return all_tables
 
 
 def _extract_page_content(page, client: OpenAI) -> str:
