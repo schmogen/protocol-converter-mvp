@@ -75,6 +75,54 @@ def _table_to_markdown(table_data: list) -> str:
     return "\n".join(rows)
 
 
+def _is_corrupted_table(rows: list) -> bool:
+    """Return True if the table rows appear to be corrupted.
+
+    Two corruption signals are checked against the cleaned header row:
+    1. The first header cell is longer than 25 characters — indicates it has
+       absorbed extra text from an adjacent body-text column.
+    2. Any header cell is ≤3 characters, ends with a letter, and the next
+       header cell starts with a lowercase letter — indicates a word was split
+       across cells by an incorrect column boundary.
+    """
+    if not rows or not rows[0]:
+        return False
+    header = [_clean_cell(c) for c in rows[0]]
+    # Signal 1: first cell is suspiciously long
+    if len(header[0]) > 25:
+        return True
+    # Signal 2: word split across adjacent cells
+    for i in range(len(header) - 1):
+        cell = header[i]
+        next_cell = header[i + 1]
+        if (1 <= len(cell) <= 3
+                and cell[-1].isalpha()
+                and next_cell
+                and next_cell[0].islower()):
+            return True
+    return False
+
+
+def _fallback_table_rows(page, bbox: tuple):
+    """Extract table rows from a bounding box using plain text extraction.
+
+    Crops the page to bbox, extracts text, splits into non-empty lines, and
+    splits each line by two or more consecutive spaces to get cells.  Returns
+    a list of 2-element rows only if every line produces exactly 2 cells;
+    returns None otherwise so the caller can skip the table.
+    """
+    x0, top, x1, bottom = bbox
+    crop = page.crop((x0, top, x1, bottom))
+    text = crop.extract_text() or ""
+    lines = [ln for ln in text.splitlines() if ln.strip()]
+    if not lines:
+        return None
+    rows = [re.split(r"  +", ln.strip()) for ln in lines]
+    if not all(len(r) == 2 for r in rows):
+        return None
+    return rows
+
+
 def _extract_page_content(page) -> str:
     """Extract text and tables from a page, interleaved by vertical position."""
     tables = page.find_tables()
@@ -94,7 +142,13 @@ def _extract_page_content(page) -> str:
         x0, top, x1, bottom = table.bbox
         data = table.extract()
         if data:
-            blocks.append((top, bottom, _table_to_markdown(data)))
+            if _is_corrupted_table(data):
+                fallback = _fallback_table_rows(page, table.bbox)
+                if fallback:
+                    blocks.append((top, bottom, _table_to_markdown(fallback)))
+                # else: skip this corrupted table entirely
+            else:
+                blocks.append((top, bottom, _table_to_markdown(data)))
 
     # Build crop regions for text between/around tables
     crop_regions: list[tuple[float, float]] = []
@@ -222,13 +276,25 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
                         current_heading = line.strip()
                 rows = table.extract()
                 if rows:
-                    tables.append({
-                        "page": page_num,
-                        "top": top,
-                        "rows": rows,
-                        "preceding_text": preceding.strip(),
-                        "section_heading": current_heading,
-                    })
+                    if _is_corrupted_table(rows):
+                        fallback = _fallback_table_rows(page, table.bbox)
+                        if fallback:
+                            tables.append({
+                                "page": page_num,
+                                "top": top,
+                                "rows": fallback,
+                                "preceding_text": preceding.strip(),
+                                "section_heading": current_heading,
+                            })
+                        # else: skip this corrupted table entirely
+                    else:
+                        tables.append({
+                            "page": page_num,
+                            "top": top,
+                            "rows": rows,
+                            "preceding_text": preceding.strip(),
+                            "section_heading": current_heading,
+                        })
                 prev_bottom = table.bbox[3]
 
             # Scan text after the last table on this page to keep tracker current
