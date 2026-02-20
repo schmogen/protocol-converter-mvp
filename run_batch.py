@@ -474,7 +474,7 @@ NUMBERED STEPS: Output every procedural step as a markdown numbered list item us
 
 LIST NUMBERING: Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
 
-TABLES: If the source document contains tables, include a TABLE_PENDING marker on its own line at each position in the output where a table from the source should appear, in the same order and position as in the source. Do not reproduce table data.
+TABLES: If the source document contains tables, they appear in the input as markdown pipe-formatted tables. Reproduce each table in the output exactly as it appears in the input, using the same pipe format. Do not reorder, merge, or omit any table. Place each table at the same position relative to the surrounding steps and headings as it appears in the input.
 
 --- CONTRACT ---
 {contract}
@@ -763,8 +763,6 @@ def main() -> None:
         }
 
         try:
-            pdf_tables = extract_tables_from_pdf(pdf_path)
-
             raw = extract_text_from_pdf(pdf_path)
             (out_dir / "raw_extracted.txt").write_text(raw, encoding="utf-8")
 
@@ -777,7 +775,6 @@ def main() -> None:
 
             protocol_md = convert_to_protocol_markdown(client, contract, cleaned)
             (out_dir / "model_output_debug.txt").write_text(protocol_md, encoding="utf-8")
-            protocol_md = reinsert_tables_into_markdown(protocol_md, pdf_tables)
             protocol_md = finalize_protocol_md(protocol_md)
 
             # Flagging pass (QA)
