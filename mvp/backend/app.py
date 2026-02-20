@@ -370,7 +370,7 @@ async def convert_pdf(file: UploadFile = File(...)):
         
         # Run pipeline
         try:
-            raw_text = extract_text_from_pdf(pdf_path)
+            raw_text = extract_text_from_pdf(pdf_path, client)
             cleaned_text = clean_text(raw_text)
             protocol_md = convert_to_protocol_markdown(client, contract, cleaned_text)
             protocol_md = finalize_protocol_md(protocol_md)

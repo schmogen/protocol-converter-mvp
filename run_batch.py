@@ -1,4 +1,6 @@
 import argparse
+import base64
+import io
 import json
 import re
 import time
@@ -91,7 +93,7 @@ def _is_corrupted_table(rows: list) -> bool:
     # Signal 1: first cell is suspiciously long
     if len(header[0]) > 25:
         return True
-    # Signal 2: word split across adjacent cells
+    # Signal 2: word split across adjacent cells (e.g. "D" | "PBS volume...")
     for i in range(len(header) - 1):
         cell = header[i]
         next_cell = header[i + 1]
@@ -99,6 +101,14 @@ def _is_corrupted_table(rows: list) -> bool:
                 and cell[-1].isalpha()
                 and next_cell
                 and next_cell[0].islower()):
+            return True
+    # Signal 3: any header cell ends or starts with an isolated single letter
+    # (e.g. "Cell Factory system D" or "T Cell Factory system p"), indicating
+    # a stray character was absorbed from an adjacent body-text column.
+    for cell in header:
+        if re.search(r" [A-Za-z]$", cell):   # single letter tacked on at end
+            return True
+        if re.match(r"^[A-Za-z] ", cell):    # single letter prepended at start
             return True
     return False
 
@@ -123,7 +133,82 @@ def _fallback_table_rows(page, bbox: tuple):
     return rows
 
 
-def _extract_page_content(page) -> str:
+def _extract_tables_via_vision(page, client: OpenAI) -> list:
+    """Extract tables from a page image using GPT-4o-mini vision.
+
+    Renders the page as a JPEG at 150 DPI, sends it to the OpenAI chat
+    completions API, and parses the markdown table response into a list of
+    row-lists (one list per table found on the page).  Returns an empty list
+    on any rendering or API error.
+
+    Requires the 'pillow' and 'pikepdf' packages for page.to_image().
+    """
+    try:
+        pil_image = page.to_image(resolution=150).original
+        buf = io.BytesIO()
+        pil_image.save(buf, format="JPEG")
+        b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+    except Exception:
+        return []
+
+    prompt = (
+        "This page contains one or more tables. Extract each table you see and "
+        "return them as markdown pipe-formatted tables, one after another, separated "
+        "by a blank line. Include the header row and a separator row of dashes. "
+        "Return only the markdown tables, nothing else."
+    )
+
+    try:
+        resp = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:image/jpeg;base64,{b64}",
+                                "detail": "high",
+                            },
+                        },
+                        {
+                            "type": "text",
+                            "text": prompt,
+                        },
+                    ],
+                }
+            ],
+        )
+    except Exception:
+        return []
+
+    response_text = (resp.choices[0].message.content or "").strip()
+    if not response_text:
+        return []
+
+    # Split on blank lines; treat each chunk containing a pipe as a table
+    all_tables = []
+    for chunk in re.split(r"\n\s*\n", response_text):
+        if "|" not in chunk:
+            continue
+        rows = []
+        for line in chunk.splitlines():
+            line = line.strip()
+            if not line or not line.startswith("|"):
+                continue
+            # Skip separator rows (| --- | --- |)
+            if re.match(r"^[\s\-|:]+$", line.strip("|")):
+                continue
+            cells = [c.strip() for c in line.split("|")[1:-1]]
+            rows.append(cells)
+        if rows:
+            all_tables.append(rows)
+
+    return all_tables
+
+
+def _extract_page_content(page, client: OpenAI) -> str:
     """Extract text and tables from a page, interleaved by vertical position."""
     tables = page.find_tables()
     if not tables:
@@ -137,16 +222,23 @@ def _extract_page_content(page) -> str:
 
     blocks: list[tuple[float, float, str]] = []  # (top_y, bottom_y, content)
 
-    # Build table markdown blocks
+    # Build table markdown blocks.
+    # Vision is called at most once per page; results are consumed in order.
+    _vision_results = None
+    _vision_idx = 0
     for table in tables_sorted:
         x0, top, x1, bottom = table.bbox
         data = table.extract()
         if data:
             if _is_corrupted_table(data):
-                fallback = _fallback_table_rows(page, table.bbox)
-                if fallback:
-                    blocks.append((top, bottom, _table_to_markdown(fallback)))
-                # else: skip this corrupted table entirely
+                if _vision_results is None:
+                    _vision_results = _extract_tables_via_vision(page, client)
+                if _vision_idx < len(_vision_results):
+                    vt_rows = _vision_results[_vision_idx]
+                    _vision_idx += 1
+                    if vt_rows:
+                        blocks.append((top, bottom, _table_to_markdown(vt_rows)))
+                # else: no more vision results; skip this corrupted table
             else:
                 blocks.append((top, bottom, _table_to_markdown(data)))
 
@@ -234,7 +326,7 @@ def _looks_like_heading(line: str) -> bool:
     return True
 
 
-def extract_tables_from_pdf(pdf_path: Path) -> list:
+def extract_tables_from_pdf(pdf_path: Path, client: OpenAI) -> list:
     """Return all tables from the PDF in page/vertical order as raw row data.
 
     Each entry is a dict with:
@@ -264,6 +356,8 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
                 continue
 
             prev_bottom = 0.0
+            _vision_results = None  # lazily populated; shared across corrupted tables on page
+            _vision_idx = 0
             for table in tables_on_page:
                 top = table.bbox[1]
                 preceding = ""
@@ -277,16 +371,20 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
                 rows = table.extract()
                 if rows:
                     if _is_corrupted_table(rows):
-                        fallback = _fallback_table_rows(page, table.bbox)
-                        if fallback:
-                            tables.append({
-                                "page": page_num,
-                                "top": top,
-                                "rows": fallback,
-                                "preceding_text": preceding.strip(),
-                                "section_heading": current_heading,
-                            })
-                        # else: skip this corrupted table entirely
+                        if _vision_results is None:
+                            _vision_results = _extract_tables_via_vision(page, client)
+                        if _vision_idx < len(_vision_results):
+                            vt_rows = _vision_results[_vision_idx]
+                            _vision_idx += 1
+                            if vt_rows:
+                                tables.append({
+                                    "page": page_num,
+                                    "top": top,
+                                    "rows": vt_rows,
+                                    "preceding_text": preceding.strip(),
+                                    "section_heading": current_heading,
+                                })
+                        # else: no more vision results; skip this corrupted table
                     else:
                         tables.append({
                             "page": page_num,
@@ -307,12 +405,12 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
     return tables
 
 
-def extract_text_from_pdf(pdf_path: Path) -> str:
+def extract_text_from_pdf(pdf_path: Path, client: OpenAI) -> str:
     """Extract page text with tables interleaved by vertical position."""
     parts: list[str] = []
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
-            content = _extract_page_content(page)
+            content = _extract_page_content(page, client)
             parts.append(f"\n\n--- PAGE {i} ---\n\n{content}")
     return "".join(parts).strip()
 
@@ -851,7 +949,7 @@ def main() -> None:
         }
 
         try:
-            raw = extract_text_from_pdf(pdf_path)
+            raw = extract_text_from_pdf(pdf_path, client)
             (out_dir / "raw_extracted.txt").write_text(raw, encoding="utf-8")
 
             cleaned = clean_text(raw)
