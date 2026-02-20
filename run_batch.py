@@ -45,13 +45,28 @@ load_dotenv(dotenv_path=".env")
 # -------------------------
 # PDF extraction
 # -------------------------
+def _clean_cell(val) -> str:
+    """Normalize a pdfplumber cell value for markdown output.
+
+    Strips leading/trailing whitespace, collapses internal newlines to a
+    single space, and removes null bytes and non-printable control characters
+    that can appear when pdfplumber splits cell text across column boundaries.
+    """
+    if val is None:
+        return ""
+    s = str(val)
+    s = re.sub(r"[\r\n]+", " ", s)                          # newlines → space
+    s = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]", "", s)  # non-printable
+    return s.strip()
+
+
 def _table_to_markdown(table_data: list) -> str:
     """Convert pdfplumber table data (list of rows) to markdown pipe format."""
     if not table_data:
         return ""
     rows = []
     for row in table_data:
-        cells = [str(cell).strip().replace("\n", " ") if cell is not None else "" for cell in row]
+        cells = [_clean_cell(cell) for cell in row]
         rows.append("| " + " | ".join(cells) + " |")
     if len(rows) >= 1:
         num_cols = len(table_data[0])
@@ -66,8 +81,11 @@ def _extract_page_content(page) -> str:
     if not tables:
         return page.extract_text() or ""
 
-    # Sort tables by their top y-coordinate
-    tables_sorted = sorted(tables, key=lambda t: t.bbox[1])
+    # Reading-order sort: group by vertical band, then left-to-right within each band.
+    # Tables within band_threshold points of each other vertically are treated as
+    # being in the same horizontal band (e.g. side-by-side in a two-column layout).
+    band_threshold = 20
+    tables_sorted = sorted(tables, key=lambda t: (int(t.bbox[1] / band_threshold), t.bbox[0]))
 
     blocks: list[tuple[float, float, str]] = []  # (top_y, bottom_y, content)
 
@@ -178,7 +196,11 @@ def extract_tables_from_pdf(pdf_path: Path) -> list:
 
     with pdfplumber.open(pdf_path) as pdf:
         for page_num, page in enumerate(pdf.pages, start=1):
-            tables_on_page = sorted(page.find_tables(), key=lambda t: t.bbox[1])
+            band_threshold = 20
+            tables_on_page = sorted(
+                page.find_tables(),
+                key=lambda t: (int(t.bbox[1] / band_threshold), t.bbox[0]),
+            )
 
             if not tables_on_page:
                 # No tables on this page — scan full text to advance heading tracker
