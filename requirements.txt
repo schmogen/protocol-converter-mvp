@@ -6,3 +6,5 @@ openai
 anthropic
 pdfplumber
 python-docx
+pillow
+pikepdf
