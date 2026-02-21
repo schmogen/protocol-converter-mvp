@@ -257,25 +257,6 @@ def markdown_to_docx(md_content: str, output_path: Path, pdf_tables: list = None
             i += 1
             continue
 
-        # TABLE_PLACEHOLDER_N — substitute the pre-extracted PDF table
-        m_ph = re.match(r'^TABLE_PLACEHOLDER_(\d+)$', line.strip())
-        if m_ph:
-            idx = int(m_ph.group(1)) - 1  # convert 1-based N to 0-based index
-            if pdf_tables and 0 <= idx < len(pdf_tables):
-                _add_raw_table_to_doc(doc, pdf_tables[idx]['rows'])
-            i += 1
-            continue
-
-        # Detect markdown table
-        if line.strip().startswith('|'):
-            table_lines = []
-            while i < len(lines) and lines[i].strip().startswith('|'):
-                table_lines.append(lines[i])
-                i += 1
-            for block in _split_table_blocks(table_lines):
-                _add_markdown_table_to_doc(doc, block)
-            continue
-
         # Handle headings — each heading marks the start of a new list sequence
         if line.startswith('# '):
             doc.add_heading(line[2:], level=1)

@@ -313,57 +313,12 @@ def _sort_tables_reading_order(tables: list) -> list:
 
 
 def _extract_page_content(page, client: OpenAI) -> str:
-    """Extract text and tables from a page, interleaved by vertical position."""
-    tables = page.find_tables()
-    if not tables:
-        return page.extract_text() or ""
+    """Extract text from a page using pdfplumber's plain text extraction.
 
-    tables_sorted = _sort_tables_reading_order(tables)
-
-    blocks: list[tuple[float, float, str]] = []  # (top_y, bottom_y, content)
-
-    # Build table markdown blocks.
-    # Vision is called at most once per page; results are matched by header text.
-    _vision_results = None
-    _used_vision_indices: set = set()
-    for table in tables_sorted:
-        x0, top, x1, bottom = table.bbox
-        data = table.extract()
-        if data:
-            if _is_corrupted_table(data):
-                if _vision_results is None:
-                    _vision_results = _extract_tables_via_vision(page, client)
-                match_idx = _match_vision_result(data, _vision_results, _used_vision_indices)
-                if match_idx is not None:
-                    _used_vision_indices.add(match_idx)
-                    vt_rows = _vision_results[match_idx]
-                    if vt_rows:
-                        blocks.append((top, bottom, _table_to_markdown(vt_rows)))
-                # else: no matching vision result; skip this corrupted table
-            else:
-                blocks.append((top, bottom, _table_to_markdown(data)))
-
-    # Build crop regions for text between/around tables
-    crop_regions: list[tuple[float, float]] = []
-    prev_bottom: float = 0.0
-    for table in tables_sorted:
-        top = table.bbox[1]
-        bottom = table.bbox[3]
-        if top > prev_bottom:
-            crop_regions.append((prev_bottom, top))
-        prev_bottom = bottom
-    if prev_bottom < page.height:
-        crop_regions.append((prev_bottom, page.height))
-
-    for region_top, region_bottom in crop_regions:
-        cropped = page.crop((0, region_top, page.width, region_bottom))
-        text = cropped.extract_text() or ""
-        if text.strip():
-            blocks.append((region_top, region_bottom, text))
-
-    # Sort all blocks by top_y and join
-    blocks.sort(key=lambda b: b[0])
-    return "\n\n".join(content for _, _, content in blocks)
+    Table content is included naturally by pdfplumber's layout analysis.
+    The model reads values from the extracted text and embeds them inline.
+    """
+    return page.extract_text(x_tolerance=3, y_tolerance=3) or ""
 
 
 def _extract_page_content_with_placeholders(page, counter_start: int) -> tuple:
@@ -758,7 +713,9 @@ NUMBERED STEPS: Output every procedural step as a markdown numbered list item us
 
 LIST NUMBERING: Whenever a new section or subsection heading appears, any numbered list that follows must restart at 1. Each procedural section is independent and must have its own numbering starting from 1.
 
-TABLES: If the source document contains tables, they appear in the input as markdown pipe-formatted tables. Reproduce each table in the output exactly as it appears in the input, using the same pipe format. Do not reorder, merge, or omit any table. Place each table at the same position relative to the surrounding steps and headings as it appears in the input.
+TABLES: Do not reproduce any tables in the output. Instead, read the data from each table in the source and embed the relevant values directly into the protocol step they belong to. For example, if a table lists wash volumes by system type, incorporate those volumes into the wash step as inline text: 'Wash with DPBS (2-layer: 80 mL, 3-layer: 120 mL, 10-layer: 400 mL, 13-layer: 520 mL per system)'. Every value from every table must appear somewhere in the output — do not omit table data.
+
+TABLE PLACEMENT: Embed table values into the step that logically precedes or introduces that table in the source document. If a table appears after step 5, its values belong in step 5 or as a sub-note immediately after step 5.
 
 --- CONTRACT ---
 {contract}
