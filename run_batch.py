@@ -312,12 +312,69 @@ def _sort_tables_reading_order(tables: list) -> list:
     return result
 
 
-def _extract_page_content(page, client: OpenAI) -> str:
-    """Extract text from a page using pdfplumber's plain text extraction.
+def _detect_column_split(page) -> float | None:
+    """Return the x coordinate of the column gap if a two-column layout is
+    detected, or None for single-column pages.
 
-    Table content is included naturally by pdfplumber's layout analysis.
-    The model reads values from the extracted text and embeds them inline.
+    Detection criteria:
+    1. The horizontal span of all word x0 coordinates exceeds 40% of the page
+       width (ruling out narrow pages / margin notes).
+    2. Within a band of ±15% of the page width around the horizontal midpoint,
+       there is a contiguous gap of at least 20 points where no word x0 falls.
+
+    Returns the centre of the largest such gap if found, otherwise None.
     """
+    words = page.extract_words()
+    if not words:
+        return None
+
+    xs = [w['x0'] for w in words]
+    x_min, x_max = min(xs), max(xs)
+    if (x_max - x_min) <= 0.4 * page.width:
+        return None
+
+    midpoint = page.width / 2
+    band_lo = midpoint - 0.15 * page.width
+    band_hi = midpoint + 0.15 * page.width
+
+    in_band = sorted(x for x in xs if band_lo <= x <= band_hi)
+    if not in_band:
+        return None
+
+    # Candidate gaps: from band_lo to first x0, between consecutive x0s, and
+    # from last x0 to band_hi.
+    candidates = [(band_lo, in_band[0])]
+    for i in range(len(in_band) - 1):
+        candidates.append((in_band[i], in_band[i + 1]))
+    candidates.append((in_band[-1], band_hi))
+
+    best_gap, best_lo, best_hi = 0.0, 0.0, 0.0
+    for lo, hi in candidates:
+        gap = hi - lo
+        if gap > best_gap:
+            best_gap, best_lo, best_hi = gap, lo, hi
+
+    if best_gap < 20:
+        return None
+
+    return (best_lo + best_hi) / 2
+
+
+def _extract_page_content(page, client: OpenAI) -> str:
+    """Extract text from a page, handling two-column layouts automatically.
+
+    Calls _detect_column_split to check for a two-column layout.  If one is
+    found, the page is cropped into left and right halves at the detected gap
+    and each half is extracted separately, preserving column reading order.
+    Single-column pages are extracted normally.
+    """
+    split_x = _detect_column_split(page)
+    if split_x is not None:
+        left = page.crop((0, 0, split_x, page.height))
+        right = page.crop((split_x, 0, page.width, page.height))
+        left_text = left.extract_text(x_tolerance=3, y_tolerance=3) or ""
+        right_text = right.extract_text(x_tolerance=3, y_tolerance=3) or ""
+        return (left_text + "\n\n" + right_text).strip()
     return page.extract_text(x_tolerance=3, y_tolerance=3) or ""
 
 
