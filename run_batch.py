@@ -222,6 +222,46 @@ def _extract_tables_via_vision(page, client: OpenAI) -> list:
         return []
 
 
+def _match_vision_result(corrupted_rows: list, vision_results: list, used_indices: set):
+    """Find the best matching vision result for a corrupted table.
+
+    Compares the second cell of the first row of *corrupted_rows* against the
+    second cell of the first row of each unused vision result.  Normalizes both
+    to lowercase with punctuation stripped, then scores by counting shared words
+    of 3+ characters.  Returns the index of the best-scoring unused result with
+    score > 0, or None if no match is found.
+    """
+    def _header_text(rows):
+        if not rows or not rows[0] or len(rows[0]) < 2:
+            return ""
+        return _clean_cell(rows[0][1])
+
+    def _normalize_header(text: str) -> str:
+        text = text.lower()
+        text = re.sub(r"[^\w\s]", "", text)
+        return re.sub(r"\s+", " ", text).strip()
+
+    def _score(a: str, b: str) -> int:
+        words_a = {w for w in a.split() if len(w) >= 3}
+        words_b = {w for w in b.split() if len(w) >= 3}
+        return len(words_a & words_b)
+
+    corrupted_header = _normalize_header(_header_text(corrupted_rows))
+
+    best_idx = None
+    best_score = 0
+    for i, vt_rows in enumerate(vision_results):
+        if i in used_indices:
+            continue
+        vision_header = _normalize_header(_header_text(vt_rows))
+        score = _score(corrupted_header, vision_header)
+        if score > best_score:
+            best_score = score
+            best_idx = i
+
+    return best_idx if best_score > 0 else None
+
+
 def _extract_page_content(page, client: OpenAI) -> str:
     """Extract text and tables from a page, interleaved by vertical position."""
     tables = page.find_tables()
@@ -237,9 +277,9 @@ def _extract_page_content(page, client: OpenAI) -> str:
     blocks: list[tuple[float, float, str]] = []  # (top_y, bottom_y, content)
 
     # Build table markdown blocks.
-    # Vision is called at most once per page; results are consumed in order.
+    # Vision is called at most once per page; results are matched by header text.
     _vision_results = None
-    _vision_idx = 0
+    _used_vision_indices: set = set()
     for table in tables_sorted:
         x0, top, x1, bottom = table.bbox
         data = table.extract()
@@ -247,12 +287,13 @@ def _extract_page_content(page, client: OpenAI) -> str:
             if _is_corrupted_table(data):
                 if _vision_results is None:
                     _vision_results = _extract_tables_via_vision(page, client)
-                if _vision_idx < len(_vision_results):
-                    vt_rows = _vision_results[_vision_idx]
-                    _vision_idx += 1
+                match_idx = _match_vision_result(data, _vision_results, _used_vision_indices)
+                if match_idx is not None:
+                    _used_vision_indices.add(match_idx)
+                    vt_rows = _vision_results[match_idx]
                     if vt_rows:
                         blocks.append((top, bottom, _table_to_markdown(vt_rows)))
-                # else: no more vision results; skip this corrupted table
+                # else: no matching vision result; skip this corrupted table
             else:
                 blocks.append((top, bottom, _table_to_markdown(data)))
 
@@ -371,7 +412,7 @@ def extract_tables_from_pdf(pdf_path: Path, client: OpenAI) -> list:
 
             prev_bottom = 0.0
             _vision_results = None  # lazily populated; shared across corrupted tables on page
-            _vision_idx = 0
+            _used_vision_indices: set = set()
             for table in tables_on_page:
                 top = table.bbox[1]
                 preceding = ""
@@ -387,9 +428,10 @@ def extract_tables_from_pdf(pdf_path: Path, client: OpenAI) -> list:
                     if _is_corrupted_table(rows):
                         if _vision_results is None:
                             _vision_results = _extract_tables_via_vision(page, client)
-                        if _vision_idx < len(_vision_results):
-                            vt_rows = _vision_results[_vision_idx]
-                            _vision_idx += 1
+                        match_idx = _match_vision_result(rows, _vision_results, _used_vision_indices)
+                        if match_idx is not None:
+                            _used_vision_indices.add(match_idx)
+                            vt_rows = _vision_results[match_idx]
                             if vt_rows:
                                 tables.append({
                                     "page": page_num,
@@ -398,7 +440,7 @@ def extract_tables_from_pdf(pdf_path: Path, client: OpenAI) -> list:
                                     "preceding_text": preceding.strip(),
                                     "section_heading": current_heading,
                                 })
-                        # else: no more vision results; skip this corrupted table
+                        # else: no matching vision result; skip this corrupted table
                     else:
                         tables.append({
                             "page": page_num,
