@@ -262,17 +262,63 @@ def _match_vision_result(corrupted_rows: list, vision_results: list, used_indice
     return best_idx if best_score > 0 else None
 
 
+def _sort_tables_reading_order(tables: list) -> list:
+    """Sort pdfplumber table objects into reading order using x-overlap detection.
+
+    Two tables are in the same horizontal row when their x-ranges do not
+    overlap (one ends at or before the other starts).  Tables are grouped
+    greedily by processing them top-to-bottom: a new row begins whenever the
+    new table's x-range overlaps the current row's collective x-range (i.e.
+    new_x0 < row_x1 AND row_x0 < new_x1).  Non-overlapping tables (side by
+    side) are collected into the same row.  Within each row tables are ordered
+    left-to-right (by x0); rows are ordered top-to-bottom (by the minimum top
+    of all tables in the row).
+    """
+    if not tables:
+        return []
+
+    # First pass: sort by top so we process tables in vertical order
+    by_top = sorted(tables, key=lambda t: t.bbox[1])
+
+    rows: list[list] = []
+    current_row: list = []
+    row_x0: float = 0.0
+    row_x1: float = 0.0
+
+    for table in by_top:
+        x0, top, x1, bottom = table.bbox
+        if current_row and (x0 < row_x1 and row_x0 < x1):
+            # x-ranges overlap → this table is stacked vertically; start a new row
+            rows.append(current_row)
+            current_row = [table]
+            row_x0 = x0
+            row_x1 = x1
+        elif not current_row:
+            current_row = [table]
+            row_x0 = x0
+            row_x1 = x1
+        else:
+            current_row.append(table)
+            row_x0 = min(row_x0, x0)
+            row_x1 = max(row_x1, x1)
+
+    if current_row:
+        rows.append(current_row)
+
+    # Sort each row left-to-right, then flatten in top-to-bottom row order
+    result = []
+    for row in rows:
+        result.extend(sorted(row, key=lambda t: t.bbox[0]))
+    return result
+
+
 def _extract_page_content(page, client: OpenAI) -> str:
     """Extract text and tables from a page, interleaved by vertical position."""
     tables = page.find_tables()
     if not tables:
         return page.extract_text() or ""
 
-    # Reading-order sort: group by vertical band, then left-to-right within each band.
-    # Tables within band_threshold points of each other vertically are treated as
-    # being in the same horizontal band (e.g. side-by-side in a two-column layout).
-    band_threshold = 20
-    tables_sorted = sorted(tables, key=lambda t: (int(t.bbox[1] / band_threshold), t.bbox[0]))
+    tables_sorted = _sort_tables_reading_order(tables)
 
     blocks: list[tuple[float, float, str]] = []  # (top_y, bottom_y, content)
 
@@ -397,11 +443,7 @@ def extract_tables_from_pdf(pdf_path: Path, client: OpenAI) -> list:
 
     with pdfplumber.open(pdf_path) as pdf:
         for page_num, page in enumerate(pdf.pages, start=1):
-            band_threshold = 20
-            tables_on_page = sorted(
-                page.find_tables(),
-                key=lambda t: (int(t.bbox[1] / band_threshold), t.bbox[0]),
-            )
+            tables_on_page = _sort_tables_reading_order(page.find_tables())
 
             if not tables_on_page:
                 # No tables on this page — scan full text to advance heading tracker
