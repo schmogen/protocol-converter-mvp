@@ -1,0 +1,142 @@
+{
+  "pdf_name": "nos respiration.pdf",
+  "protocol_title": "Staphylococcus aureus nitric oxide synthase (saNOS) modulates aerobic respiratory metabolism and cell physiology",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol outlines the investigation of the role of saNOS in Staphylococcus aureus aerobic physiology, focusing on its effects on respiratory metabolism and oxidative stress. It includes experimental procedures for growth conditions, RNA sequencing, and metabolomics analysis.",
+  "expected_sections": [
+    "Role of Staphylococcus aureus Nitric Oxide Synthase in Aerobic Respiratory Metabolism and Cell Physiology",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Bacterial Culture and Growth Conditions",
+    "Growth Curve Analysis",
+    "Scanning Electron Microscopy (SEM)",
+    "RNA Isolation and RNAseq Analysis",
+    "Quantitative Real-Time PCR (qRT-PCR)",
+    "Measurement of Intracellular ROS and Superoxide",
+    "Catalase Activity Assay",
+    "Membrane Potential Measurement",
+    "Respiratory Dehydrogenase Activity by CTC Staining",
+    "Oxygen Consumption Rate",
+    "NADH Dehydrogenase Inhibition Experiment",
+    "Aconitase Activity Assay",
+    "Metabolite Collection and Preparation for LC/MS/MS",
+    "Targeted Metabolomics Analysis by LC/MS/MS",
+    "Statistical Analysis",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Scientific QA Review Report",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks",
+    "Summary:"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Optical density at 600 nm during growth",
+      "value": "0.05",
+      "unit": "OD",
+      "context_hint": "inoculated"
+    },
+    {
+      "id": "cv_002",
+      "description": "Growth duration in hours",
+      "value": "3",
+      "unit": "hours",
+      "context_hint": "growth"
+    },
+    {
+      "id": "cv_003",
+      "description": "Concentration of DPTA NONOate added",
+      "value": "100",
+      "unit": "µM",
+      "context_hint": "NO donor"
+    },
+    {
+      "id": "cv_004",
+      "description": "Catalase activity measurement",
+      "value": "0.001",
+      "unit": "units",
+      "context_hint": "catalase"
+    },
+    {
+      "id": "cv_005",
+      "description": "NADH levels in nos mutant",
+      "value": "64.9",
+      "unit": "%",
+      "context_hint": "decrease"
+    },
+    {
+      "id": "cv_006",
+      "description": "Lactate levels in nos mutant",
+      "value": "48.5",
+      "unit": "%",
+      "context_hint": "decrease"
+    },
+    {
+      "id": "cv_007",
+      "description": "Citrate levels in nos mutant",
+      "value": "30.0",
+      "unit": "%",
+      "context_hint": "decrease"
+    },
+    {
+      "id": "cv_008",
+      "description": "α-ketoglutarate levels in nos mutant",
+      "value": "53.5",
+      "unit": "%",
+      "context_hint": "decrease"
+    },
+    {
+      "id": "cv_009",
+      "description": "Fumarate levels in nos mutant",
+      "value": "157.5",
+      "unit": "%",
+      "context_hint": "increase"
+    },
+    {
+      "id": "cv_010",
+      "description": "Malate levels in nos mutant",
+      "value": "62.4",
+      "unit": "%",
+      "context_hint": "increase"
+    },
+    {
+      "id": "cv_011",
+      "description": "Histidine levels in nos mutant",
+      "value": "228.0",
+      "unit": "%",
+      "context_hint": "increase"
+    }
+  ],
+  "key_reagents": [
+    "DPTA NONOate",
+    "Luria Broth (LB)",
+    "tryptic soy broth (TSB)",
+    "CM-H DCFDA",
+    "MitoSOX Red",
+    "Amplex Red",
+    "Thioridizine HCl",
+    "Aconitase Assay Kit",
+    "RNAseq",
+    "LC/MS/MS"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "E. coli",
+    "Bacillus",
+    "Deinococcus",
+    "mammalian NOS",
+    "antibiotics not mentioned",
+    "non-bacterial pathogens"
+  ]
+}

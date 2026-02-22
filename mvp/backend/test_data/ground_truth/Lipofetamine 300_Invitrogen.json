@@ -1,0 +1,132 @@
+{
+  "pdf_name": "Lipofetamine 300_Invitrogen.pdf",
+  "protocol_title": "Lipofectamine™ 3000 Reagent Protocol",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol provides detailed instructions for using Lipofectamine™ 3000 Reagent to transfect nucleic acids into eukaryotic cells. It includes guidelines for preparing DNA-lipid complexes and optimizing transfection conditions.",
+  "expected_sections": [
+    "Lipofectamine™ 3000 Reagent Protocol",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Confluency percentage for cells at transfection",
+      "value": "70-90",
+      "unit": "percent",
+      "context_hint": "confluent"
+    },
+    {
+      "id": "cv_002",
+      "description": "DNA amount for 96-well",
+      "value": "100",
+      "unit": "ng",
+      "context_hint": "DNA amount"
+    },
+    {
+      "id": "cv_003",
+      "description": "DNA amount for 24-well",
+      "value": "500",
+      "unit": "ng",
+      "context_hint": "DNA amount"
+    },
+    {
+      "id": "cv_004",
+      "description": "DNA amount for 6-well",
+      "value": "2500",
+      "unit": "ng",
+      "context_hint": "DNA amount"
+    },
+    {
+      "id": "cv_005",
+      "description": "P3000™ Reagent volume for 96-well",
+      "value": "0.2",
+      "unit": "μL",
+      "context_hint": "P3000™ Reagent"
+    },
+    {
+      "id": "cv_006",
+      "description": "P3000™ Reagent volume for 24-well",
+      "value": "1",
+      "unit": "μL",
+      "context_hint": "P3000™ Reagent"
+    },
+    {
+      "id": "cv_007",
+      "description": "P3000™ Reagent volume for 6-well",
+      "value": "5",
+      "unit": "μL",
+      "context_hint": "P3000™ Reagent"
+    },
+    {
+      "id": "cv_008",
+      "description": "Lipofectamine™ 3000 Reagent volume for 96-well",
+      "value": "0.15 and 0.3",
+      "unit": "μL",
+      "context_hint": "Lipofectamine™ 3000 Reagent"
+    },
+    {
+      "id": "cv_009",
+      "description": "Lipofectamine™ 3000 Reagent volume for 24-well",
+      "value": "0.75 and 1.5",
+      "unit": "μL",
+      "context_hint": "Lipofectamine™ 3000 Reagent"
+    },
+    {
+      "id": "cv_010",
+      "description": "Lipofectamine™ 3000 Reagent volume for 6-well",
+      "value": "3.75 and 7.5",
+      "unit": "μL",
+      "context_hint": "Lipofectamine™ 3000 Reagent"
+    },
+    {
+      "id": "cv_011",
+      "description": "Incubation time at room temperature",
+      "value": "10-15",
+      "unit": "minutes",
+      "context_hint": "Incubate"
+    },
+    {
+      "id": "cv_012",
+      "description": "Final incubation time after transfection",
+      "value": "2-4",
+      "unit": "days",
+      "context_hint": "Incubate"
+    },
+    {
+      "id": "cv_013",
+      "description": "Incubation temperature for cells",
+      "value": "37",
+      "unit": "°C",
+      "context_hint": "37°C"
+    }
+  ],
+  "key_reagents": [
+    "Lipofectamine™ 3000 Reagent",
+    "P3000™ Reagent",
+    "Opti-MEM™ Reduced Serum Medium",
+    "plasmid DNA"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "PCR",
+    "Western blot",
+    "ELISA",
+    "cell culture media not mentioned",
+    "reagents from unrelated protocols"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "pdf_name": "DNA Mini_Qiagen.pdf",
+  "protocol_title": "QIAamp® DNA Mini Kit Quick-Start Protocol",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol outlines the steps for extracting DNA using the QIAamp DNA Mini Kit. It provides detailed instructions for sample preparation and processing.",
+  "expected_sections": [
+    "QIAamp DNA Mini Kit Quick-Start Protocol",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks",
+    "Summary"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "room temperature range for storage and centrifugation",
+      "value": "15-25",
+      "unit": "°C",
+      "context_hint": "room"
+    },
+    {
+      "id": "cv_002",
+      "description": "incubation temperature for dissolving precipitate",
+      "value": "56",
+      "unit": "°C",
+      "context_hint": "incubating"
+    },
+    {
+      "id": "cv_003",
+      "description": "incubation temperature for step 3",
+      "value": "70",
+      "unit": "°C",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_004",
+      "description": "amount of tissue to cut",
+      "value": "25",
+      "unit": "mg",
+      "context_hint": "tissue"
+    },
+    {
+      "id": "cv_005",
+      "description": "volume of Buffer ATL to add",
+      "value": "180",
+      "unit": "µl",
+      "context_hint": "Buffer"
+    },
+    {
+      "id": "cv_006",
+      "description": "volume of Proteinase K to add",
+      "value": "20",
+      "unit": "µl",
+      "context_hint": "Proteinase"
+    },
+    {
+      "id": "cv_007",
+      "description": "incubation time for lysis",
+      "value": "1-3",
+      "unit": "h",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_008",
+      "description": "volume of Buffer AL to add",
+      "value": "200",
+      "unit": "µl",
+      "context_hint": "Buffer"
+    },
+    {
+      "id": "cv_009",
+      "description": "vortex mixing time",
+      "value": "15",
+      "unit": "s",
+      "context_hint": "vortex"
+    },
+    {
+      "id": "cv_010",
+      "description": "centrifuge speed for step 5",
+      "value": "6000",
+      "unit": "x g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_011",
+      "description": "centrifuge speed for step 6",
+      "value": "6000",
+      "unit": "x g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_012",
+      "description": "centrifuge speed for step 7",
+      "value": "20000",
+      "unit": "x g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_013",
+      "description": "centrifuge speed for optional step",
+      "value": "20000",
+      "unit": "x g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_014",
+      "description": "centrifuge time for step 7",
+      "value": "3",
+      "unit": "min",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_015",
+      "description": "volume of Buffer AE or distilled water to add for elution",
+      "value": "200",
+      "unit": "µl",
+      "context_hint": "Buffer"
+    },
+    {
+      "id": "cv_016",
+      "description": "centrifuge speed for elution step",
+      "value": "6000",
+      "unit": "x g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_017",
+      "description": "centrifuge time for elution step",
+      "value": "1",
+      "unit": "min",
+      "context_hint": "centrifuge"
+    }
+  ],
+  "key_reagents": [
+    "Buffer ATL",
+    "Proteinase K",
+    "Buffer AL",
+    "ethanol (96–100%)",
+    "Buffer AW1",
+    "Buffer AW2",
+    "Buffer AE"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "PCR",
+    "gel electrophoresis",
+    "RNA",
+    "plasmid",
+    "cell culture"
+  ]
+}

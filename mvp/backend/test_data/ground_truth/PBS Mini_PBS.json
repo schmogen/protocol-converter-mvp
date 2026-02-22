@@ -1,0 +1,140 @@
+{
+  "pdf_name": "PBS Mini_PBS.pdf",
+  "protocol_title": "PBS MINI Bioreactor User Manual",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol provides detailed instructions for the use and maintenance of the PBS MINI Bioreactor System, a single-use device for cell culturing. It includes safety information, installation procedures, and troubleshooting tips.",
+  "expected_sections": [
+    "PBS MINI Bioreactor System User Manual Protocol",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Installing the PBS MINI",
+    "Removing a Sample from the PBS MINI",
+    "Maintenance and Cleaning",
+    "Troubleshooting the PBS MINI",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Minimum operational temperature",
+      "value": "16",
+      "unit": "°C",
+      "context_hint": "temperature"
+    },
+    {
+      "id": "cv_002",
+      "description": "Maximum operational temperature",
+      "value": "40",
+      "unit": "°C",
+      "context_hint": "temperature"
+    },
+    {
+      "id": "cv_003",
+      "description": "Minimum humidity level",
+      "value": "5",
+      "unit": "%",
+      "context_hint": "humidity"
+    },
+    {
+      "id": "cv_004",
+      "description": "Maximum humidity level",
+      "value": "100",
+      "unit": "%",
+      "context_hint": "humidity"
+    },
+    {
+      "id": "cv_005",
+      "description": "Minimum working volume for PBS 0.1",
+      "value": "20",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_006",
+      "description": "Maximum working volume for PBS 0.1",
+      "value": "100",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_007",
+      "description": "Minimum working volume for PBS 0.5",
+      "value": "100",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_008",
+      "description": "Maximum working volume for PBS 0.5",
+      "value": "500",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_009",
+      "description": "Agitation speed range",
+      "value": "5-100",
+      "unit": "RPM",
+      "context_hint": "speed"
+    },
+    {
+      "id": "cv_010",
+      "description": "Power supply input current",
+      "value": "1",
+      "unit": "A",
+      "context_hint": "current"
+    },
+    {
+      "id": "cv_011",
+      "description": "Power supply output current",
+      "value": "1.5",
+      "unit": "A",
+      "context_hint": "current"
+    },
+    {
+      "id": "cv_012",
+      "description": "Base unit input voltage",
+      "value": "24",
+      "unit": "Vdc",
+      "context_hint": "voltage"
+    },
+    {
+      "id": "cv_013",
+      "description": "Base unit input current",
+      "value": "120",
+      "unit": "mA",
+      "context_hint": "current"
+    },
+    {
+      "id": "cv_014",
+      "description": "Altitude operational limit",
+      "value": "2000",
+      "unit": "m",
+      "context_hint": "altitude"
+    }
+  ],
+  "key_reagents": [
+    "70% isopropyl alcohol",
+    "PBS 0.1 Single-Use Vessel",
+    "PBS 0.5 Single-Use Vessel"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "reagents from other protocols",
+    "biosafety levels not applicable",
+    "equipment not used in this workflow"
+  ]
+}

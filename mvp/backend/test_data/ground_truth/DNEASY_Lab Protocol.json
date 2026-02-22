@@ -1,0 +1,462 @@
+{
+  "pdf_name": "DNEASY_Lab Protocol.pdf",
+  "protocol_title": "DNA Extraction – Qiagen DNeasy kit",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol outlines the steps for DNA extraction using the Qiagen DNeasy kit, including PCR setup and gel extraction methods. It serves as a comprehensive guide for laboratory procedures related to DNA manipulation.",
+  "expected_sections": [
+    "Wheeler Lab Protocols",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "DNA Extraction – Qiagen DNeasy kit",
+    "PCR – Ready-to-go Beads",
+    "Agarose Gel Electrophoresis",
+    "Gel Extraction (for double bands) – Promega Wizard Kit",
+    "AMPure Cleanup",
+    "Sequencing Setup",
+    "CleanSeq Cleanup",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks",
+    "Summary",
+    "Flags:"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Temperature for sterilizing forceps",
+      "value": "200",
+      "unit": "C",
+      "context_hint": "sterilized"
+    },
+    {
+      "id": "cv_002",
+      "description": "Volume of Buffer ATL added",
+      "value": "180",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_003",
+      "description": "Volume of Proteinase K added",
+      "value": "20",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_004",
+      "description": "Incubation temperature",
+      "value": "55",
+      "unit": "C",
+      "context_hint": "incubator"
+    },
+    {
+      "id": "cv_005",
+      "description": "Incubation time",
+      "value": "3",
+      "unit": "hours",
+      "context_hint": "hours"
+    },
+    {
+      "id": "cv_006",
+      "description": "Volume of Buffer AL added",
+      "value": "200",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_007",
+      "description": "Heat block temperature",
+      "value": "70",
+      "unit": "C",
+      "context_hint": "heat block"
+    },
+    {
+      "id": "cv_008",
+      "description": "Centrifuge speed for first spin",
+      "value": "8000",
+      "unit": "rpm",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_009",
+      "description": "Centrifuge time for first spin",
+      "value": "1",
+      "unit": "minute",
+      "context_hint": "minute"
+    },
+    {
+      "id": "cv_010",
+      "description": "Volume of Buffer AW1 added",
+      "value": "500",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_011",
+      "description": "Centrifuge speed for second spin",
+      "value": "8000",
+      "unit": "rpm",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_012",
+      "description": "Centrifuge time for second spin",
+      "value": "1",
+      "unit": "minute",
+      "context_hint": "minute"
+    },
+    {
+      "id": "cv_013",
+      "description": "Volume of Buffer AW2 added",
+      "value": "500",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_014",
+      "description": "Centrifuge speed for third spin",
+      "value": "13000",
+      "unit": "rpm",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_015",
+      "description": "Centrifuge time for third spin",
+      "value": "3",
+      "unit": "minutes",
+      "context_hint": "minute"
+    },
+    {
+      "id": "cv_016",
+      "description": "Volume of buffer AE added",
+      "value": "200",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_017",
+      "description": "Total volume after combining flow-throughs",
+      "value": "400",
+      "unit": "µL",
+      "context_hint": "total volume"
+    },
+    {
+      "id": "cv_018",
+      "description": "Volume of DNA in PCR setup",
+      "value": "2",
+      "unit": "µL",
+      "context_hint": "DNA"
+    },
+    {
+      "id": "cv_019",
+      "description": "Volume of H2O in PCR setup",
+      "value": "21",
+      "unit": "µL",
+      "context_hint": "H O"
+    },
+    {
+      "id": "cv_020",
+      "description": "Volume of each primer in PCR setup",
+      "value": "1",
+      "unit": "µL",
+      "context_hint": "primer"
+    },
+    {
+      "id": "cv_021",
+      "description": "Thermal profile initial denaturation temperature",
+      "value": "94",
+      "unit": "C",
+      "context_hint": "program"
+    },
+    {
+      "id": "cv_022",
+      "description": "Thermal profile initial denaturation time",
+      "value": "5",
+      "unit": "minutes",
+      "context_hint": "program"
+    },
+    {
+      "id": "cv_023",
+      "description": "Thermal profile denaturation time",
+      "value": "30",
+      "unit": "seconds",
+      "context_hint": "program"
+    },
+    {
+      "id": "cv_024",
+      "description": "Thermal profile annealing temperature",
+      "value": "50",
+      "unit": "C",
+      "context_hint": "annealing"
+    },
+    {
+      "id": "cv_025",
+      "description": "Thermal profile annealing time",
+      "value": "30",
+      "unit": "seconds",
+      "context_hint": "annealing"
+    },
+    {
+      "id": "cv_026",
+      "description": "Thermal profile extension temperature",
+      "value": "72",
+      "unit": "C",
+      "context_hint": "extension"
+    },
+    {
+      "id": "cv_027",
+      "description": "Thermal profile extension time",
+      "value": "45",
+      "unit": "seconds",
+      "context_hint": "extension"
+    },
+    {
+      "id": "cv_028",
+      "description": "Total number of PCR cycles",
+      "value": "35",
+      "unit": "cycles",
+      "context_hint": "cycles"
+    },
+    {
+      "id": "cv_029",
+      "description": "Final extension time",
+      "value": "7",
+      "unit": "minutes",
+      "context_hint": "extension"
+    },
+    {
+      "id": "cv_030",
+      "description": "Hold temperature after PCR",
+      "value": "10",
+      "unit": "C",
+      "context_hint": "hold"
+    },
+    {
+      "id": "cv_031",
+      "description": "Gel running voltage",
+      "value": "70",
+      "unit": "volts",
+      "context_hint": "voltage"
+    },
+    {
+      "id": "cv_032",
+      "description": "Gel running time",
+      "value": "1.5",
+      "unit": "hours",
+      "context_hint": "hours"
+    },
+    {
+      "id": "cv_033",
+      "description": "Volume of Membrane Binding Solution per 10mg of gel",
+      "value": "10",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_034",
+      "description": "Incubation temperature for gel dissolution",
+      "value": "55",
+      "unit": "C",
+      "context_hint": "incubator"
+    },
+    {
+      "id": "cv_035",
+      "description": "Incubation time for gel dissolution",
+      "value": "10",
+      "unit": "minutes",
+      "context_hint": "minutes"
+    },
+    {
+      "id": "cv_036",
+      "description": "Volume of nuclease-free water added",
+      "value": "50",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_037",
+      "description": "Volume of AMPure added",
+      "value": "18",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_038",
+      "description": "Volume of PCR product added to AMPure",
+      "value": "10",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_039",
+      "description": "Ethanol wash volume",
+      "value": "200",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_040",
+      "description": "Ethanol wash duration",
+      "value": "30",
+      "unit": "seconds",
+      "context_hint": "wash"
+    },
+    {
+      "id": "cv_041",
+      "description": "Air dry time after ethanol wash",
+      "value": "25",
+      "unit": "minutes",
+      "context_hint": "dry"
+    },
+    {
+      "id": "cv_042",
+      "description": "Volume of H2O added to re-suspend DNA",
+      "value": "40",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_043",
+      "description": "Sequencing reaction volume of cleaned PCR product",
+      "value": "5",
+      "unit": "µL",
+      "context_hint": "product"
+    },
+    {
+      "id": "cv_044",
+      "description": "Volume of Big Dye Extender Buffer in sequencing",
+      "value": "1",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_045",
+      "description": "Volume of primer in sequencing",
+      "value": "1",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_046",
+      "description": "Volume of Big Dye in sequencing",
+      "value": "1",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_047",
+      "description": "Thermal profile sequencing denaturation time",
+      "value": "30",
+      "unit": "seconds",
+      "context_hint": "program"
+    },
+    {
+      "id": "cv_048",
+      "description": "Thermal profile sequencing annealing time",
+      "value": "1",
+      "unit": "minutes",
+      "context_hint": "program"
+    },
+    {
+      "id": "cv_049",
+      "description": "Thermal profile sequencing extension time",
+      "value": "4",
+      "unit": "minutes",
+      "context_hint": "program"
+    },
+    {
+      "id": "cv_050",
+      "description": "Total number of sequencing cycles",
+      "value": "35",
+      "unit": "cycles",
+      "context_hint": "cycles"
+    },
+    {
+      "id": "cv_051",
+      "description": "Hold temperature after sequencing",
+      "value": "4",
+      "unit": "C",
+      "context_hint": "hold"
+    },
+    {
+      "id": "cv_052",
+      "description": "Volume of CleanSeq added to sequencing reaction",
+      "value": "10",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_053",
+      "description": "Volume of 85% Ethanol added in CleanSeq",
+      "value": "37.5",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_054",
+      "description": "Volume of 85% Ethanol for second wash in CleanSeq",
+      "value": "100",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_055",
+      "description": "Air dry time after CleanSeq wash",
+      "value": "10",
+      "unit": "minutes",
+      "context_hint": "dry"
+    },
+    {
+      "id": "cv_056",
+      "description": "Volume of EDTA added in CleanSeq",
+      "value": "40",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_057",
+      "description": "Volume of finished product transferred to plate",
+      "value": "33",
+      "unit": "µL",
+      "context_hint": "transfer"
+    }
+  ],
+  "key_reagents": [
+    "Buffer ATL",
+    "Proteinase K",
+    "Buffer AL",
+    "100% Ethanol",
+    "Buffer AW1",
+    "Buffer AW2",
+    "Buffer AE",
+    "SYBRsafe stain",
+    "1XTBE buffer",
+    "Membrane Binding Solution",
+    "Membrane Wash Solution",
+    "nuclease-free water",
+    "AMPure",
+    "Big Dye Extender Buffer",
+    "primer",
+    "Big Dye",
+    "CleanSeq",
+    "EDTA"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "RNA",
+    "protein",
+    "cell culture",
+    "virus",
+    "bacterial transformation"
+  ]
+}

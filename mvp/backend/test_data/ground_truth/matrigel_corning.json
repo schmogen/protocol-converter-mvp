@@ -1,0 +1,144 @@
+{
+  "pdf_name": "matrigel_corning.pdf",
+  "protocol_title": "Corning® Matrigel® Basement Membrane Matrix for 3D Culture In Vitro",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol describes the use of Corning Matrigel for 3D cell culture, detailing the preparation and application of the matrix for MDCK cells. It includes two methods for culturing cells in a 3D environment using Matrigel.",
+  "expected_sections": [
+    "Corning® Matrigel® Basement Membrane Matrix for 3D Culture In Vitro Protocol",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "1. On-top MDCK 3D culture",
+    "2. Embedded MDCK 3D culture",
+    "Notes",
+    "References",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Thawing temperature for Matrigel matrix",
+      "value": "4",
+      "unit": "°C",
+      "context_hint": "thaw"
+    },
+    {
+      "id": "cv_002",
+      "description": "Volume of Matrigel matrix added to each well",
+      "value": "200",
+      "unit": "μL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_003",
+      "description": "Concentration range of Matrigel matrix",
+      "value": "8 to 11",
+      "unit": "mg/mL",
+      "context_hint": "concentration"
+    },
+    {
+      "id": "cv_004",
+      "description": "Incubation temperature for Matrigel to gel",
+      "value": "37",
+      "unit": "°C",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_005",
+      "description": "Centrifugation speed for cell pellet",
+      "value": "125",
+      "unit": "x g",
+      "context_hint": "centrifugation"
+    },
+    {
+      "id": "cv_006",
+      "description": "Centrifugation time for cell pellet",
+      "value": "5",
+      "unit": "min",
+      "context_hint": "centrifugation"
+    },
+    {
+      "id": "cv_007",
+      "description": "Final cell density for plating",
+      "value": "3 x 10^5",
+      "unit": "cells/mL",
+      "context_hint": "density"
+    },
+    {
+      "id": "cv_008",
+      "description": "Final concentration of Matrigel matrix in medium",
+      "value": "0.8 to 1.1",
+      "unit": "mg/mL",
+      "context_hint": "final concentration"
+    },
+    {
+      "id": "cv_009",
+      "description": "Culture duration for 3D culture",
+      "value": "4 to 7",
+      "unit": "days",
+      "context_hint": "culture"
+    },
+    {
+      "id": "cv_010",
+      "description": "Cell density for embedded culture",
+      "value": "5 x 10^6",
+      "unit": "cells/mL",
+      "context_hint": "density"
+    },
+    {
+      "id": "cv_011",
+      "description": "Volume of cell suspension added to Matrigel",
+      "value": "30",
+      "unit": "μL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_012",
+      "description": "Volume of Matrigel matrix solution",
+      "value": "270",
+      "unit": "μL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_013",
+      "description": "Incubation time for embedded culture",
+      "value": "30 to 45",
+      "unit": "min",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_014",
+      "description": "Culture duration for embedded culture",
+      "value": "8 to 10",
+      "unit": "days",
+      "context_hint": "culture"
+    }
+  ],
+  "key_reagents": [
+    "MDCK cell line",
+    "Corning Matrigel matrix",
+    "MEM",
+    "FBS",
+    "PBS",
+    "0.25% Trypsin/EDTA",
+    "24-well plate"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "human",
+    "diagnostic",
+    "therapeutic",
+    "clinical"
+  ]
+}

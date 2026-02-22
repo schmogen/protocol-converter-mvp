@@ -1,0 +1,180 @@
+{
+  "pdf_name": "PSC Aggregates_PBS Mini.pdf",
+  "protocol_title": "Protocol for Expansion of PSC Aggregates in the PBS-Mini Vertical-Wheel Bioreactor",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol provides step-by-step guidance for forming and expanding pluripotent stem cell (PSC) aggregates, starting with 2D adherent cultures in T-flasks and transitioning to 3D suspension cultures in PBS-Mini Vertical-Wheel bioreactors. It includes recommended culture parameters and methods for optimization.",
+  "expected_sections": [
+    "Protocol for Expansion of PSC Aggregates in the PBS-Mini Vert Bioreactor Driven By Vertical-Wheel® Technology",
+    "Objective",
+    "Materials",
+    "For 2D Culture: Seed Train in T-Flask",
+    "For 3D Culture: Expansion in PBS-Mini",
+    "Procedure",
+    "1. Overview",
+    "2D Culture: Seed Train in T-Flask",
+    "3D Culture: Expansion in PBS-Mini",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks",
+    "Summary"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Seeding density for 2D culture",
+      "value": "15000",
+      "unit": "cells/cm2",
+      "context_hint": "seeding"
+    },
+    {
+      "id": "cv_002",
+      "description": "Culture duration for thaw - passage 1",
+      "value": "3",
+      "unit": "days",
+      "context_hint": "duration"
+    },
+    {
+      "id": "cv_003",
+      "description": "Culture duration for passage 2+",
+      "value": "4",
+      "unit": "days",
+      "context_hint": "duration"
+    },
+    {
+      "id": "cv_004",
+      "description": "Medium volume to culture vessel surface area",
+      "value": "0.32",
+      "unit": "mL/cm2",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_005",
+      "description": "DPBS and enzyme volume to culture vessel surface area",
+      "value": "0.08",
+      "unit": "mL/cm2",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_006",
+      "description": "Number of DPBS washes prior to addition of enzyme",
+      "value": "2",
+      "unit": "",
+      "context_hint": "washes"
+    },
+    {
+      "id": "cv_007",
+      "description": "Enzyme incubation time",
+      "value": "5-20",
+      "unit": "minutes",
+      "context_hint": "incubation"
+    },
+    {
+      "id": "cv_008",
+      "description": "Centrifuge settings for 2D culture",
+      "value": "500",
+      "unit": "RCF",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_009",
+      "description": "Agitation rate for PBS-Mini 0.1",
+      "value": "60",
+      "unit": "RPM",
+      "context_hint": "agitation"
+    },
+    {
+      "id": "cv_010",
+      "description": "Seeding density for PBS-Mini 0.1",
+      "value": "20000",
+      "unit": "cells/mL",
+      "context_hint": "seeding"
+    },
+    {
+      "id": "cv_011",
+      "description": "Working volume for PBS-Mini 0.1",
+      "value": "60-100",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_012",
+      "description": "Agitation rate for PBS-Mini 0.5",
+      "value": "40",
+      "unit": "RPM",
+      "context_hint": "agitation"
+    },
+    {
+      "id": "cv_013",
+      "description": "Seeding density for PBS-Mini 0.5",
+      "value": "20000",
+      "unit": "cells/mL",
+      "context_hint": "seeding"
+    },
+    {
+      "id": "cv_014",
+      "description": "Working volume for PBS-Mini 0.5",
+      "value": "300-500",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_015",
+      "description": "Agitation speed for dissociation in PBS-Mini 0.1",
+      "value": "80",
+      "unit": "RPM",
+      "context_hint": "agitation"
+    },
+    {
+      "id": "cv_016",
+      "description": "Agitation speed for dissociation in PBS-Mini 0.5",
+      "value": "40",
+      "unit": "RPM",
+      "context_hint": "agitation"
+    },
+    {
+      "id": "cv_017",
+      "description": "Centrifuge settings for dissociation",
+      "value": "500",
+      "unit": "x g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_018",
+      "description": "Cell viability threshold during PSC aggregate culture",
+      "value": "85",
+      "unit": "%",
+      "context_hint": "viability"
+    }
+  ],
+  "key_reagents": [
+    "mTeSR1",
+    "TeSR AOF",
+    "StemFlex",
+    "StemScale",
+    "E8",
+    "Y-27632",
+    "Matrigel",
+    "iMatrix-511",
+    "Laminin 521",
+    "Accutase",
+    "TrypLE",
+    "DPBS"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "biosafety level 2",
+    "PCR",
+    "RNA extraction",
+    "Western blot",
+    "flow cytometry"
+  ]
+}

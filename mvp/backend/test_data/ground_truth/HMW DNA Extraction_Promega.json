@@ -1,0 +1,127 @@
+{
+  "pdf_name": "HMW DNA Extraction_Promega.pdf",
+  "protocol_title": "Wizard® HMW DNA Extraction Kit Instructions for Use of Product",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol provides detailed instructions for isolating high-molecular-weight DNA from various biological samples using the Wizard® HMW DNA Extraction Kit. It includes specific procedures for blood, tissue culture cells, plant tissue, and bacteria.",
+  "expected_sections": [
+    "Wizard® HMW DNA Extraction Kit Protocol",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "3.A. Isolating HMW DNA from Whole Blood",
+    "3.B. Isolating HMW DNA from Tissue Culture Cells",
+    "3.C. Isolating HMW Genomic DNA from Plant Tissue",
+    "3.D. Isolating HMW DNA from Gram-Positive and Gram-Negative Bacteria",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks",
+    "Summary of flags"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Volume of blood sample for isolation",
+      "value": "300",
+      "unit": "µl",
+      "context_hint": "blood"
+    },
+    {
+      "id": "cv_002",
+      "description": "Number of tissue culture cells for isolation",
+      "value": "3000000",
+      "unit": "cells",
+      "context_hint": "cells"
+    },
+    {
+      "id": "cv_003",
+      "description": "Weight of plant tissue for isolation",
+      "value": "40",
+      "unit": "mg",
+      "context_hint": "tissue"
+    },
+    {
+      "id": "cv_004",
+      "description": "Volume of Gram-negative bacteria culture for isolation",
+      "value": "1000",
+      "unit": "µl",
+      "context_hint": "bacteria"
+    },
+    {
+      "id": "cv_005",
+      "description": "Centrifuge speed for cell pellet",
+      "value": "16000",
+      "unit": "g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_006",
+      "description": "Incubation temperature for lysis of white blood cells",
+      "value": "10",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_007",
+      "description": "Incubation temperature for RNase A treatment",
+      "value": "37",
+      "unit": "°C",
+      "context_hint": "RNase"
+    },
+    {
+      "id": "cv_008",
+      "description": "Incubation time for Proteinase K treatment",
+      "value": "15",
+      "unit": "minutes",
+      "context_hint": "Proteinase"
+    },
+    {
+      "id": "cv_009",
+      "description": "Centrifuge time after isopropanol addition",
+      "value": "2",
+      "unit": "minutes",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_010",
+      "description": "Ethanol wash time",
+      "value": "10",
+      "unit": "minutes",
+      "context_hint": "ethanol"
+    },
+    {
+      "id": "cv_011",
+      "description": "Rehydration incubation time",
+      "value": "1",
+      "unit": "hour",
+      "context_hint": "rehydrate"
+    }
+  ],
+  "key_reagents": [
+    "HMW Blood Lysis Buffer",
+    "HMW Lysis Buffer A",
+    "Proteinase K Solution",
+    "Protein Precipitation Solution",
+    "DNA Rehydration Solution",
+    "RNase A Solution",
+    "Isopropanol",
+    "70% Ethanol"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "PCR",
+    "RNA",
+    "lysozyme",
+    "lysostaphin",
+    "bacterial culture"
+  ]
+}

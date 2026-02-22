@@ -1,0 +1,131 @@
+{
+  "pdf_name": "MRC5_Cell Factory_Thermo.pdf",
+  "protocol_title": "Protocol for MRC-5 cultivation",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol outlines the steps for culturing MRC-5 cells using Thermo Scientific Nunc High Density Cell Factory systems. It serves as a reference for optimizing cell culture performance.",
+  "expected_sections": [
+    "Protocol for MRC-5 Nunc High Density Cell Factory Systems",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Cell Thawing",
+    "Passage 1",
+    "Passage 2: Cell Expansion in T-flasks",
+    "Passage 3–5: Cell Expansion in High Density Cell Factory Systems",
+    "Passaging into High Density Cell Factory 13-layer Systems",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Temperature for cell thawing and incubation",
+      "value": "37",
+      "unit": "°C",
+      "context_hint": "temperature"
+    },
+    {
+      "id": "cv_002",
+      "description": "Cell density for seeding",
+      "value": "15000",
+      "unit": "cells/cm2",
+      "context_hint": "cells"
+    },
+    {
+      "id": "cv_003",
+      "description": "Incubation time for T-175 flasks",
+      "value": "7",
+      "unit": "days",
+      "context_hint": "days"
+    },
+    {
+      "id": "cv_004",
+      "description": "Incubation time for Cell Factory systems",
+      "value": "6",
+      "unit": "days",
+      "context_hint": "days"
+    },
+    {
+      "id": "cv_005",
+      "description": "Trypsin-EDTA volume for 2-layer Cell Factory system",
+      "value": "30",
+      "unit": "mL",
+      "context_hint": "trypsin"
+    },
+    {
+      "id": "cv_006",
+      "description": "Trypsin-EDTA volume for 3-layer High Density Cell Factory system",
+      "value": "45",
+      "unit": "mL",
+      "context_hint": "trypsin"
+    },
+    {
+      "id": "cv_007",
+      "description": "DPBS volume for 2-layer Cell Factory system",
+      "value": "80",
+      "unit": "mL",
+      "context_hint": "DPBS"
+    },
+    {
+      "id": "cv_008",
+      "description": "DPBS volume for 3-layer High Density Cell Factory system",
+      "value": "120",
+      "unit": "mL",
+      "context_hint": "DPBS"
+    },
+    {
+      "id": "cv_009",
+      "description": "Growth medium volume for 2-layer Cell Factory system",
+      "value": "400",
+      "unit": "mL",
+      "context_hint": "medium"
+    },
+    {
+      "id": "cv_010",
+      "description": "Growth medium volume for 3-layer High Density Cell Factory system",
+      "value": "600",
+      "unit": "mL",
+      "context_hint": "medium"
+    },
+    {
+      "id": "cv_011",
+      "description": "Growth medium volume for 10-layer Cell Factory system",
+      "value": "2000",
+      "unit": "mL",
+      "context_hint": "medium"
+    },
+    {
+      "id": "cv_012",
+      "description": "Trypsin-EDTA volume for 10-layer Cell Factory system",
+      "value": "150",
+      "unit": "mL",
+      "context_hint": "trypsin"
+    }
+  ],
+  "key_reagents": [
+    "Gibco™ DPBS without Ca2+ and Mg2+",
+    "Gibco™ 0.25% Trypsin-EDTA",
+    "Gibco™ DMEM, high glucose, with NEAA, no glutamine, with phenol red",
+    "Gibco™ Penicillin-Streptomycin",
+    "Gibco™ 200 mM L-glutamine",
+    "Gibco™ Fetal Bovine Serum, Certified",
+    "Gibco™ 1 M HEPES"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "PCR",
+    "Western blot",
+    "RNA extraction",
+    "DNA sequencing"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "pdf_name": "iPSC_MtesR_Stemcell.pdf",
+  "protocol_title": "Expansion of Human Pluripotent Stem Cells as Aggregates in Suspension Culture Using mTeSR™3D",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol describes the expansion of human pluripotent stem cells (hPSCs) in a three-dimensional suspension culture system using mTeSR™3D. It provides detailed instructions on materials, reagents, and methods for culturing and passaging hPSCs.",
+  "expected_sections": [
+    "Expansion of Human Pluripotent Stem Cells as Aggregates in Suspension Culture Using mTeSR™3D",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "4.0 Preparation of Reagents and Materials",
+    "5.0 Initiating hPSC Suspension Culture in mTeSR™3D",
+    "6.0 Culturing hPSC Suspension Aggregates Using mTeSR™3D",
+    "7.0 Passaging Suspension Culture hPSCs Grown in mTeSR™3D",
+    "8.0 Troubleshooting",
+    "10.0 Appendix 1: Preparing Suspension Culture Vessels",
+    "11.0 Appendix 2: Counting Clumps",
+    "12.0 Appendix 3: Differentiating Suspension Cultures into Three Germ Layers",
+    "13.0 Appendix 4: Re-Establishing 2D Colony Cultures",
+    "14.0 Appendix 5: G-Banding Karyotype",
+    "15.0 Appendix 6: Dissociating Aggregates to Single Cells for Flow Cytometry",
+    "16.0 Appendix 7: Flow Cytometry Methods",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Temperature for incubating hPSCs",
+      "value": "37",
+      "unit": "°C",
+      "context_hint": "incubator"
+    },
+    {
+      "id": "cv_002",
+      "description": "Humidity level in incubator",
+      "value": "95",
+      "unit": "%",
+      "context_hint": "humidity"
+    },
+    {
+      "id": "cv_003",
+      "description": "Concentration of Y-27632 for optimal aggregate formation",
+      "value": "10",
+      "unit": "µM",
+      "context_hint": "Y-27632"
+    },
+    {
+      "id": "cv_004",
+      "description": "Seeding density range for hPSCs",
+      "value": "1-5 x 10^5",
+      "unit": "cells/mL",
+      "context_hint": "seeding density"
+    },
+    {
+      "id": "cv_005",
+      "description": "Maximum aggregate size to prevent nutrient deficiency",
+      "value": "400",
+      "unit": "µm",
+      "context_hint": "aggregate size"
+    },
+    {
+      "id": "cv_006",
+      "description": "Centrifuge speed for dissociating aggregates",
+      "value": "300",
+      "unit": "x g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_007",
+      "description": "Incubation time for aggregates with GCDR",
+      "value": "6-8",
+      "unit": "minutes",
+      "context_hint": "incubation"
+    },
+    {
+      "id": "cv_008",
+      "description": "Passaging schedule recommendation",
+      "value": "3-4",
+      "unit": "days",
+      "context_hint": "passaging schedule"
+    }
+  ],
+  "key_reagents": [
+    "mTeSR™3D Seed Basal Medium",
+    "mTeSR™3D Seed 5X Supplement",
+    "mTeSR™3D Feed Supplement A",
+    "mTeSR™3D Feed Supplement B",
+    "Gentle Cell Dissociation Reagent (GCDR)",
+    "Y-27632 (ROCK inhibitor)",
+    "D-PBS (Without Ca++ and Mg++)",
+    "DMEM/F-12 with 15 mM HEPES",
+    "Sigmacote®",
+    "Anti-Adherence Rinsing Solution"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "human or animal diagnostic or therapeutic uses",
+    "non-research applications",
+    "equipment not mentioned in the protocol",
+    "biosafety levels not applicable to this protocol"
+  ]
+}

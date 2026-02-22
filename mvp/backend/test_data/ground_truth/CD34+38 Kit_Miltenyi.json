@@ -1,0 +1,137 @@
+{
+  "pdf_name": "CD34+38 Kit_Miltenyi.pdf",
+  "protocol_title": "CD34+CD38– Cell Isolation Kit",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol describes the isolation of CD34+CD38– cells from human cord blood, bone marrow, or apheresis harvest using magnetic labeling and separation techniques. It includes detailed steps for sample preparation, magnetic labeling, and separation procedures.",
+  "expected_sections": [
+    "CD34+CD38– Cell Isolation Kit Protocol",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "2.1 Sample preparation",
+    "2.2 First magnetic labeling",
+    "2.3 First magnetic separation",
+    "2.4 Removal of MultiSort MicroBeads and second magnetic labeling",
+    "2.5 Second magnetic separation with LS Columns",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Centrifuge speed for washing cells",
+      "value": "300",
+      "unit": "g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_002",
+      "description": "Incubation temperature for magnetic labeling",
+      "value": "2-8",
+      "unit": "°C",
+      "context_hint": "refrigerator"
+    },
+    {
+      "id": "cv_003",
+      "description": "Incubation time for magnetic labeling",
+      "value": "30",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_004",
+      "description": "Centrifuge time for washing cells",
+      "value": "10",
+      "unit": "minutes",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_005",
+      "description": "Volume of buffer for resuspension per 10^8 cells",
+      "value": "300",
+      "unit": "µL",
+      "context_hint": "resuspend"
+    },
+    {
+      "id": "cv_006",
+      "description": "Volume of MultiSort Release Reagent per 1 mL of cell suspension",
+      "value": "20",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_007",
+      "description": "Incubation time for MultiSort Release Reagent",
+      "value": "10",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_008",
+      "description": "Volume of MultiSort Stop Reagent per 10^8 initial total cells",
+      "value": "80",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_009",
+      "description": "Volume of CD38 MicroBeads per 10^8 initial total cells",
+      "value": "40",
+      "unit": "µL",
+      "context_hint": "add"
+    },
+    {
+      "id": "cv_010",
+      "description": "Incubation time for CD38 MicroBeads",
+      "value": "15",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_011",
+      "description": "Volume of buffer for resuspension per 10^8 initial total cells",
+      "value": "1",
+      "unit": "mL",
+      "context_hint": "resuspend"
+    },
+    {
+      "id": "cv_012",
+      "description": "Centrifuge time for cell suspension after MultiSort Release Reagent",
+      "value": "10",
+      "unit": "minutes",
+      "context_hint": "centrifuge"
+    }
+  ],
+  "key_reagents": [
+    "CD34 MultiSort MicroBeads",
+    "CD38 MicroBeads",
+    "MultiSort Release Reagent",
+    "MultiSort Stop Reagent",
+    "FcR Blocking Reagent",
+    "EDTA",
+    "BSA",
+    "Ficoll-Paque",
+    "Pre-Separation Filters",
+    "Propidium Iodide Solution",
+    "Dead Cell Removal Kit"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "PCR",
+    "Western blot",
+    "RNA sequencing",
+    "Biosafety Level 2",
+    "Flow cytometry equipment not specified"
+  ]
+}

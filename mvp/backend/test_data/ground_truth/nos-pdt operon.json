@@ -1,0 +1,153 @@
+{
+  "pdf_name": "nos-pdt operon.pdf",
+  "protocol_title": "Contribution of the nos-pdt Operon to Virulence Phenotypes in Methicillin-Sensitive Staphylococcus aureus",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol outlines the investigation of the nos-pdt operon in Staphylococcus aureus and its role in virulence and stress resistance. It includes methods for gene expression analysis, mutant strain creation, and phenotypic assessments.",
+  "expected_sections": [
+    "Contribution of the nos-pdt Operon to Virulence Phenotypes in Methicillin-Sensitive Staphylococcus aureus",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Bacterial Growth and Strain Construction",
+    "Growth-Phase Dependent Expression Analysis",
+    "Co-transcription PCR Analysis",
+    "Assessment of Growth in Chemically Defined Media",
+    "Hydrogen Peroxide Sensitivity Assays",
+    "Carotenoid Pigment Quantification",
+    "Quantitative PCR of Carotenoid Biosynthesis and Related Genes",
+    "Fluorescent Detection of Intracellular NO/RNS Using DAF-FM Diacetate",
+    "Murine Model of Sepsis for Virulence Assessment",
+    "Data Analysis and Statistical Testing",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks",
+    "Summary"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Centrifuge speed for cell pellet collection",
+      "value": "13000",
+      "unit": "RPM",
+      "context_hint": "centrifuged"
+    },
+    {
+      "id": "cv_002",
+      "description": "Growth temperature for S. aureus",
+      "value": "37",
+      "unit": "C",
+      "context_hint": "grown"
+    },
+    {
+      "id": "cv_003",
+      "description": "Growth temperature for plasmid integration",
+      "value": "43",
+      "unit": "C",
+      "context_hint": "growth"
+    },
+    {
+      "id": "cv_004",
+      "description": "Concentration of chloramphenicol used",
+      "value": "10",
+      "unit": "mg/ml",
+      "context_hint": "antibiotics"
+    },
+    {
+      "id": "cv_005",
+      "description": "Concentration of erythromycin used",
+      "value": "10",
+      "unit": "mg/ml",
+      "context_hint": "antibiotics"
+    },
+    {
+      "id": "cv_006",
+      "description": "Concentration of ampicillin used",
+      "value": "50",
+      "unit": "mg/ml",
+      "context_hint": "antibiotics"
+    },
+    {
+      "id": "cv_007",
+      "description": "Concentration of kanamycin used",
+      "value": "50",
+      "unit": "mg/ml",
+      "context_hint": "antibiotics"
+    },
+    {
+      "id": "cv_008",
+      "description": "Incubation time for DAF-FM staining",
+      "value": "60",
+      "unit": "minutes",
+      "context_hint": "incubated"
+    },
+    {
+      "id": "cv_009",
+      "description": "Duration of murine infection study",
+      "value": "7",
+      "unit": "days",
+      "context_hint": "infection"
+    },
+    {
+      "id": "cv_010",
+      "description": "Volume of bacterial suspension injected",
+      "value": "100",
+      "unit": "µl",
+      "context_hint": "inoculated"
+    },
+    {
+      "id": "cv_011",
+      "description": "Final inoculum of bacteria for infection",
+      "value": "1.6e8",
+      "unit": "CFU/ml",
+      "context_hint": "inoculated"
+    },
+    {
+      "id": "cv_012",
+      "description": "Volume of methanol used for pigment extraction",
+      "value": "420",
+      "unit": "µl",
+      "context_hint": "resuspended"
+    },
+    {
+      "id": "cv_013",
+      "description": "Concentration of hydrogen peroxide used in assays",
+      "value": "250",
+      "unit": "mM",
+      "context_hint": "H2O2"
+    }
+  ],
+  "key_reagents": [
+    "4-Amino-5-Methylamino-2',7'-Difluorofluorescein (DAF-FM) diacetate",
+    "Tryptic Soy Agar (TSA)",
+    "Tryptic Soy Broth (TSB)",
+    "Chemically Defined Media (CDM)",
+    "Chloramphenicol",
+    "Erythromycin",
+    "Ampicillin",
+    "Kanamycin",
+    "Glycerol",
+    "DNA Gel Extraction Kit",
+    "iScript Reverse Transcriptase kit",
+    "iQ SYBR green supermix",
+    "Turbo DNase",
+    "Luria-Bertani (LB) broth"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "MRSA",
+    "antibiotic resistance",
+    "biofilm",
+    "eukaryotic NOS",
+    "non-permissive temperature",
+    "other bacterial species"
+  ]
+}

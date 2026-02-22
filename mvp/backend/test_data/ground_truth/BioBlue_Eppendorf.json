@@ -1,0 +1,108 @@
+{
+  "pdf_name": "BioBlue_Eppendorf.pdf",
+  "protocol_title": "BioBLU® 0.3c/f Single-Use Bioreactor Instructions for Use",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol provides detailed instructions for the configuration and operation of the BioBLU 0.3c/f single-use bioreactor, designed for use with the DASbox parallel mini bioreactor system. It includes safety information, handling procedures, and technical specifications.",
+  "expected_sections": [
+    "BioBLU® 0.3c/f Single-Use Bioreactor Instructions for Use",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "4.1 Configuration",
+    "4.2 Preparation and Cultivation",
+    "4.3 Troubleshooting",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks",
+    "Summary"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Maximum operating temperature for BioBLU 0.3c",
+      "value": "40",
+      "unit": "°C",
+      "context_hint": "temperature"
+    },
+    {
+      "id": "cv_002",
+      "description": "Maximum operating temperature for BioBLU 0.3f",
+      "value": "45",
+      "unit": "°C",
+      "context_hint": "temperature"
+    },
+    {
+      "id": "cv_003",
+      "description": "Maximum contact temperature",
+      "value": "60",
+      "unit": "°C",
+      "context_hint": "temperature"
+    },
+    {
+      "id": "cv_004",
+      "description": "Melting point of the bioreactor material",
+      "value": "80",
+      "unit": "°C",
+      "context_hint": "temperature"
+    },
+    {
+      "id": "cv_005",
+      "description": "Working volume range for BioBLU 0.3c",
+      "value": "100-250",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_006",
+      "description": "Working volume range for BioBLU 0.3f",
+      "value": "65-250",
+      "unit": "mL",
+      "context_hint": "volume"
+    },
+    {
+      "id": "cv_007",
+      "description": "Speed range for agitation in BioBLU 0.3c",
+      "value": "20-500",
+      "unit": "rpm",
+      "context_hint": "rpm"
+    },
+    {
+      "id": "cv_008",
+      "description": "Speed range for agitation in BioBLU 0.3f",
+      "value": "20-2000",
+      "unit": "rpm",
+      "context_hint": "rpm"
+    },
+    {
+      "id": "cv_009",
+      "description": "Recommended maximum operation time",
+      "value": "14",
+      "unit": "days",
+      "context_hint": "time"
+    }
+  ],
+  "key_reagents": [
+    "Antifoam 204",
+    "Pluronic L61",
+    "Pluronic 68",
+    "Pluriol P 2000",
+    "Struktol J673"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "autoclave",
+    "medical device",
+    "GMP",
+    "biological agents of biosafety level 2 or higher"
+  ]
+}

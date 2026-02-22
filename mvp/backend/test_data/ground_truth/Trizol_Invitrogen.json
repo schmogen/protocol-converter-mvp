@@ -1,0 +1,151 @@
+{
+  "pdf_name": "Trizol_Invitrogen.pdf",
+  "protocol_title": "TRIzol™ Reagent User Guide for DNA Isolation",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol provides detailed instructions for isolating DNA using TRIzol™ Reagent from various biological samples. It includes information on required materials, procedural guidelines, and troubleshooting tips.",
+  "expected_sections": [
+    "TRIzol™ Reagent Experimental protocol for DNA isolation",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Lyse samples and separate phases",
+    "Isolate DNA",
+    "Determine DNA yield",
+    "Notes",
+    "Troubleshooting",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "Centrifuge speed for lysate separation",
+      "value": "12000",
+      "unit": "g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_002",
+      "description": "Centrifuge speed for DNA precipitation",
+      "value": "2000",
+      "unit": "g",
+      "context_hint": "centrifuge"
+    },
+    {
+      "id": "cv_003",
+      "description": "Incubation time for complete dissociation of nucleoproteins",
+      "value": "5",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_004",
+      "description": "Incubation time for DNA precipitation",
+      "value": "2-3",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_005",
+      "description": "Incubation time for washing DNA",
+      "value": "30",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_006",
+      "description": "Incubation time for DNA in 75% ethanol",
+      "value": "10-20",
+      "unit": "minutes",
+      "context_hint": "incubate"
+    },
+    {
+      "id": "cv_007",
+      "description": "Storage temperature for TRIzol™ Reagent",
+      "value": "15-30",
+      "unit": "°C",
+      "context_hint": "storage"
+    },
+    {
+      "id": "cv_008",
+      "description": "Storage temperature for RNA samples",
+      "value": "-70",
+      "unit": "°C",
+      "context_hint": "store"
+    },
+    {
+      "id": "cv_009",
+      "description": "Storage temperature for DNA samples",
+      "value": "-20",
+      "unit": "°C",
+      "context_hint": "store"
+    },
+    {
+      "id": "cv_010",
+      "description": "Starting material for TRIzol™ Reagent per tissue",
+      "value": "50-100",
+      "unit": "mg",
+      "context_hint": "tissue"
+    },
+    {
+      "id": "cv_011",
+      "description": "Volume of TRIzol™ Reagent per 1 × 10^5—1 × 10^7 cells",
+      "value": "0.3-0.4",
+      "unit": "mL",
+      "context_hint": "cells"
+    },
+    {
+      "id": "cv_012",
+      "description": "Volume of chloroform per 1 mL of TRIzol™ Reagent",
+      "value": "0.2",
+      "unit": "mL",
+      "context_hint": "chloroform"
+    },
+    {
+      "id": "cv_013",
+      "description": "Volume of sodium citrate solution per 1 mL of TRIzol™ Reagent",
+      "value": "1",
+      "unit": "mL",
+      "context_hint": "sodium"
+    },
+    {
+      "id": "cv_014",
+      "description": "Volume of 75% ethanol per 1 mL of TRIzol™ Reagent",
+      "value": "1.5-2",
+      "unit": "mL",
+      "context_hint": "ethanol"
+    }
+  ],
+  "key_reagents": [
+    "TRIzol™ Reagent",
+    "Chloroform",
+    "Ethanol, 100%",
+    "Ethanol, 75%",
+    "0.1 M sodium citrate in 10% ethanol",
+    "8 mM NaOH",
+    "HEPES",
+    "Isopropanol",
+    "RNaseZap™ RNase Decontamination Solution"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "PCR",
+    "RT-PCR",
+    "Northern Blot",
+    "Western Blot",
+    "Southern Blot",
+    "Qubit™",
+    "Quant-iT™",
+    "NanoDrop™ Spectrophotometer"
+  ]
+}

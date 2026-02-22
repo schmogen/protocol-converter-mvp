@@ -1,0 +1,156 @@
+{
+  "pdf_name": "Dynabeads_Invitrogen.pdf",
+  "protocol_title": "Dynabeads™ M-280 Streptavidin Protocol",
+  "version": "1.0",
+  "last_reviewed": "2026-02-21",
+  "notes": "This protocol outlines the use of Dynabeads™ M-280 Streptavidin for various applications including protein purification and nucleic acid manipulation. It provides detailed instructions on buffer preparation, binding, washing, and resuspension of beads.",
+  "expected_sections": [
+    "Dynabeads™ M-280 Streptavidin Protocol",
+    "Objective",
+    "Materials",
+    "Procedure",
+    "Washing Dynabeads™ magnetic beads",
+    "Washing beads for RNA applications",
+    "Immobilization of biotinylated molecules",
+    "Immobilization of nucleic acids",
+    "Immobilization of antibodies/proteins",
+    "Notes",
+    "Review Checklist",
+    "Review Flags",
+    "Critical Parameters Checklist (from the protocol)",
+    "Potential Missing Parameters (compare to source)",
+    "Possible Unsupported Claims",
+    "Step Order / Omission Risks"
+  ],
+  "critical_values": [
+    {
+      "id": "cv_001",
+      "description": "pH of PBS buffer",
+      "value": "7.4",
+      "unit": "pH",
+      "context_hint": "buffer"
+    },
+    {
+      "id": "cv_002",
+      "description": "pH of Tris-HCl buffer",
+      "value": "7.5",
+      "unit": "pH",
+      "context_hint": "buffer"
+    },
+    {
+      "id": "cv_003",
+      "description": "Concentration of NaCl in Solution B",
+      "value": "2",
+      "unit": "M",
+      "context_hint": "Solution B"
+    },
+    {
+      "id": "cv_004",
+      "description": "Concentration of BSA in washing buffer",
+      "value": "0.01",
+      "unit": "%",
+      "context_hint": "BSA"
+    },
+    {
+      "id": "cv_005",
+      "description": "Incubation time for binding",
+      "value": "30",
+      "unit": "min",
+      "context_hint": "incubation"
+    },
+    {
+      "id": "cv_006",
+      "description": "Incubation time for washing beads",
+      "value": "2",
+      "unit": "min",
+      "context_hint": "washing"
+    },
+    {
+      "id": "cv_007",
+      "description": "Volume of washing buffer",
+      "value": "1",
+      "unit": "mL",
+      "context_hint": "washing"
+    },
+    {
+      "id": "cv_008",
+      "description": "Binding capacity for free biotin",
+      "value": "650-900",
+      "unit": "pmol",
+      "context_hint": "binding"
+    },
+    {
+      "id": "cv_009",
+      "description": "Binding capacity for biotinylated peptides",
+      "value": "200",
+      "unit": "pmol",
+      "context_hint": "binding"
+    },
+    {
+      "id": "cv_010",
+      "description": "Binding capacity for biotinylated antibodies",
+      "value": "10",
+      "unit": "µg",
+      "context_hint": "binding"
+    },
+    {
+      "id": "cv_011",
+      "description": "Binding capacity for ds DNA",
+      "value": "10",
+      "unit": "µg",
+      "context_hint": "binding"
+    },
+    {
+      "id": "cv_012",
+      "description": "Binding capacity for ss oligonucleotides",
+      "value": "200",
+      "unit": "pmol",
+      "context_hint": "binding"
+    },
+    {
+      "id": "cv_013",
+      "description": "Incubation time for short oligonucleotides",
+      "value": "10",
+      "unit": "min",
+      "context_hint": "incubation"
+    },
+    {
+      "id": "cv_014",
+      "description": "Incubation time for DNA fragments up to 1 kb",
+      "value": "15",
+      "unit": "min",
+      "context_hint": "incubation"
+    },
+    {
+      "id": "cv_015",
+      "description": "Washing times for coated beads",
+      "value": "4-5",
+      "unit": "times",
+      "context_hint": "washing"
+    }
+  ],
+  "key_reagents": [
+    "PBS buffer",
+    "Tris-HCl",
+    "NaOH",
+    "NaCl",
+    "EDTA",
+    "BSA",
+    "Tween-20",
+    "Dynabeads™ M-280 Streptavidin",
+    "Solution A",
+    "Solution B"
+  ],
+  "formatting_checks": {
+    "has_numbered_steps": true,
+    "headers_use_bold": true,
+    "no_bare_tables": true,
+    "inline_value_embedding": true
+  },
+  "hallucination_watchlist": [
+    "PCR",
+    "diagnostic procedures",
+    "non-specific binding",
+    "automation platforms"
+  ]
+}
